@@ -1,0 +1,10 @@
+{
+  "profiles": {
+    "Ankara_Online (Package)": {
+      "commandName": "MsixPackage"
+    },
+    "Ankara_Online (Unpackaged)": {
+      "commandName": "Project"
+    }
+  }
+}
