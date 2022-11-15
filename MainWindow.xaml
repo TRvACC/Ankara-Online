@@ -6,8 +6,54 @@
     xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
     mc:Ignorable="d">
+	<StackPanel>
+		<NavigationView x:Name="_navigationView"
+    IsSettingsVisible="False"
+    IsBackButtonVisible="Collapsed"
+    IsBackEnabled="False"
+    Header="Home Page"
+    AlwaysShowHeader="False"
+    PaneTitle="navigationPane"
+    PaneDisplayMode="Top"
+    ExpandedModeThresholdWidth="500"
+    SelectionFollowsFocus="Disabled"
+    IsTabStop="False">
+			<NavigationView.Resources>
+				<SolidColorBrush x:Key="NavigationViewTopPaneBackground" Color="#195caa" />
+			</NavigationView.Resources>
+			<NavigationView.MenuItems>
+				<NavigationViewItem Content="Home" Tag="homePage" x:Name="homePageItem">
+					<NavigationViewItem.Icon>
+						<SymbolIcon Symbol="Play" />
+					</NavigationViewItem.Icon>
+				</NavigationViewItem>
+				<NavigationViewItem Content="Applications and Sector Files" Tag="softwareSectorFilePage" x:Name="softwareSectorFilePageItem">
+					<NavigationViewItem.Icon>
+						<SymbolIcon Symbol="Save" />
+					</NavigationViewItem.Icon>
+				</NavigationViewItem>
+				<NavigationViewItem Content="Documentation" Tag="DocumentationPage" x:Name="DocumentationPageItem">
+					<NavigationViewItem.Icon>
+						<SymbolIcon Symbol="Refresh" />
+					</NavigationViewItem.Icon>
+				</NavigationViewItem>
+				<NavigationViewItem Content="Settings" Tag="SettingsPage" x:Name="SettingsPageItem">
+					<NavigationViewItem.Icon>
+						<SymbolIcon Symbol="Refresh" />
+					</NavigationViewItem.Icon>
+				</NavigationViewItem>
+			</NavigationView.MenuItems>
 
-    <StackPanel Orientation="Horizontal" HorizontalAlignment="Center" VerticalAlignment="Center">
-        <Button x:Name="myButton" Click="myButton_Click">Click Me</Button>
-    </StackPanel>
+			<NavigationView.PaneCustomContent>
+				<HyperlinkButton x:Name="PaneHyperlink" Content="More info" Margin="12,0" Visibility="Collapsed" />
+			</NavigationView.PaneCustomContent>
+
+			<NavigationView.PaneFooter>
+				<StackPanel x:Name="FooterStackPanel" Orientation="Vertical" Visibility="Visible">
+					<NavigationViewItem Icon="Download" AutomationProperties.Name="download" />
+				</StackPanel>
+			</NavigationView.PaneFooter>
+			<Frame x:Name="contentFrame" />
+		</NavigationView>
+	</StackPanel>
 </Window>

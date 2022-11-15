@@ -10,6 +10,7 @@
                 <!-- Other merged dictionaries here -->
             </ResourceDictionary.MergedDictionaries>
             <!-- Other app resources here -->
+			<!--directories etc. shared resoruces-->
         </ResourceDictionary>
     </Application.Resources>
 </Application>
