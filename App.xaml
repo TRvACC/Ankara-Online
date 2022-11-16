@@ -5,7 +5,19 @@
     xmlns:local="using:Ankara_Online">
     <Application.Resources>
         <ResourceDictionary>
-            <ResourceDictionary.MergedDictionaries>
+			<ResourceDictionary.ThemeDictionaries>
+				<ResourceDictionary x:Key="Light">
+					<Style x:Key="HeaderLogo" TargetType="Image">
+						<Setter Property="Source" Value="Assets/trvacc_logo_transparent_2.png"/>
+					</Style>
+				</ResourceDictionary>
+				<ResourceDictionary x:Key="Dark">
+					<Style x:Key="HeaderLogo" TargetType="Image">
+						<Setter Property="Source" Value="Assets/trvacc_logo_transparent_2.png"/>
+					</Style>
+				</ResourceDictionary>
+			</ResourceDictionary.ThemeDictionaries>
+			<ResourceDictionary.MergedDictionaries>
                 <XamlControlsResources xmlns="using:Microsoft.UI.Xaml.Controls" />
                 <!-- Other merged dictionaries here -->
             </ResourceDictionary.MergedDictionaries>

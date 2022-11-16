@@ -3,10 +3,11 @@
     xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
     xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
     xmlns:local="using:Ankara_Online"
+	xmlns:fa="http://schemas.fontawesome.com/icons/fonts/properties"
     xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
-    mc:Ignorable="d">
-	<StackPanel>
+	mc:Ignorable="d">
+	<StackPanel Orientation="Vertical">
 		<NavigationView x:Name="_navigationView"
     IsSettingsVisible="False"
     IsBackButtonVisible="Collapsed"
@@ -17,43 +18,52 @@
     PaneDisplayMode="Top"
     ExpandedModeThresholdWidth="500"
     SelectionFollowsFocus="Disabled"
-    IsTabStop="False">
+    IsTabStop="False"
+	Loaded="NavigationView_Loaded"
+	ItemInvoked="NavigationView_ItemInvoked">
 			<NavigationView.Resources>
 				<SolidColorBrush x:Key="NavigationViewTopPaneBackground" Color="#195caa" />
 			</NavigationView.Resources>
+			<NavigationView.PaneHeader>
+				<Image Height="40" Style="{ThemeResource HeaderLogo}" Margin="10,0,0,0"/>
+			</NavigationView.PaneHeader>
 			<NavigationView.MenuItems>
-				<NavigationViewItem Content="Home" Tag="homePage" x:Name="homePageItem">
+				<NavigationViewItem Content="Home" Tag="homePageView" x:Name="homeViewItem">
 					<NavigationViewItem.Icon>
-						<SymbolIcon Symbol="Play" />
+						<ImageIcon fa:FontAwesome.Icon="Soild_Flags"/>
 					</NavigationViewItem.Icon>
 				</NavigationViewItem>
-				<NavigationViewItem Content="Applications and Sector Files" Tag="softwareSectorFilePage" x:Name="softwareSectorFilePageItem">
+				<NavigationViewItem Content="Applications and Sector Files" Tag="softwareSectorFileView" x:Name="softwareSectorFileViewItem">
 					<NavigationViewItem.Icon>
 						<SymbolIcon Symbol="Save" />
 					</NavigationViewItem.Icon>
 				</NavigationViewItem>
-				<NavigationViewItem Content="Documentation" Tag="DocumentationPage" x:Name="DocumentationPageItem">
+				<NavigationViewItem Content="Documents" Tag="DocumentsView" x:Name="DocumentsViewItem">
 					<NavigationViewItem.Icon>
 						<SymbolIcon Symbol="Refresh" />
 					</NavigationViewItem.Icon>
 				</NavigationViewItem>
-				<NavigationViewItem Content="Settings" Tag="SettingsPage" x:Name="SettingsPageItem">
+				<NavigationViewItem Content="NOTAMS" Tag="NOTAMSViews" x:Name="NOTAMSViewItem">
+					<NavigationViewItem.Icon>
+						<SymbolIcon Symbol="Refresh" />
+					</NavigationViewItem.Icon>
+				</NavigationViewItem>
+				<NavigationViewItem Content="Settings" Tag="SettingsView" x:Name="SettingsViewItem">
 					<NavigationViewItem.Icon>
 						<SymbolIcon Symbol="Refresh" />
 					</NavigationViewItem.Icon>
 				</NavigationViewItem>
 			</NavigationView.MenuItems>
 
-			<NavigationView.PaneCustomContent>
-				<HyperlinkButton x:Name="PaneHyperlink" Content="More info" Margin="12,0" Visibility="Collapsed" />
-			</NavigationView.PaneCustomContent>
-
 			<NavigationView.PaneFooter>
 				<StackPanel x:Name="FooterStackPanel" Orientation="Vertical" Visibility="Visible">
-					<NavigationViewItem Icon="Download" AutomationProperties.Name="download" />
+					<NavigationViewItem Content="Downloads" Icon="Download" AutomationProperties.Name="download" />
 				</StackPanel>
 			</NavigationView.PaneFooter>
-			<Frame x:Name="contentFrame" />
+			<!--<Page x:Name="contentPage" NavigationCacheMode="Required" />-->
+			<Grid>
+				<Frame x:Name="contentFrame" NavigationFailed="contentFrame_NavigationFailed" VerticalAlignment="Top" HorizontalAlignment="Left"/>
+			</Grid>
 		</NavigationView>
 	</StackPanel>
 </Window>

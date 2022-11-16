@@ -1,5 +1,5 @@
-<UserControl
-    x:Class="Ankara_Online.Views.home"
+<Window
+    x:Class="Ankara_Online.Views.SplashScreenView"
     xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
     xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
     xmlns:local="using:Ankara_Online.Views"
@@ -10,4 +10,4 @@
     <Grid>
 
     </Grid>
-</UserControl>
+</Window>

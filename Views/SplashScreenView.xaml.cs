@@ -21,9 +21,12 @@ using Windows.Foundation.Collections;
 
 namespace Ankara_Online.Views
 {
-    public sealed partial class home : UserControl
+    /// <summary>
+    /// An empty window that can be used on its own or navigated to within a Frame.
+    /// </summary>
+    public sealed partial class SplashScreenView : Window
     {
-        public home()
+        public SplashScreenView()
         {
             this.InitializeComponent();
         }
