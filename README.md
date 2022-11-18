@@ -1,5 +1,5 @@
 <p align="center">
-<img src="https://github.com/cptalpdeniz/Ankara_Online/raw/master/Assets/trvacc_icon_whitebg.png" alt="trvacc" width="200"/><img src="https://github.com/cptalpdeniz/Ankara_Online/blob/master/Assets/trvacc_noicon_animated.gif" alt="trvacc" height="200"/>
+<img src="https://github.com/cptalpdeniz/Ankara_Online/raw/master/Assets/TRvACC/trvacc_icon_whitebg.png" alt="trvacc" width="200"/><img src="https://github.com/cptalpdeniz/Ankara_Online/blob/master/Assets/TRvACC/trvacc_noicon_animated.gif" alt="trvacc" height="200"/>
 </p>
 
 # Ankara_Online
