@@ -3,6 +3,9 @@ using Microsoft.UI.Xaml.Shapes;
 using System.Drawing.Text;
 using System.Reflection;
 using System.IO;
+using Microsoft.UI;
+using System;
+using Microsoft.UI.Windowing;
 
 // To learn more about WinUI, the WinUI project structure,
 // and more about our project templates, see: http://aka.ms/winui-project-info.
@@ -34,6 +37,7 @@ namespace Ankara_Online
             //m_window = new SplashScreenView();
             m_window = new MainWindow();
             m_window.Activate();
+
         }
 
         private Window m_window;

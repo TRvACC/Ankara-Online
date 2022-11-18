@@ -7,9 +7,9 @@
   IgnorableNamespaces="uap rescap">
 
   <Identity
-    Name="3a66ec82-b627-4923-8c9a-0acd219b0b75"
-    Publisher="CN=something"
-    Version="1.0.0.0" />
+    Name="Ankara-Online-0.1.86"
+    Publisher="CN=TRvACC"
+    Version="0.1.86.0" />
 
   <Properties>
     <DisplayName>Ankara_Online</DisplayName>
@@ -31,18 +31,21 @@
       Executable="$targetnametoken$.exe"
       EntryPoint="$targetentrypoint$">
       <uap:VisualElements
-        DisplayName="Ankara_Online"
-        Description="Ankara_Online"
+        DisplayName="Ankara Online"
+        Description="A companion app to be used by Turkish vACC ATCOs."
         BackgroundColor="transparent"
         Square150x150Logo="Assets\Square150x150Logo.png"
         Square44x44Logo="Assets\Square44x44Logo.png">
-        <uap:DefaultTile Wide310x150Logo="Assets\Wide310x150Logo.png" />
+        <uap:DefaultTile Wide310x150Logo="Assets\Wide310x150Logo.png"  Square71x71Logo="Assets\SmallTile.png" Square310x310Logo="Assets\LargeTile.png"/>
         <uap:SplashScreen Image="Assets\SplashScreen.png" />
+        <uap:InitialRotationPreference>
+          <uap:Rotation Preference="landscape"/></uap:InitialRotationPreference>
       </uap:VisualElements>
     </Application>
   </Applications>
 
   <Capabilities>
     <rescap:Capability Name="runFullTrust" />
+    <Capability Name="internetClient"/>
   </Capabilities>
 </Package>

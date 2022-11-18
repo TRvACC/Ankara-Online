@@ -1,4 +1,6 @@
 ﻿using Ankara_Online.Views;
+using Microsoft.UI;
+using Microsoft.UI.Windowing;
 using Microsoft.UI.Xaml;
 using Microsoft.UI.Xaml.Controls;
 using Microsoft.UI.Xaml.Input;
@@ -20,15 +22,16 @@ namespace Ankara_Online
             this.InitializeComponent();
             _navigationView.Loaded += NavigationView_Loaded;
             this.Activated += MainWindow_Activated;
-            //homeViewItem.PointerPressed += HomePageItem_PointerPressed;
+           
             IntPtr hWnd = WinRT.Interop.WindowNative.GetWindowHandle(this);
-            var windowId = Microsoft.UI.Win32Interop.GetWindowIdFromWindow(hWnd);
-            var appWindow = Microsoft.UI.Windowing.AppWindow.GetFromWindowId(windowId);
+            var windowId = Win32Interop.GetWindowIdFromWindow(hWnd);
+            var appWindow = AppWindow.GetFromWindowId(windowId);
             appWindow.Resize(new Windows.Graphics.SizeInt32 { Width = 1200, Height = 900 });
-            //FontAwesome6.Fonts.FontAwesomeFonts.LoadAllStyles(new Uri("ms-appx:///Assets//Fonts/"));
+            Title = "Ankara Online";
+            appWindow.SetIcon("Assets\\trvacc_icon_transparent.ico");
+
             this.contentFrame = new Frame();
             contentFrame.Navigate(typeof(HomePageView));
-
         }
         private void NavigationView_ItemInvoked(NavigationView sender, NavigationViewItemInvokedEventArgs args)
         {
