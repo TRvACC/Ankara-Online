@@ -16,7 +16,7 @@
     PaneTitle="navigationPane"
     PaneDisplayMode="Top"
     ExpandedModeThresholdWidth="500"
-    SelectionFollowsFocus="Disabled"
+    SelectionFollowsFocus="Enabled"
     IsTabStop="False"
 	Loaded="NavigationView_Loaded"
 	ItemInvoked="NavigationView_ItemInvoked">
@@ -27,7 +27,7 @@
 				<Image Height="40" Style="{ThemeResource HeaderLogo}" Margin="10,0,10,0"/>
 			</NavigationView.PaneHeader>
 			<NavigationView.MenuItems>
-				<NavigationViewItem Content="Home" Tag="homePageView" x:Name="homeViewItem">
+				<NavigationViewItem FontFamily="Poppins" FontWeight="Normal" FontSize="16" Content="Home" Tag="homePageView" x:Name="homeViewItem">
 					<NavigationViewItem.Icon>
 						<!--Unfortunately the below methods did not so I dropped the Font Awesome support-->
 						<!--<FontIcon FontFamily="./Assets/Fonts/fa-solid-900.ttf#Font Awesome 6 Free Solid" Glyph="&#xf015;" />-->
@@ -37,22 +37,26 @@
 						<ImageIcon Source="./Assets/Icons/control-tower.png"/>
 					</NavigationViewItem.Icon>
 				</NavigationViewItem>
-				<NavigationViewItem Content="Applications and Sector Files" Tag="softwareSectorFileView" x:Name="softwareSectorFileViewItem">
+				<NavigationViewItemSeparator/>
+				<NavigationViewItem FontFamily="Poppins" FontWeight="Normal" FontSize="16" Content="Applications and Sector Files" Tag="softwareSectorFileView" x:Name="softwareSectorFileViewItem">
 					<NavigationViewItem.Icon>
 						<ImageIcon Source="./Assets/Icons/application.png"/>
 					</NavigationViewItem.Icon>
 				</NavigationViewItem>
-				<NavigationViewItem Content="Documents" Tag="DocumentsView" x:Name="DocumentsViewItem">
+				<NavigationViewItemSeparator/>
+				<NavigationViewItem FontFamily="Poppins" FontWeight="Normal" FontSize="16" Content="Documents" Tag="DocumentsView" x:Name="DocumentsViewItem">
 					<NavigationViewItem.Icon>
 						<ImageIcon Source="./Assets/Icons/document.png"/>
 					</NavigationViewItem.Icon>
 				</NavigationViewItem>
-				<NavigationViewItem Content="NOTAMS" Tag="NOTAMSViews" x:Name="NOTAMSViewItem">
+				<NavigationViewItemSeparator/>
+				<NavigationViewItem FontFamily="Poppins" FontWeight="Normal" FontSize="16" Content="NOTAMs" Tag="NOTAMSViews" x:Name="NOTAMSViewItem">
 					<NavigationViewItem.Icon>
 						<ImageIcon Source="./Assets/Icons/warning.png"/>
 					</NavigationViewItem.Icon>
 				</NavigationViewItem>
-				<NavigationViewItem Content="Settings" Tag="SettingsView" x:Name="SettingsViewItem">
+				<NavigationViewItemSeparator/>
+				<NavigationViewItem FontFamily="Poppins" FontWeight="Normal" FontSize="16" Content="Settings" Tag="SettingsView" x:Name="SettingsViewItem">
 					<NavigationViewItem.Icon>
 						<ImageIcon Source="./Assets/Icons/settings.png"/>
 					</NavigationViewItem.Icon>
@@ -61,7 +65,7 @@
 
 			<NavigationView.PaneFooter>
 				<StackPanel x:Name="FooterStackPanel" Orientation="Vertical" Visibility="Visible">
-					<NavigationViewItem Content="Downloads" AutomationProperties.Name="download">
+					<NavigationViewItem Content="Downloads" AutomationProperties.Name="download" FontFamily="Poppins" FontWeight="Normal">
 						<NavigationViewItem.Icon>
 							<ImageIcon Source="./Assets/Icons/download.png" />
 						</NavigationViewItem.Icon>

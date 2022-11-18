@@ -12,11 +12,27 @@
     <EnableMsixTooling>true</EnableMsixTooling>
   </PropertyGroup>
   <ItemGroup>
-    <Content Remove="Assets\Fonts\fa-solid-900.ttf" />
     <Content Remove="Assets\tower-control.svg" />
   </ItemGroup>
   <ItemGroup>
-    <None Remove="Assets\Fonts\fa-solid-900.ttf" />
+    <None Remove="Assets\Fonts\Poppins-Black.ttf" />
+    <None Remove="Assets\Fonts\Poppins-BlackItalic.ttf" />
+    <None Remove="Assets\Fonts\Poppins-Bold.ttf" />
+    <None Remove="Assets\Fonts\Poppins-BoldItalic.ttf" />
+    <None Remove="Assets\Fonts\Poppins-ExtraBold.ttf" />
+    <None Remove="Assets\Fonts\Poppins-ExtraBoldItalic.ttf" />
+    <None Remove="Assets\Fonts\Poppins-ExtraLight.ttf" />
+    <None Remove="Assets\Fonts\Poppins-ExtraLightItalic.ttf" />
+    <None Remove="Assets\Fonts\Poppins-Italic.ttf" />
+    <None Remove="Assets\Fonts\Poppins-Light.ttf" />
+    <None Remove="Assets\Fonts\Poppins-LightItalic.ttf" />
+    <None Remove="Assets\Fonts\Poppins-Medium.ttf" />
+    <None Remove="Assets\Fonts\Poppins-MediumItalic.ttf" />
+    <None Remove="Assets\Fonts\Poppins-Regular.ttf" />
+    <None Remove="Assets\Fonts\Poppins-SemiBold.ttf" />
+    <None Remove="Assets\Fonts\Poppins-SemiBoldItalic.ttf" />
+    <None Remove="Assets\Fonts\Poppins-Thin.ttf" />
+    <None Remove="Assets\Fonts\Poppins-ThinItalic.ttf" />
     <None Remove="Views\DocumentsView.xaml" />
     <None Remove="Views\HomePageView.xaml" />
     <None Remove="Views\NotamsView.xaml" />
@@ -50,9 +66,6 @@
   -->
   <ItemGroup Condition="'$(DisableMsixProjectCapabilityAddedByProject)'!='true' and '$(EnableMsixTooling)'=='true'">
     <ProjectCapability Include="Msix" />
-  </ItemGroup>
-  <ItemGroup>
-    <Resource Include="Assets\Fonts\fa-solid-900.ttf" />
   </ItemGroup>
   <ItemGroup>
     <Page Update="Views\NotamsView.xaml">

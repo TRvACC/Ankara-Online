@@ -16,10 +16,21 @@
 						<Setter Property="Source" Value="Assets/TRvACC/trvacc_logo_transparent_2.png"/>
 					</Style>
 				</ResourceDictionary>
+				<ResourceDictionary x:Key="defaultFont">
+					<FontFamily x:Key="Poppins-Black">ms-appx:///Assets/Fonts/Poppins-Black.ttf#Poppins Black</FontFamily>
+					<Style TargetType="TextBlock">
+						<Setter Property="FontFamily" Value="{StaticResource Poppins-Black}" />
+					</Style>
+				</ResourceDictionary>
+				<!--<ResourceDictionary x:Key="r_fontPoppinsBold">
+					<FontFamily x:Key="Poppins-Bold">./Assets/Fonts/Poppins-Bold.ttf#Poppins Bold</FontFamily>
+						<Style TargetType="TextBlock">
+						<Setter Property="FontFamily" Value="{StaticResource Poppins-Bold}" />
+						</Style>
+					</ResourceDictionary>-->
 			</ResourceDictionary.ThemeDictionaries>
 			<ResourceDictionary.MergedDictionaries>
 				<XamlControlsResources xmlns="using:Microsoft.UI.Xaml.Controls" />
-				<!-- Other merged dictionaries here -->
 			</ResourceDictionary.MergedDictionaries>
 			<!-- Other app resources here -->
 			<!--directories etc. shared resoruces-->
