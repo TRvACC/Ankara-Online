@@ -3,7 +3,6 @@
     xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
     xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
     xmlns:local="using:Ankara_Online"
-	xmlns:fa="http://schemas.fontawesome.com/icons/fonts/properties"
     xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
 	mc:Ignorable="d">
@@ -12,7 +11,7 @@
     IsSettingsVisible="False"
     IsBackButtonVisible="Collapsed"
     IsBackEnabled="False"
-    Header="Home Page"
+    Header="Header"
     AlwaysShowHeader="False"
     PaneTitle="navigationPane"
     PaneDisplayMode="Top"
@@ -25,42 +24,50 @@
 				<SolidColorBrush x:Key="NavigationViewTopPaneBackground" Color="#195caa" />
 			</NavigationView.Resources>
 			<NavigationView.PaneHeader>
-				<Image Height="40" Style="{ThemeResource HeaderLogo}" Margin="10,0,0,0"/>
+				<Image Height="40" Style="{ThemeResource HeaderLogo}" Margin="10,0,10,0"/>
 			</NavigationView.PaneHeader>
 			<NavigationView.MenuItems>
 				<NavigationViewItem Content="Home" Tag="homePageView" x:Name="homeViewItem">
 					<NavigationViewItem.Icon>
-						<ImageIcon fa:FontAwesome.Icon="Soild_Flags"/>
+						<!--Unfortunately the below methods did not so I dropped the Font Awesome support-->
+						<!--<FontIcon FontFamily="./Assets/Fonts/fa-solid-900.ttf#Font Awesome 6 Free Solid" Glyph="&#xf015;" />-->
+						<!--<FontIcon FontFamily="./Assets/Fonts/#Font Awesome 6 Pro Solid" Glyph="&#xe2a1;" />-->
+						<!--<FontIcon FontFamily="{StaticResource FontAwesome6_Pro_Solid}" Glyph="&#xe2a1;" />-->
+						<!--<FontIcon FontFamily="Assets/Fonts/Font Awesome 6 Pro-Solid-900.otf#Font Awesome 6 Pro Solid" Glyph="&#xe2a1;" />-->
+						<ImageIcon Source="./Assets/Icons/control-tower.png"/>
 					</NavigationViewItem.Icon>
 				</NavigationViewItem>
 				<NavigationViewItem Content="Applications and Sector Files" Tag="softwareSectorFileView" x:Name="softwareSectorFileViewItem">
 					<NavigationViewItem.Icon>
-						<SymbolIcon Symbol="Save" />
+						<ImageIcon Source="./Assets/Icons/application.png"/>
 					</NavigationViewItem.Icon>
 				</NavigationViewItem>
 				<NavigationViewItem Content="Documents" Tag="DocumentsView" x:Name="DocumentsViewItem">
 					<NavigationViewItem.Icon>
-						<SymbolIcon Symbol="Refresh" />
+						<ImageIcon Source="./Assets/Icons/document.png"/>
 					</NavigationViewItem.Icon>
 				</NavigationViewItem>
 				<NavigationViewItem Content="NOTAMS" Tag="NOTAMSViews" x:Name="NOTAMSViewItem">
 					<NavigationViewItem.Icon>
-						<SymbolIcon Symbol="Refresh" />
+						<ImageIcon Source="./Assets/Icons/warning.png"/>
 					</NavigationViewItem.Icon>
 				</NavigationViewItem>
 				<NavigationViewItem Content="Settings" Tag="SettingsView" x:Name="SettingsViewItem">
 					<NavigationViewItem.Icon>
-						<SymbolIcon Symbol="Refresh" />
+						<ImageIcon Source="./Assets/Icons/settings.png"/>
 					</NavigationViewItem.Icon>
 				</NavigationViewItem>
 			</NavigationView.MenuItems>
 
 			<NavigationView.PaneFooter>
 				<StackPanel x:Name="FooterStackPanel" Orientation="Vertical" Visibility="Visible">
-					<NavigationViewItem Content="Downloads" Icon="Download" AutomationProperties.Name="download" />
+					<NavigationViewItem Content="Downloads" AutomationProperties.Name="download">
+						<NavigationViewItem.Icon>
+							<ImageIcon Source="./Assets/Icons/download.png" />
+						</NavigationViewItem.Icon>
+					</NavigationViewItem>
 				</StackPanel>
 			</NavigationView.PaneFooter>
-			<!--<Page x:Name="contentPage" NavigationCacheMode="Required" />-->
 			<Grid>
 				<Frame x:Name="contentFrame" NavigationFailed="contentFrame_NavigationFailed" VerticalAlignment="Top" HorizontalAlignment="Left"/>
 			</Grid>

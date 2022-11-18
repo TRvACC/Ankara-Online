@@ -1,5 +1,4 @@
-﻿using FontAwesome6;
-using Microsoft.UI.Xaml;
+﻿using Microsoft.UI.Xaml;
 using Microsoft.UI.Xaml.Shapes;
 using System.Drawing.Text;
 using System.Reflection;

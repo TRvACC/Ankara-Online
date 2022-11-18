@@ -24,8 +24,8 @@ namespace Ankara_Online
             IntPtr hWnd = WinRT.Interop.WindowNative.GetWindowHandle(this);
             var windowId = Microsoft.UI.Win32Interop.GetWindowIdFromWindow(hWnd);
             var appWindow = Microsoft.UI.Windowing.AppWindow.GetFromWindowId(windowId);
-            appWindow.Resize(new Windows.Graphics.SizeInt32 { Width = 1100, Height = 800 });
-            FontAwesome6.Fonts.FontAwesomeFonts.LoadAllStyles(new Uri("ms-appx:///Assets//Fonts/"));
+            appWindow.Resize(new Windows.Graphics.SizeInt32 { Width = 1200, Height = 900 });
+            //FontAwesome6.Fonts.FontAwesomeFonts.LoadAllStyles(new Uri("ms-appx:///Assets//Fonts/"));
             this.contentFrame = new Frame();
             contentFrame.Navigate(typeof(HomePageView));
 
