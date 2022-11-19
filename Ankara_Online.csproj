@@ -15,7 +15,6 @@
     <AppxPackageSigningEnabled>True</AppxPackageSigningEnabled>
   </PropertyGroup>
   <ItemGroup>
-    <None Remove="AppTitleBar.xaml" />
     <None Remove="Assets\Fonts\Poppins-Black.ttf" />
     <None Remove="Assets\Fonts\Poppins-BlackItalic.ttf" />
     <None Remove="Assets\Fonts\Poppins-Bold.ttf" />
@@ -66,11 +65,6 @@
   -->
   <ItemGroup Condition="'$(DisableMsixProjectCapabilityAddedByProject)'!='true' and '$(EnableMsixTooling)'=='true'">
     <ProjectCapability Include="Msix" />
-  </ItemGroup>
-  <ItemGroup>
-    <Page Update="AppTitleBar.xaml">
-      <Generator>MSBuild:Compile</Generator>
-    </Page>
   </ItemGroup>
   <ItemGroup>
     <Page Update="Views\NotamsView.xaml">

@@ -11,29 +11,20 @@
     IsSettingsVisible="False"
     IsBackButtonVisible="Collapsed"
     IsBackEnabled="False"
-    Header="Header"
     AlwaysShowHeader="False"
     PaneTitle="navigationPane"
     PaneDisplayMode="Top"
     ExpandedModeThresholdWidth="500"
-    SelectionFollowsFocus="Enabled"
+    SelectionFollowsFocus="Disabled"
     IsTabStop="False"
 	Loaded="NavigationView_Loaded"
 	ItemInvoked="NavigationView_ItemInvoked">
 			<NavigationView.Resources>
 				<SolidColorBrush x:Key="NavigationViewTopPaneBackground" Color="#195caa" />
 			</NavigationView.Resources>
-			<NavigationView.PaneHeader>
-				<Image Height="40" Style="{ThemeResource HeaderLogo}" Margin="10,0,10,0"/>
-			</NavigationView.PaneHeader>
 			<NavigationView.MenuItems>
 				<NavigationViewItem FontFamily="Poppins" FontWeight="Normal" FontSize="16" Content="Home" Tag="homePageView" x:Name="homeViewItem">
 					<NavigationViewItem.Icon>
-						<!--Unfortunately the below methods did not so I dropped the Font Awesome support-->
-						<!--<FontIcon FontFamily="./Assets/Fonts/fa-solid-900.ttf#Font Awesome 6 Free Solid" Glyph="&#xf015;" />-->
-						<!--<FontIcon FontFamily="./Assets/Fonts/#Font Awesome 6 Pro Solid" Glyph="&#xe2a1;" />-->
-						<!--<FontIcon FontFamily="{StaticResource FontAwesome6_Pro_Solid}" Glyph="&#xe2a1;" />-->
-						<!--<FontIcon FontFamily="Assets/Fonts/Font Awesome 6 Pro-Solid-900.otf#Font Awesome 6 Pro Solid" Glyph="&#xe2a1;" />-->
 						<ImageIcon Source="./Assets/Icons/control-tower.png"/>
 					</NavigationViewItem.Icon>
 				</NavigationViewItem>
@@ -73,7 +64,7 @@
 				</StackPanel>
 			</NavigationView.PaneFooter>
 			<Grid>
-				<Frame x:Name="contentFrame" NavigationFailed="contentFrame_NavigationFailed" VerticalAlignment="Top" HorizontalAlignment="Left"/>
+				<Frame x:Name="contentFrame" NavigationFailed="contentFrame_NavigationFailed" />
 			</Grid>
 		</NavigationView>
 	</StackPanel>

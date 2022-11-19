@@ -7,13 +7,23 @@
 		<ResourceDictionary>
 			<ResourceDictionary.ThemeDictionaries>
 				<ResourceDictionary x:Key="Light">
-					<Style x:Key="HeaderLogo" TargetType="Image">
-						<Setter Property="Source" Value="Assets/TRvACC/trvacc_logo_transparent_2.png"/>
+					<Style x:Key="Logo" TargetType="Image">
+						<Setter Property="Source" Value="Assets/TRvACC/trvacc_logo_transparent.png"/>
+					</Style>
+					<Style x:Key="defaultTextStyle" TargetType="TextBlock">
+						<Setter Property="Foreground" Value="#000000" />
+						<Setter Property="FontFamily" Value="Poppins" />
+						<Setter Property="FontWeight" Value="Normal" />
 					</Style>
 				</ResourceDictionary>
 				<ResourceDictionary x:Key="Dark">
-					<Style x:Key="HeaderLogo" TargetType="Image">
+					<Style x:Key="Logo" TargetType="Image">
 						<Setter Property="Source" Value="Assets/TRvACC/trvacc_logo_transparent_2.png"/>
+					</Style>
+					<Style x:Key="defaultTextStyle" TargetType="TextBlock">
+						<Setter Property="Foreground" Value="#FFFFFF" />
+						<Setter Property="FontFamily" Value="Poppins" />
+						<Setter Property="FontWeight" Value="Normal" />
 					</Style>
 				</ResourceDictionary>
 			</ResourceDictionary.ThemeDictionaries>

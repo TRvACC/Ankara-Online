@@ -7,9 +7,15 @@
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
     mc:Ignorable="d"
     NavigationCacheMode="Required">
-    <Grid ColumnDefinitions="150,*" RowDefinitions="*">
-		<!--ONLINE ATC LIST HERE-->
-		
-		<Image Source="Assets/trvacc_noicon_animated.gif" Grid.Column="0"/>
+	<Grid ColumnDefinitions="400,*" RowDefinitions="200,*" HorizontalAlignment="Stretch" VerticalAlignment="Stretch">
+		<Image Height="100" Style="{ThemeResource Logo}" Grid.Row="0" Grid.Column="0" VerticalAlignment="Center" HorizontalAlignment="Left"/>
+		<Grid Grid.Row="1" Grid.Column="0" RowDefinitions="0.1*,0.9*">
+			<Grid Grid.Row="0" ColumnDefinitions="200,Auto" HorizontalAlignment="Stretch">
+				<TextBlock Text="Online ATCs" Style="{ThemeResource defaultTextStyle}" FontSize="16" Margin="5,0,0,0" Grid.Row="0" Grid.Column="0" IsTextSelectionEnabled="False"/>
+				<!-- ADD RELOAD BUTTON HERE INSTEAD OF THE TEXTBLOCK BELOW-->
+				<Image Source="Assets\Icons\refresh.png" Height="50" Grid.Row="0" Grid.Column="1" Margin="0,0,5,0" />
+			</Grid>
+			<!--ONLINE ATC LIST HERE-->
+		</Grid>
 	</Grid>
 </Page>

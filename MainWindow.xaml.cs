@@ -20,8 +20,6 @@ namespace Ankara_Online
         public MainWindow()
         {
             this.InitializeComponent();
-            _navigationView.Loaded += NavigationView_Loaded;
-            this.Activated += MainWindow_Activated;
            
             IntPtr hWnd = WinRT.Interop.WindowNative.GetWindowHandle(this);
             var windowId = Win32Interop.GetWindowIdFromWindow(hWnd);
@@ -30,8 +28,6 @@ namespace Ankara_Online
             Title = "Ankara Online";
             appWindow.SetIcon("Assets\\trvacc_icon_transparent.ico");
 
-            this.contentFrame = new Frame();
-            contentFrame.Navigate(typeof(HomePageView));
         }
         private void NavigationView_ItemInvoked(NavigationView sender, NavigationViewItemInvokedEventArgs args)
         {
@@ -67,11 +63,6 @@ namespace Ankara_Online
         private void contentFrame_NavigationFailed(object sender, NavigationFailedEventArgs e)
         {
             throw new Exception("Failed to load page " +e.SourcePageType.FullName);
-        }
-
-        private void MainWindow_Activated(object sender, WindowActivatedEventArgs args)
-        {
-            this.contentFrame.Navigate(typeof(HomePageView));
         }
 
         private void NavigationView_Loaded(object sender, RoutedEventArgs args)
