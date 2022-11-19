@@ -101,7 +101,7 @@
 					<Button x:Name="goOnlineButton" Grid.Row="2" Padding="20" IsDoubleTapEnabled="False" IsHoldingEnabled="False" CanDrag="False" Background="#195caa" MinWidth="300">
 						<StackPanel Orientation="Horizontal">
 							<Image Source="ms-appx:///Assets/Icons/airport.png" Height="50"/>
-							<TextBlock Style="{ThemeResource defaultTextStyle}" FontSize="20" FontWeight="SemiBold" Text="Go Online!" Padding="10,0,0,0" VerticalAlignment="Center"/>
+							<TextBlock Style="{ThemeResource defaultTextStyle}" FontSize="20" FontWeight="SemiBold" Text="Go Online" Padding="10,0,0,0" VerticalAlignment="Center"/>
 						</StackPanel>
 					</Button>
 				</Grid>
