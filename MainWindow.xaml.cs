@@ -3,12 +3,9 @@ using Microsoft.UI;
 using Microsoft.UI.Windowing;
 using Microsoft.UI.Xaml;
 using Microsoft.UI.Xaml.Controls;
-using Microsoft.UI.Xaml.Input;
 using Microsoft.UI.Xaml.Navigation;
 using System;
-using System.Diagnostics;
 using System.Linq;
-using Windows.UI.ApplicationSettings;
 
 namespace Ankara_Online
 {
@@ -24,7 +21,11 @@ namespace Ankara_Online
             IntPtr hWnd = WinRT.Interop.WindowNative.GetWindowHandle(this);
             var windowId = Win32Interop.GetWindowIdFromWindow(hWnd);
             var appWindow = AppWindow.GetFromWindowId(windowId);
-            appWindow.Resize(new Windows.Graphics.SizeInt32 { Width = 1200, Height = 900 });
+            appWindow.Resize(new Windows.Graphics.SizeInt32 { Width = 1200, Height = 825 });
+
+            OverlappedPresenter _presenter = appWindow.Presenter as OverlappedPresenter;
+            _presenter.IsResizable = false;
+
             Title = "Ankara Online";
             appWindow.SetIcon("Assets\\trvacc_icon_transparent.ico");
 

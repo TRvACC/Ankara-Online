@@ -7,23 +7,41 @@
 		<ResourceDictionary>
 			<ResourceDictionary.ThemeDictionaries>
 				<ResourceDictionary x:Key="Light">
-					<Style x:Key="Logo" TargetType="Image">
-						<Setter Property="Source" Value="Assets/TRvACC/trvacc_logo_transparent.png"/>
+					<Style x:Key="TRvACC_LOGO" TargetType="Image">
+						<Setter Property="Source" Value="ms-appx:///Assets/TRvACC/trvacc_logo_transparent.png"/>
+					</Style>
+					<Style x:Key="HeaderLogo" TargetType="Image">
+						<Setter Property="Source" Value="ms-appx:///Assets/TRvACC/trvacc_logo_circle_whitebg.png"/>
 					</Style>
 					<Style x:Key="defaultTextStyle" TargetType="TextBlock">
 						<Setter Property="Foreground" Value="#000000" />
 						<Setter Property="FontFamily" Value="Poppins" />
 						<Setter Property="FontWeight" Value="Normal" />
 					</Style>
+					<Style x:Key="defaultGridBackground" TargetType="Grid">
+						<Setter Property="Background" Value="LightGray" />
+					</Style>
+					<Style x:Key="defaultStackPanelBackground" TargetType="StackPanel">
+						<Setter Property="Background" Value="LightGray" />
+					</Style>
 				</ResourceDictionary>
 				<ResourceDictionary x:Key="Dark">
-					<Style x:Key="Logo" TargetType="Image">
-						<Setter Property="Source" Value="Assets/TRvACC/trvacc_logo_transparent_2.png"/>
+					<Style x:Key="TRvACC_LOGO" TargetType="Image">
+						<Setter Property="Source" Value="ms-appx:///Assets/TRvACC/trvacc_logo_transparent_2.png "/>
+					</Style>
+					<Style x:Key="HeaderLogo" TargetType="Image">
+						<Setter Property="Source" Value="ms-appx:///Assets/TRvACC/trvacc_logo_circle_whitebg.png"/>
 					</Style>
 					<Style x:Key="defaultTextStyle" TargetType="TextBlock">
 						<Setter Property="Foreground" Value="#FFFFFF" />
 						<Setter Property="FontFamily" Value="Poppins" />
 						<Setter Property="FontWeight" Value="Normal" />
+					</Style>
+					<Style x:Key="defaultGridBackground" TargetType="Grid">
+						<Setter Property="Background" Value="DarkGray" />
+					</Style>
+					<Style x:Key="defaultStackPanelBackground" TargetType="StackPanel">
+						<Setter Property="Background" Value="#2e2e2e" />
 					</Style>
 				</ResourceDictionary>
 			</ResourceDictionary.ThemeDictionaries>
