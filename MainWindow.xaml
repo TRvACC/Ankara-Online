@@ -29,31 +29,31 @@
 			</NavigationView.PaneHeader>
 			-->
 			<NavigationView.MenuItems>
-				<NavigationViewItem FontFamily="Poppins" FontWeight="Medium" FontSize="16" Content="Home" Tag="homePageView" x:Name="homeViewItem">
+				<NavigationViewItem Style="{ThemeResource headerTextStyle}" Content="Home" Tag="homePageView" x:Name="homeViewItem">
 					<NavigationViewItem.Icon>
 						<ImageIcon Source="ms-appx:///Assets/Icons/control-tower.png"/>
 					</NavigationViewItem.Icon>
 				</NavigationViewItem>
 				<NavigationViewItemSeparator/>
-				<NavigationViewItem FontFamily="Poppins" FontWeight="Medium" FontSize="16" Content="Applications and Sector Files" Tag="softwareSectorFileView" x:Name="softwareSectorFileViewItem">
+				<NavigationViewItem Style="{ThemeResource headerTextStyle}" Content="Applications and Sector Files" Tag="softwareSectorFileView" x:Name="softwareSectorFileViewItem">
 					<NavigationViewItem.Icon>
 						<ImageIcon Source="ms-appx:///Assets/Icons/application.png"/>
 					</NavigationViewItem.Icon>
 				</NavigationViewItem>
 				<NavigationViewItemSeparator/>
-				<NavigationViewItem FontFamily="Poppins" FontWeight="Medium" FontSize="16" Content="Documents" Tag="DocumentsView" x:Name="DocumentsViewItem">
+				<NavigationViewItem Style="{ThemeResource headerTextStyle}" Content="Documents" Tag="DocumentsView" x:Name="DocumentsViewItem">
 					<NavigationViewItem.Icon>
 						<ImageIcon Source="ms-appx:///Assets/Icons/document.png"/>
 					</NavigationViewItem.Icon>
 				</NavigationViewItem>
 				<NavigationViewItemSeparator/>
-				<NavigationViewItem FontFamily="Poppins" FontWeight="Medium" FontSize="16" Content="NOTAMs" Tag="NOTAMSViews" x:Name="NOTAMSViewItem">
+				<NavigationViewItem Style="{ThemeResource headerTextStyle}" Content="NOTAMs" Tag="NOTAMSViews" x:Name="NOTAMSViewItem">
 					<NavigationViewItem.Icon>
 						<ImageIcon Source="ms-appx:///Assets/Icons/warning.png"/>
 					</NavigationViewItem.Icon>
 				</NavigationViewItem>
 				<NavigationViewItemSeparator/>
-				<NavigationViewItem FontFamily="Poppins" FontWeight="Medium" FontSize="16" Content="Settings" Tag="SettingsView" x:Name="SettingsViewItem">
+				<NavigationViewItem Style="{ThemeResource headerTextStyle}" Content="Settings" Tag="SettingsView" x:Name="SettingsViewItem">
 					<NavigationViewItem.Icon>
 						<ImageIcon Source="ms-appx:///Assets/Icons/settings.png"/>
 					</NavigationViewItem.Icon>
@@ -61,6 +61,13 @@
 			</NavigationView.MenuItems>
 
 			<NavigationView.PaneFooter>
+				<Button x:Name="checkforUpdatesButton" IsDoubleTapEnabled="False" IsHoldingEnabled="False" CanDrag="False" Background="#00b4cb" Margin="0,0,10,0" Width="200" Height="40">
+					<StackPanel Orientation="Horizontal">
+						<Image Source="ms-appx:///Assets/Icons/reload.png" Height="25"/>
+						<TextBlock Style="{ThemeResource defaultTextStyle}" FontSize="14" FontWeight="Medium" Text="Check For Updates" Padding="10,0,0,0" VerticalAlignment="Center" />
+					</StackPanel>
+				</Button>
+				<!--
 				<StackPanel x:Name="FooterStackPanel" Orientation="Vertical" Visibility="Visible">
 					<NavigationViewItem Content="Downloads" AutomationProperties.Name="download" FontFamily="Poppins" FontWeight="Medium">
 						<NavigationViewItem.Icon>
@@ -68,6 +75,7 @@
 						</NavigationViewItem.Icon>
 					</NavigationViewItem>
 				</StackPanel>
+				-->
 			</NavigationView.PaneFooter>
 			<Grid>
 				<Frame x:Name="contentFrame" NavigationFailed="contentFrame_NavigationFailed" />

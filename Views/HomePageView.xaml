@@ -6,11 +6,12 @@
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
     mc:Ignorable="d"
     NavigationCacheMode="Required">
-	<Grid ColumnDefinitions="367,*" RowDefinitions="140,*" HorizontalAlignment="Stretch" VerticalAlignment="Stretch" Margin="20">
+	<Grid ColumnDefinitions="367,*" RowDefinitions="140,*" HorizontalAlignment="Stretch" VerticalAlignment="Stretch" Margin="30,20,20,20">
 		<Image MinHeight="110" Width="375" Style="{ThemeResource TRvACC_LOGO}" Grid.Row="0" Grid.Column="0" VerticalAlignment="Top" HorizontalAlignment="Center"/>
+		<TextBlock Grid.Column="1" Grid.Row="0" Style="{ThemeResource defaultTextStyle}" Text="Welcome to Ankara Online!" FontSize="30" Padding="0,0,20,30" VerticalAlignment="Bottom" HorizontalAlignment="Right" />
 		<Grid Grid.Row="1" Grid.Column="0" RowDefinitions="0.1*,0.9*">
 			<Grid Grid.Row="0" ColumnDefinitions="150,100" HorizontalAlignment="Stretch">
-				<TextBlock Text="Online ATCs" Style="{ThemeResource defaultTextStyle}" FontWeight="Medium" FontSize="18" Grid.Row="0" Grid.Column="0" IsTextSelectionEnabled="False" VerticalAlignment="Center"/>
+				<TextBlock Text="Online ATCs" Style="{ThemeResource defaultTextStyle}" FontWeight="Medium" FontSize="20" Grid.Row="0" Grid.Column="0" IsTextSelectionEnabled="False" VerticalAlignment="Center"/>
 				<Button x:Name="reloadButton" Grid.Row="0" Grid.Column="1" Height="35" IsDoubleTapEnabled="False" IsHoldingEnabled="False" VerticalAlignment="Center" HorizontalAlignment="Right">
 					<Image x:Name="i_reloadButton" Source="ms-appx:///Assets/Icons/refresh.png" Height="20" />
 				</Button>
@@ -29,24 +30,24 @@
 						  VerticalAlignment="Top">
 				<StackPanel>
 					<!--ONLINE ATC LIST DISPLAY WILL BE HERE, BACKEND NEEDED-->
-					<TextBlock Style="{ThemeResource defaultTextStyle}" Text="Center" Foreground="#3eb395" FontSize="14" />
+					<TextBlock Style="{ThemeResource defaultTextStyle}" Text="Center" FontWeight="Medium" Foreground="#3eb395" FontSize="14" />
 					<TextBlock x:Name="centerText" Style="{ThemeResource defaultTextStyle}" Text="" FontSize="14" TextWrapping="Wrap"/>
-					<TextBlock Style="{ThemeResource defaultTextStyle}" Text="Approach" Foreground="#3eb395" FontSize="14" />
+					<TextBlock Style="{ThemeResource defaultTextStyle}" Text="Approach" FontWeight="Medium" Foreground="#3eb395" FontSize="14" />
 					<TextBlock x:Name="approachText" Style="{ThemeResource defaultTextStyle}" Text="" FontSize="14" TextWrapping="Wrap"/>
-					<TextBlock Style="{ThemeResource defaultTextStyle}" Text="Tower" Foreground="#3eb395" FontSize="14" />
+					<TextBlock Style="{ThemeResource defaultTextStyle}" Text="Tower" FontWeight="Medium" Foreground="#3eb395" FontSize="14" />
 					<TextBlock x:Name="towerText" Style="{ThemeResource defaultTextStyle}" Text="" FontSize="14" TextWrapping="Wrap"/>
-					<TextBlock Style="{ThemeResource defaultTextStyle}" Text="Ground" Foreground="#3eb395" FontSize="14" />
+					<TextBlock Style="{ThemeResource defaultTextStyle}" Text="Ground" FontWeight="Medium" Foreground="#3eb395" FontSize="14" />
 					<TextBlock x:Name="groundText" Style="{ThemeResource defaultTextStyle}" Text="" FontSize="14" TextWrapping="Wrap"/>
-					<TextBlock Style="{ThemeResource defaultTextStyle}" Text="Delivery" Foreground="#3eb395" FontSize="14" />
+					<TextBlock Style="{ThemeResource defaultTextStyle}" Text="Delivery" FontWeight="Medium" Foreground="#3eb395" FontSize="14" />
 					<TextBlock x:Name="deliveryText" Style="{ThemeResource defaultTextStyle}" Text="" FontSize="14" TextWrapping="Wrap"/>
-					<TextBlock Style="{ThemeResource defaultTextStyle}" Text="ATIS" Foreground="#3eb395" FontSize="14" />
+					<TextBlock Style="{ThemeResource defaultTextStyle}" Text="ATIS" FontWeight="Medium" Foreground="#3eb395" FontSize="14" />
 					<TextBlock x:Name="atisText" Style="{ThemeResource defaultTextStyle}" Text="" FontSize="14" TextWrapping="Wrap"/>
 				</StackPanel>
 			</ScrollViewer>
 		</Grid>
-		<TextBlock Grid.Row="0" Grid.Column="1" Style="{ThemeResource defaultTextStyle}" FontWeight="Medium" FontSize="18" Text="NOTAMs" HorizontalAlignment="Left" VerticalAlignment="Bottom" Margin="50,0,0,0"/>
-		<Grid Grid.Row="1" Grid.Column="1" RowDefinitions="300,253" ColumnDefinitions="700">
-			<StackPanel x:Name="notamTextStackPanel" Grid.Row="0" Grid.Column="0" Style="{ThemeResource defaultStackPanelBackground}" Margin="50,10,0,0">
+		<Grid Grid.Row="1" Grid.Column="1" RowDefinitions="300,253" ColumnDefinitions="750">
+			<TextBlock Grid.Row="0" Grid.Column="0" Style="{ThemeResource defaultTextStyle}" FontWeight="Medium" FontSize="18" Text="NOTAMs" HorizontalAlignment="Left" VerticalAlignment="Top" Padding="50,0,0,0"/>
+			<StackPanel x:Name="notamTextStackPanel" Grid.Row="0" Grid.Column="0" Style="{ThemeResource defaultStackPanelBackground}" Margin="50,40,0,0">
 				<ScrollViewer Grid.Row="0" AllowFocusOnInteraction="True" 
 						  CanDrag="False" 
 						  HorizontalScrollBarVisibility="Disabled" 
@@ -89,19 +90,21 @@
 					</StackPanel>
 				</Grid>-->
 				<Grid Grid.Column="1" RowDefinitions="0.5*,0.5*" Padding="20">
-					<Grid Grid.Row="0" ColumnDefinitions="0.5*,0.5*" RowDefinitions="20,20,20">
+					<Grid Grid.Row="0" ColumnDefinitions="0.5*,0.5*" RowDefinitions="20,20,20,20">
 						<!--SET COLOR FROM BACKEND AFTER VERSION CHECKING-->
 						<TextBlock Grid.Row="0" Grid.Column="0" Style="{ThemeResource defaultTextStyle}" FontSize="15" FontWeight="Normal" Text="EuroScope:" HorizontalAlignment="Left"/>
 						<TextBlock Grid.Row="0" Grid.Column="1" x:Name="euroscopeVersionHomeText" Style="{ThemeResource defaultTextStyle}" FontSize="15" FontWeight="Normal" HorizontalAlignment="Right" Text="3.2.1.29" Foreground="Red"/>
-						<TextBlock Grid.Row="1" Grid.Column="0" Style="{ThemeResource defaultTextStyle}" FontSize="15" FontWeight="Normal" Text="AFV:" HorizontalAlignment="Left"/>
-						<TextBlock Grid.Row="1" Grid.Column="1" x:Name="afvVersionHomeText" Style="{ThemeResource defaultTextStyle}" FontSize="15" FontWeight="Normal" HorizontalAlignment="Right" Text="1.10.1.0" Foreground="Green" />
-						<TextBlock Grid.Row="2" Grid.Column="0" Style="{ThemeResource defaultTextStyle}" FontSize="15" FontWeight="Normal" Text="vATIS:" HorizontalAlignment="Left"/>
-						<TextBlock Grid.Row="2" Grid.Column="1" x:Name="vatisVersionHomeText" Style="{ThemeResource defaultTextStyle}" FontSize="15" FontWeight="Normal" HorizontalAlignment="Right" Text="4.0.0.0-3" Foreground="Green"/>
+						<TextBlock Grid.Row="1" Grid.Column="0" Style="{ThemeResource defaultTextStyle}" FontSize="15" FontWeight="Normal" Text="Sector Files:" HorizontalAlignment="Left"/>
+						<TextBlock Grid.Row="1" Grid.Column="1" x:Name="sectorLTXXVersionHomeText" Style="{ThemeResource defaultTextStyle}" FontSize="15" FontWeight="Normal" HorizontalAlignment="Right" Text="2212-01" Foreground="Green" />
+						<TextBlock Grid.Row="2" Grid.Column="0" Style="{ThemeResource defaultTextStyle}" FontSize="15" FontWeight="Normal" Text="AFV:" HorizontalAlignment="Left"/>
+						<TextBlock Grid.Row="2" Grid.Column="1" x:Name="afvVersionHomeText" Style="{ThemeResource defaultTextStyle}" FontSize="15" FontWeight="Normal" HorizontalAlignment="Right" Text="1.10.1.0" Foreground="Green" />
+						<TextBlock Grid.Row="3" Grid.Column="0" Style="{ThemeResource defaultTextStyle}" FontSize="15" FontWeight="Normal" Text="vATIS:" HorizontalAlignment="Left"/>
+						<TextBlock Grid.Row="3" Grid.Column="1" x:Name="vatisVersionHomeText" Style="{ThemeResource defaultTextStyle}" FontSize="15" FontWeight="Normal" HorizontalAlignment="Right" Text="4.0.0.0-3" Foreground="Green"/>
 					</Grid>
-					<Button x:Name="goOnlineButton" Grid.Row="2" Padding="20" IsDoubleTapEnabled="False" IsHoldingEnabled="False" CanDrag="False" Background="#195caa" MinWidth="300">
+					<Button x:Name="goOnlineButton" Grid.Row="2" Padding="20" IsDoubleTapEnabled="False" IsHoldingEnabled="False" CanDrag="False" Background="#195caa" MinWidth="300" HorizontalAlignment="Center">
 						<StackPanel Orientation="Horizontal">
 							<Image Source="ms-appx:///Assets/Icons/airport.png" Height="50"/>
-							<TextBlock Style="{ThemeResource defaultTextStyle}" FontSize="20" FontWeight="SemiBold" Text="Go Online" Padding="10,0,0,0" VerticalAlignment="Center"/>
+							<TextBlock Style="{ThemeResource defaultTextStyle}" FontSize="20" FontWeight="SemiBold" Text="Start Controlling" Padding="10,0,0,0" VerticalAlignment="Center"/>
 						</StackPanel>
 					</Button>
 				</Grid>

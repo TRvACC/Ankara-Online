@@ -24,6 +24,15 @@
 					<Style x:Key="defaultStackPanelBackground" TargetType="StackPanel">
 						<Setter Property="Background" Value="LightGray" />
 					</Style>
+					<Style x:Key="defaultButtonBackground" TargetType="Button">
+						<Setter Property="Background" Value="#00b4cb" />
+					</Style>
+					<Style x:Key="headerTextStyle" TargetType="NavigationViewItem">
+						<Setter Property="Foreground" Value="White" />
+						<Setter Property="FontFamily" Value="Poppins" />
+						<Setter Property="FontWeight" Value="Medium" />
+						<Setter Property="FontSize" Value="17" />
+					</Style>
 				</ResourceDictionary>
 				<ResourceDictionary x:Key="Dark">
 					<Style x:Key="TRvACC_LOGO" TargetType="Image">
@@ -42,6 +51,15 @@
 					</Style>
 					<Style x:Key="defaultStackPanelBackground" TargetType="StackPanel">
 						<Setter Property="Background" Value="#2e2e2e" />
+					</Style>
+					<Style x:Key="defaultButtonBackground" TargetType="Button">
+						<Setter Property="Background" Value="#195caa" />
+					</Style>
+					<Style x:Key="headerTextStyle" TargetType="NavigationViewItem">
+						<Setter Property="Foreground" Value="White" />
+						<Setter Property="FontFamily" Value="Poppins" />
+						<Setter Property="FontWeight" Value="Medium" />
+						<Setter Property="FontSize" Value="17" />
 					</Style>
 				</ResourceDictionary>
 			</ResourceDictionary.ThemeDictionaries>

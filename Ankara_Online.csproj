@@ -15,6 +15,10 @@
     <AppxPackageSigningEnabled>True</AppxPackageSigningEnabled>
   </PropertyGroup>
   <ItemGroup>
+    <Content Remove="Assets\Fonts\EuroScope.ttf" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Remove="Assets\Fonts\EuroScope.ttf" />
     <None Remove="Assets\Fonts\Poppins-Black.ttf" />
     <None Remove="Assets\Fonts\Poppins-BlackItalic.ttf" />
     <None Remove="Assets\Fonts\Poppins-Bold.ttf" />
@@ -33,6 +37,7 @@
     <None Remove="Assets\Fonts\Poppins-SemiBoldItalic.ttf" />
     <None Remove="Assets\Fonts\Poppins-Thin.ttf" />
     <None Remove="Assets\Fonts\Poppins-ThinItalic.ttf" />
+    <None Remove="Assets\Icons\downloadSECTOR.png" />
     <None Remove="Views\DocumentsView.xaml" />
     <None Remove="Views\HomePageView.xaml" />
     <None Remove="Views\NotamsView.xaml" />
@@ -64,6 +69,9 @@
   -->
   <ItemGroup Condition="'$(DisableMsixProjectCapabilityAddedByProject)'!='true' and '$(EnableMsixTooling)'=='true'">
     <ProjectCapability Include="Msix" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Assets\Fonts\EuroScope.ttf" />
   </ItemGroup>
   <ItemGroup>
     <Page Update="Views\NotamsView.xaml">
