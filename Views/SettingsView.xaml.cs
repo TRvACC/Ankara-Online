@@ -7,8 +7,7 @@ using System.Threading.Tasks;
 using System.Collections.Generic;
 using Microsoft.UI.Xaml.Media;
 using Microsoft.UI;
-using log4net;
-using log4net.Config;
+using System.Reflection;
 
 namespace Ankara_Online
 {
@@ -22,7 +21,8 @@ namespace Ankara_Online
             this.InitializeComponent();
 
             UpdateColors();
-                        
+            settingsCreditsTextBlock.Text = "Credits\nAlp Deniz Senyurt\nVersion: " + Assembly.GetExecutingAssembly().GetName().Version.ToString();
+
             // register events
             settingsIDEditBox.TextChanging += SettingsIDEditBox_TextChanging;
             settingsIDEditBox.Paste += SettingsIDEditBox_Paste;
@@ -97,6 +97,7 @@ namespace Ankara_Online
         // Disable button for 3 seconds to avoid over pressing
         private async void GetHoppieLOGONCodeButton_Click(object sender, RoutedEventArgs e)
         {
+            App.log.Info("getHoppieLogonCode button pressed");
             try
             {
                 // You can update the UI because

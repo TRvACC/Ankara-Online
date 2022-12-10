@@ -8,9 +8,9 @@
   IgnorableNamespaces="uap rescap iot">
 
   <Identity
-    Name="Ankara-Online-0.1.86"
+    Name="Ankara-Online-0.4.18"
     Publisher="CN=TRvACC"
-    Version="0.4.15.0" />
+    Version="0.4.4.0" />
 
   <Properties>
     <DisplayName>Ankara_Online</DisplayName>
