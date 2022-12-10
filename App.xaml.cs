@@ -1,9 +1,8 @@
 ﻿using Microsoft.UI.Xaml;
+using log4net;
+using log4net.Config;
 
-
-// To learn more about WinUI, the WinUI project structure,
-// and more about our project templates, see: http://aka.ms/winui-project-info.
-
+[assembly: log4net.Config.XmlConfigurator(ConfigFile = "log4net.config")]
 namespace Ankara_Online
 {
     /// <summary>
@@ -27,6 +26,7 @@ namespace Ankara_Online
         /// <param name="args">Details about the launch request and process.</param>
         protected override void OnLaunched(LaunchActivatedEventArgs args)
         {
+            log.Info("Starting application"); //log4net
             //Splash screen icin burasi
             //m_window = new SplashScreenView();
             m_window = new MainWindow();
@@ -35,5 +35,6 @@ namespace Ankara_Online
         }
 
         private Window m_window;
+        internal static readonly ILog log = LogManager.GetLogger(typeof(App));
     }
 }

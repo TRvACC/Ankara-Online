@@ -23,11 +23,6 @@
 				<x:Double x:Key="NavigationViewTopPaneHeight">57</x:Double>
 				<SolidColorBrush x:Key="NavigationViewTopPaneBackground" Color="#195caa" />
 			</NavigationView.Resources>
-			<!-- HIDING THE PANE-HEADER FOR NOW AS IT DOESN'T ALIGN WITH THE DESIGN OF THE HOME PAGE
-			<NavigationView.PaneHeader>
-				<Image Height="40" Style="{ThemeResource HeaderLogo}" Margin="10,0,10,0" />
-			</NavigationView.PaneHeader>
-			-->
 			<NavigationView.MenuItems>
 				<NavigationViewItem Style="{ThemeResource headerTextStyle}" Content="Home" Tag="homePageView" x:Name="homeViewItem">
 					<NavigationViewItem.Icon>

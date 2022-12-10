@@ -2,7 +2,7 @@ using Microsoft.UI.Xaml.Controls;
 using Microsoft.UI.Xaml.Media;
 using Microsoft.UI;
 
-namespace Ankara_Online.Views
+namespace Ankara_Online
 {
     /// <summary>
     /// An empty page that can be used on its own or navigated to within a Frame.

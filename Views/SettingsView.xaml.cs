@@ -7,8 +7,10 @@ using System.Threading.Tasks;
 using System.Collections.Generic;
 using Microsoft.UI.Xaml.Media;
 using Microsoft.UI;
+using log4net;
+using log4net.Config;
 
-namespace Ankara_Online.Views
+namespace Ankara_Online
 {
     /// <summary>
     /// An empty page that can be used on its own or navigated to within a Frame.
@@ -25,6 +27,7 @@ namespace Ankara_Online.Views
             settingsIDEditBox.TextChanging += SettingsIDEditBox_TextChanging;
             settingsIDEditBox.Paste += SettingsIDEditBox_Paste;
             getHoppieLOGONCodeButton.Click += GetHoppieLOGONCodeButton_Click;
+            settingsPageSaveButton.Click += SettingsPageSaveButton_Click;
         }
 
         // Update colors to reflect that the path is not found.
@@ -47,7 +50,7 @@ namespace Ankara_Online.Views
 
 
         /*
-         *  EVENTS
+         *  Event Handling Section
          */
         // event to handle inputs and not allow any digits
         private void SettingsIDEditBox_TextChanging(TextBox sender, TextBoxTextChangingEventArgs args)
@@ -71,6 +74,27 @@ namespace Ankara_Online.Views
             }
         }
 
+        // save button click event handler
+        private async void SettingsPageSaveButton_Click(object sender, RoutedEventArgs e)
+        {
+            try
+            {
+                getHoppieLOGONCodeButton.IsEnabled = false;
+
+                List<Task> tasks = new();
+
+                tasks.Add(WindowsRuntimeSystemExtensions.AsTask(Launcher.LaunchUriAsync(new Uri("https://www.hoppie.nl/acars/system/register.html"))));
+                tasks.Add(Task.Delay(2000));
+                await Task.WhenAll(tasks);
+                // The main thread will be back here.
+            }
+            finally
+            {
+                // Enable the button even if an exception is thrown.
+                getHoppieLOGONCodeButton.IsEnabled = true;
+            }
+        }
+
         // Disable button for 3 seconds to avoid over pressing
         private async void GetHoppieLOGONCodeButton_Click(object sender, RoutedEventArgs e)
         {
@@ -87,6 +111,20 @@ namespace Ankara_Online.Views
                 tasks.Add(Task.Delay(3000));
                 await Task.WhenAll(tasks);
                 // The main thread will be back here.
+            }
+            catch (Exception ex) 
+            {
+                ContentDialog dialog = new ContentDialog
+                {
+                    XamlRoot = this.XamlRoot,
+                    Style = Application.Current.Resources["DefaultContentDialogStyle"] as Style,
+                    Title = "Error!",
+                    Content = "Error when trying to open Hoppie ACARS system register page.",
+                    CloseButtonText= "OK",
+                };
+                ContentDialogResult result = await dialog.ShowAsync();
+
+                App.log.Error("Error when trying to open Hoppie register page.", ex);
             }
             finally
             {
