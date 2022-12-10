@@ -24,6 +24,9 @@
 					<Style x:Key="defaultStackPanelBackground" TargetType="StackPanel">
 						<Setter Property="Background" Value="LightGray" />
 					</Style>
+					<Style x:Key="defaultBorderBackground" TargetType="Border">
+						<Setter Property="Background" Value="LightGray" />
+					</Style>
 					<Style x:Key="defaultButtonBackground" TargetType="Button">
 						<Setter Property="Background" Value="#00b4cb" />
 					</Style>
@@ -50,6 +53,9 @@
 						<Setter Property="Background" Value="DarkGray" />
 					</Style>
 					<Style x:Key="defaultStackPanelBackground" TargetType="StackPanel">
+						<Setter Property="Background" Value="#2e2e2e" />
+					</Style>
+					<Style x:Key="defaultBorderBackground" TargetType="Border">
 						<Setter Property="Background" Value="#2e2e2e" />
 					</Style>
 					<Style x:Key="defaultButtonBackground" TargetType="Button">

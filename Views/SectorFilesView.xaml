@@ -6,13 +6,12 @@
     xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
     mc:Ignorable="d"
-    Background="{ThemeResource ApplicationPageBackgroundThemeBrush}"
 	NavigationCacheMode="Required">
 
 	<Grid RowDefinitions="0.3*,50,*" VerticalAlignment="Stretch" HorizontalAlignment="Stretch" Margin="20">
 		<Grid Grid.Row="0" RowDefinitions="0.3*,0.4*,0.3*">
 			<TextBlock Grid.Row="0" Style="{ThemeResource defaultTextStyle}" FontSize="40" FontWeight="SemiBold" Text="Automatic Installation" Foreground="#bc9b6a"/>
-			<TextBlock Grid.Row="1" Style="{ThemeResource defaultTextStyle}" FontSize="15" FontWeight="Normal" TextWrapping="Wrap" Padding="0,10,0,0" Text="If you choose the automatic installation, it will automatically download and install all the required applications such as EuroScope, Audio for VATSIM and vATIS. Then, Ankara Online will download and install the latest sector files. If you already have the required applications installed, it might override the current installations and you might lose your custom configuration files! This option is only recommended for first time installation!" />
+			<TextBlock Grid.Row="1" Style="{ThemeResource defaultTextStyle}" FontSize="15" FontWeight="Normal" TextWrapping="Wrap" Padding="0,10,0,0" Text="If you choose the automatic installation, Ankara Online will automatically download and install all the required applications such as EuroScope, Audio for VATSIM and vATIS. Then, Ankara Online will download and install the latest sector files. If you already have the required applications installed, it might override the current installations and you might lose your custom configuration files! This option is only recommended for first time installation!" />
 
 			<Button x:Name="automaticInstallationButton" Grid.Row="2" Margin="0,20,0,0" Padding="10" IsDoubleTapEnabled="False" IsHoldingEnabled="False" CanDrag="False" Background="#195caa" Width="300" Height="70">
 				<StackPanel Orientation="Horizontal">

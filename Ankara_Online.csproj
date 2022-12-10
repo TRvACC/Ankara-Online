@@ -38,6 +38,7 @@
     <None Remove="Assets\Fonts\Poppins-Thin.ttf" />
     <None Remove="Assets\Fonts\Poppins-ThinItalic.ttf" />
     <None Remove="Assets\Icons\downloadSECTOR.png" />
+    <None Remove="Assets\Icons\tower.png" />
     <None Remove="Views\DocumentsView.xaml" />
     <None Remove="Views\HomePageView.xaml" />
     <None Remove="Views\NotamsView.xaml" />
