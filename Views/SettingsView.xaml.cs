@@ -83,7 +83,6 @@ namespace Ankara_Online
 
                 List<Task> tasks = new();
 
-                tasks.Add(WindowsRuntimeSystemExtensions.AsTask(Launcher.LaunchUriAsync(new Uri("https://www.hoppie.nl/acars/system/register.html"))));
                 tasks.Add(Task.Delay(2000));
                 await Task.WhenAll(tasks);
                 // The main thread will be back here.
