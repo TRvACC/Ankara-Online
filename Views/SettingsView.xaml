@@ -60,7 +60,6 @@
 						<Border Style="{ThemeResource defaultBorderBackground}" BorderThickness="2" Height="40" Width="1000" CornerRadius="5">
 							<TextBlock x:Name="settingsVATISPathTextBox" FontFamily="Poppins" Text="vATIS not found. Please select the installation directory from the right button." VerticalAlignment="Center" Padding="10,0,10,0"/>
 						</Border>
-						<!--<TextBox x:Name="settingsVATISPathEditBox" Height="38" Width="1100" FontFamily="Poppins" AcceptsReturn="False" TextAlignment="Left" TextWrapping="Wrap" IsReadOnly="True"/>-->
 						<Button x:Name="settingsVATISPathSelectButton" Height="38" Width="40" IsDoubleTapEnabled="False" IsHoldingEnabled="False" CanDrag="False" ClickMode="Press">
 							<TextBlock Style="{ThemeResource defaultTextStyle}" FontWeight="Normal" Text="..." HorizontalAlignment="Center" />
 						</Button>

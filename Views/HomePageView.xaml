@@ -6,107 +6,119 @@
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
     mc:Ignorable="d"
     NavigationCacheMode="Required">
-	<Grid ColumnDefinitions="367,*" RowDefinitions="140,*" HorizontalAlignment="Stretch" VerticalAlignment="Stretch" Margin="30,20,20,20">
-		<Image MinHeight="110" Width="375" Style="{ThemeResource TRvACC_LOGO}" Grid.Row="0" Grid.Column="0" VerticalAlignment="Top" HorizontalAlignment="Center"/>
-		<TextBlock Grid.Column="1" Grid.Row="0" Style="{ThemeResource defaultTextStyle}" Text="Welcome to Ankara Online!" FontSize="30" Padding="0,0,20,30" VerticalAlignment="Bottom" HorizontalAlignment="Right" />
-		<Grid Grid.Row="1" Grid.Column="0" RowDefinitions="0.1*,0.9*">
-			<Grid Grid.Row="0" ColumnDefinitions="150,100" HorizontalAlignment="Stretch">
-				<TextBlock Text="Online ATCs" Style="{ThemeResource defaultTextStyle}" FontWeight="Medium" FontSize="20" Grid.Row="0" Grid.Column="0" IsTextSelectionEnabled="False" VerticalAlignment="Center"/>
-				<Button x:Name="reloadButton" Grid.Row="0" Grid.Column="1" Height="35" IsDoubleTapEnabled="False" IsHoldingEnabled="False" VerticalAlignment="Center" HorizontalAlignment="Right">
-					<Image x:Name="i_reloadButton" Source="ms-appx:///Assets/Icons/refresh.png" Height="20" />
-				</Button>
-			</Grid>
-			<ScrollViewer Grid.Row="1" AllowFocusOnInteraction="True" 
-						  CanDrag="False" 
-						  HorizontalScrollBarVisibility="Disabled" 
-						  HorizontalAlignment="Left" 
-						  HorizontalScrollMode="Disabled"  
-						  VerticalScrollBarVisibility="Auto" 
-						  Height="500"
-						  IsDoubleTapEnabled="False"
-						  IsVerticalRailEnabled="False"
-						  IsVerticalScrollChainingEnabled="True"
-						  Margin="0,10,0,0"
-						  VerticalAlignment="Top">
-				<StackPanel>
-					<!--ONLINE ATC LIST DISPLAY WILL BE HERE, BACKEND NEEDED-->
-					<TextBlock Style="{ThemeResource defaultTextStyle}" Text="Center" FontWeight="Medium" Foreground="#3eb395" FontSize="14" />
-					<TextBlock x:Name="centerText" Style="{ThemeResource defaultTextStyle}" Text="" FontSize="14" TextWrapping="Wrap"/>
-					<TextBlock Style="{ThemeResource defaultTextStyle}" Text="Approach" FontWeight="Medium" Foreground="#3eb395" FontSize="14" />
-					<TextBlock x:Name="approachText" Style="{ThemeResource defaultTextStyle}" Text="" FontSize="14" TextWrapping="Wrap"/>
-					<TextBlock Style="{ThemeResource defaultTextStyle}" Text="Tower" FontWeight="Medium" Foreground="#3eb395" FontSize="14" />
-					<TextBlock x:Name="towerText" Style="{ThemeResource defaultTextStyle}" Text="" FontSize="14" TextWrapping="Wrap"/>
-					<TextBlock Style="{ThemeResource defaultTextStyle}" Text="Ground" FontWeight="Medium" Foreground="#3eb395" FontSize="14" />
-					<TextBlock x:Name="groundText" Style="{ThemeResource defaultTextStyle}" Text="" FontSize="14" TextWrapping="Wrap"/>
-					<TextBlock Style="{ThemeResource defaultTextStyle}" Text="Delivery" FontWeight="Medium" Foreground="#3eb395" FontSize="14" />
-					<TextBlock x:Name="deliveryText" Style="{ThemeResource defaultTextStyle}" Text="" FontSize="14" TextWrapping="Wrap"/>
-					<TextBlock Style="{ThemeResource defaultTextStyle}" Text="ATIS" FontWeight="Medium" Foreground="#3eb395" FontSize="14" />
-					<TextBlock x:Name="atisText" Style="{ThemeResource defaultTextStyle}" Text="" FontSize="14" TextWrapping="Wrap"/>
-				</StackPanel>
-			</ScrollViewer>
+	<Grid RowDefinitions="140,573" HorizontalAlignment="Stretch" VerticalAlignment="Stretch" Margin="20,20,20,0">
+		<Grid Grid.Row="0" ColumnDefinitions="367,*" HorizontalAlignment="Stretch" VerticalAlignment="Stretch">
+			<Image MinHeight="110" Width="375" Style="{ThemeResource TRvACC_LOGO}" Grid.Row="0" Grid.Column="0" VerticalAlignment="Top" HorizontalAlignment="Center"/>
+			<TextBlock Grid.Column="1" Grid.Row="0" Style="{ThemeResource defaultTextStyle}" Text="Welcome to Ankara Online!" FontSize="30" Padding="0,0,20,30" VerticalAlignment="Bottom" HorizontalAlignment="Right" />
 		</Grid>
-		<Grid Grid.Row="1" Grid.Column="1" RowDefinitions="300,253" ColumnDefinitions="750">
-			<TextBlock Grid.Row="0" Grid.Column="0" Style="{ThemeResource defaultTextStyle}" FontWeight="Medium" FontSize="18" Text="NOTAMs" HorizontalAlignment="Left" VerticalAlignment="Top" Padding="50,0,0,0"/>
-			<StackPanel x:Name="notamTextStackPanel" Grid.Row="0" Grid.Column="0" Style="{ThemeResource defaultStackPanelBackground}" Margin="50,40,0,0">
-				<ScrollViewer Grid.Row="0" AllowFocusOnInteraction="True" 
-						  CanDrag="False" 
-						  HorizontalScrollBarVisibility="Disabled" 
-						  HorizontalAlignment="Left" 
-						  HorizontalScrollMode="Disabled"  
-						  VerticalScrollBarVisibility="Auto" 
-						  IsDoubleTapEnabled="False"
-						  IsVerticalRailEnabled="False"
-						  IsVerticalScrollChainingEnabled="True"
-						  VerticalAlignment="Top">
-					<TextBlock x:Name="notamText" Style="{ThemeResource defaultTextStyle}" FontSize="14" 
-							   Text="NOTAM information is not available." 
-							   Padding="10"
-							   TextWrapping="Wrap"/>
-				</ScrollViewer>
-			</StackPanel>
-			<Grid Grid.Row="1" ColumnDefinitions="0.5*,0.5*" Padding="0,20,20,0">
-				<!--
-				COMMENTED OUT AS DESIGN WAS IT WAS TERRIBLE, WILL BE LOOKED AT IN THE FUTURE
-				
-				
-				<Grid Grid.Column="0" RowDefinitions="20,*">
-					<TextBlock Grid.Row="0" Style="{ThemeResource defaultTextStyle}" Text="Upcoming Events" FontSize="18" FontWeight="Medium" HorizontalAlignment="Left" VerticalAlignment="Center" />
-					<StackPanel Grid.Row="1" Style="{ThemeResource defaultStackPanelBackground}" Margin="0,10,0,0">
-						<ScrollViewer AllowFocusOnInteraction="True" 
-						  CanDrag="False" 
-						  HorizontalScrollBarVisibility="Disabled" 
-						  HorizontalAlignment="Left" 
-						  HorizontalScrollMode="Disabled"  
-						  VerticalScrollBarVisibility="Auto" 
-						  IsDoubleTapEnabled="False"
-						  IsVerticalRailEnabled="False"
-						  IsVerticalScrollChainingEnabled="True"
-						  VerticalAlignment="Top">
-							<TextBlock x:Name="eventText" Style="{ThemeResource defaultTextStyle}" FontSize="14" 
-							   Text="Event information is not available." 
-							   Padding="10"
-							   TextWrapping="Wrap"/>
-						</ScrollViewer>
-					</StackPanel>
-				</Grid>-->
-				<Grid Grid.Column="1" RowDefinitions="0.5*,0.5*" Padding="20">
-					<Grid Grid.Row="0" ColumnDefinitions="0.5*,0.5*" RowDefinitions="20,20,20,20">
-						<!--SET COLOR FROM BACKEND AFTER VERSION CHECKING-->
-						<TextBlock Grid.Row="0" Grid.Column="0" Style="{ThemeResource defaultTextStyle}" FontSize="15" FontWeight="Normal" Text="EuroScope:" HorizontalAlignment="Left"/>
-						<TextBlock Grid.Row="0" Grid.Column="1" x:Name="euroscopeVersionHomeText" Style="{ThemeResource defaultTextStyle}" FontSize="15" FontWeight="Normal" HorizontalAlignment="Right" Text="3.2.1.29" Foreground="Red"/>
-						<TextBlock Grid.Row="1" Grid.Column="0" Style="{ThemeResource defaultTextStyle}" FontSize="15" FontWeight="Normal" Text="Sector Files:" HorizontalAlignment="Left"/>
-						<TextBlock Grid.Row="1" Grid.Column="1" x:Name="sectorLTXXVersionHomeText" Style="{ThemeResource defaultTextStyle}" FontSize="15" FontWeight="Normal" HorizontalAlignment="Right" Text="2212-01" Foreground="Green" />
-						<TextBlock Grid.Row="2" Grid.Column="0" Style="{ThemeResource defaultTextStyle}" FontSize="15" FontWeight="Normal" Text="AFV:" HorizontalAlignment="Left"/>
-						<TextBlock Grid.Row="2" Grid.Column="1" x:Name="afvVersionHomeText" Style="{ThemeResource defaultTextStyle}" FontSize="15" FontWeight="Normal" HorizontalAlignment="Right" Text="1.10.1.0" Foreground="Green" />
-						<TextBlock Grid.Row="3" Grid.Column="0" Style="{ThemeResource defaultTextStyle}" FontSize="15" FontWeight="Normal" Text="vATIS:" HorizontalAlignment="Left"/>
-						<TextBlock Grid.Row="3" Grid.Column="1" x:Name="vatisVersionHomeText" Style="{ThemeResource defaultTextStyle}" FontSize="15" FontWeight="Normal" HorizontalAlignment="Right" Text="4.0.0.0-3" Foreground="Green"/>
-					</Grid>
-					<Button x:Name="goOnlineButton" Grid.Row="2" Padding="20" IsDoubleTapEnabled="False" IsHoldingEnabled="False" CanDrag="False" Background="#195caa" MinWidth="300" HorizontalAlignment="Center">
-						<StackPanel Orientation="Horizontal">
-							<Image Source="ms-appx:///Assets/Icons/airport.png" Height="50"/>
-							<TextBlock Style="{ThemeResource defaultTextStyle}" FontSize="20" FontWeight="SemiBold" Text="Start Controlling" Padding="10,0,0,0" VerticalAlignment="Center"/>
-						</StackPanel>
+		<Grid Grid.Row="1" ColumnDefinitions="200,*" HorizontalAlignment="Stretch" VerticalAlignment="Stretch">
+			<Grid Grid.Column="0" RowDefinitions="0.1*,0.9*">
+				<Grid Grid.Row="0" ColumnDefinitions="130,70" HorizontalAlignment="Stretch">
+					<TextBlock Text="Online ATCs" Style="{ThemeResource defaultTextStyle}" FontWeight="Medium" FontSize="20" Grid.Row="0" Grid.Column="0" IsTextSelectionEnabled="False" VerticalAlignment="Center"/>
+					<Button x:Name="reloadButton" Grid.Row="0" Grid.Column="1" Height="35" IsDoubleTapEnabled="False" IsHoldingEnabled="False" VerticalAlignment="Center" HorizontalAlignment="Right">
+						<Image x:Name="i_reloadButton" Source="ms-appx:///Assets/Icons/refresh.png" Height="20" />
 					</Button>
+				</Grid>
+				<ScrollViewer Grid.Row="1" AllowFocusOnInteraction="True" 
+							  CanDrag="False" 
+							  HorizontalScrollBarVisibility="Disabled" 
+							  HorizontalAlignment="Left" 
+							  HorizontalScrollMode="Disabled"  
+							  VerticalScrollBarVisibility="Auto" 
+							  Height="500"
+							  IsDoubleTapEnabled="False"
+							  IsVerticalRailEnabled="False"
+							  IsVerticalScrollChainingEnabled="True"
+							  Margin="0,10,0,0"
+							  VerticalAlignment="Top">
+					<StackPanel Orientation="Vertical" Spacing="15">
+						<!--ONLINE ATC LIST DISPLAY WILL BE HERE, BACKEND NEEDED-->
+						<StackPanel Orientation="Vertical">
+							<TextBlock Style="{ThemeResource defaultTextStyle}" Text="Center" FontWeight="Medium" Foreground="#3eb395" FontSize="14" />
+							<TextBlock x:Name="centerText" Style="{ThemeResource defaultTextStyle}" FontSize="14" TextWrapping="Wrap" Text="ANK_W78_CTR"/>
+						</StackPanel>
+						<StackPanel Orientation="Vertical">
+							<TextBlock Style="{ThemeResource defaultTextStyle}" Text="Approach" FontWeight="Medium" Foreground="#3eb395" FontSize="14" />
+							<TextBlock x:Name="approachText" Style="{ThemeResource defaultTextStyle}" Text="" FontSize="14" TextWrapping="Wrap"/>
+						</StackPanel>
+						<StackPanel Orientation="Vertical">
+							<TextBlock Style="{ThemeResource defaultTextStyle}" Text="Tower" FontWeight="Medium" Foreground="#3eb395" FontSize="14" />
+							<TextBlock x:Name="towerText" Style="{ThemeResource defaultTextStyle}" Text="" FontSize="14" TextWrapping="Wrap"/>
+						</StackPanel>
+						<StackPanel Orientation="Vertical">
+							<TextBlock Style="{ThemeResource defaultTextStyle}" Text="Ground" FontWeight="Medium" Foreground="#3eb395" FontSize="14" />
+							<TextBlock x:Name="groundText" Style="{ThemeResource defaultTextStyle}" Text="" FontSize="14" TextWrapping="Wrap"/>
+						</StackPanel>
+						<StackPanel Orientation="Vertical">
+							<TextBlock Style="{ThemeResource defaultTextStyle}" Text="Delivery" FontWeight="Medium" Foreground="#3eb395" FontSize="14" />
+							<TextBlock x:Name="deliveryText" Style="{ThemeResource defaultTextStyle}" Text="" FontSize="14" TextWrapping="Wrap"/>
+						</StackPanel>
+						<StackPanel Orientation="Vertical">
+							<TextBlock Style="{ThemeResource defaultTextStyle}" Text="ATIS" FontWeight="Medium" Foreground="#3eb395" FontSize="14" />
+							<TextBlock x:Name="atisText" Style="{ThemeResource defaultTextStyle}" Text="" FontSize="14" TextWrapping="Wrap"/>
+						</StackPanel>
+					</StackPanel>
+				</ScrollViewer>
+			</Grid>
+			<Grid Grid.Column="1" RowDefinitions="300,253" >
+				<TextBlock Grid.Row="0" Style="{ThemeResource defaultTextStyle}" FontWeight="Medium" FontSize="18" Text="TRvACC NOTAMs" HorizontalAlignment="Left" VerticalAlignment="Top" Padding="100,0,0,0"/>
+				<StackPanel x:Name="notamTextStackPanel" Grid.Row="0" Style="{ThemeResource defaultStackPanelBackground}" Margin="100,40,20,10">
+					<ScrollViewer Grid.Row="0" AllowFocusOnInteraction="True" 
+							  CanDrag="False" 
+							  HorizontalScrollBarVisibility="Disabled" 
+							  HorizontalAlignment="Left" 
+							  HorizontalScrollMode="Disabled"  
+							  VerticalScrollBarVisibility="Auto" 
+							  IsDoubleTapEnabled="False"
+							  IsVerticalRailEnabled="False"
+							  IsVerticalScrollChainingEnabled="True"
+							  VerticalAlignment="Top">
+						<TextBlock x:Name="notamText" Style="{ThemeResource defaultTextStyle}" FontSize="14" Text="NOTAM information is not available." Padding="10" TextWrapping="Wrap"/>
+					</ScrollViewer>
+				</StackPanel>
+				<Grid Grid.Row="1" ColumnDefinitions="0.6*,0.4*">
+					<StackPanel Grid.Column="0" Orientation="Vertical" Spacing="13" HorizontalAlignment="Left" VerticalAlignment="Center" Padding="20,0,20,0">
+						<StackPanel Orientation="Vertical" Spacing="4">
+							<StackPanel Orientation="Horizontal">
+								<TextBlock x:Name="HomePageViewICAO1" Style="{ThemeResource defaultTextStyle}" FontWeight="Medium" FontSize="18" Text="LTFM" />
+								<TextBlock x:Name="HomePageViewICAO1_PROC" Style="{ThemeResource defaultTextStyle}" FontWeight="Medium" FontSize="18" />
+							</StackPanel>
+							<TextBlock x:Name="HomePageViewICAO1_METAR" Style="{ThemeResource defaultTextStyle}" FontSize="12" TextWrapping="Wrap"/>
+						</StackPanel>
+						<StackPanel Orientation="Vertical" Spacing="4">
+							<StackPanel Orientation="Horizontal">
+								<TextBlock x:Name="HomePageViewICAO2" Style="{ThemeResource defaultTextStyle}" FontWeight="Medium" FontSize="18" />
+								<TextBlock x:Name="HomePageViewICAO2_PROC" Style="{ThemeResource defaultTextStyle}" FontWeight="Medium" FontSize="18" />
+							</StackPanel>
+							<TextBlock x:Name="HomePageViewICAO2_METAR" Style="{ThemeResource defaultTextStyle}" FontSize="12" TextWrapping="Wrap"/>
+						</StackPanel>
+						<StackPanel Orientation="Vertical" Spacing="4">
+							<StackPanel Orientation="Horizontal">
+								<TextBlock x:Name="HomePageViewICAO3" Style="{ThemeResource defaultTextStyle}" FontWeight="Medium" FontSize="18" />
+								<TextBlock x:Name="HomePageViewICAO3_PROC" Style="{ThemeResource defaultTextStyle}" FontWeight="Medium" FontSize="18" />
+							</StackPanel>
+							<TextBlock x:Name="HomePageViewICAO3_METAR" Style="{ThemeResource defaultTextStyle}" FontSize="12" TextWrapping="Wrap"/>
+						</StackPanel>
+					</StackPanel>
+					<Grid Grid.Column="1" RowDefinitions="0.5*,0.5*" Padding="20,20,0,20">
+						<Grid Grid.Row="0" ColumnDefinitions="0.5*,0.5*" RowDefinitions="20,20,20,20" Padding="20,0,20,0">
+							<!--SET COLOR FROM BACKEND AFTER VERSION CHECKING-->
+							<TextBlock Grid.Row="0" Grid.Column="0" Style="{ThemeResource defaultTextStyle}" FontSize="15" FontWeight="Normal" Text="EuroScope:" HorizontalAlignment="Left"/>
+							<TextBlock Grid.Row="0" Grid.Column="1" x:Name="euroscopeVersionHomeText" Style="{ThemeResource defaultTextStyle}" FontSize="15" FontWeight="Normal" HorizontalAlignment="Right" Text="3.2.1.29" Foreground="Red"/>
+							<TextBlock Grid.Row="1" Grid.Column="0" Style="{ThemeResource defaultTextStyle}" FontSize="15" FontWeight="Normal" Text="Sector Files:" HorizontalAlignment="Left"/>
+							<TextBlock Grid.Row="1" Grid.Column="1" x:Name="sectorLTXXVersionHomeText" Style="{ThemeResource defaultTextStyle}" FontSize="15" FontWeight="Normal" HorizontalAlignment="Right" Text="2212-01" Foreground="Green" />
+							<TextBlock Grid.Row="2" Grid.Column="0" Style="{ThemeResource defaultTextStyle}" FontSize="15" FontWeight="Normal" Text="AFV:" HorizontalAlignment="Left"/>
+							<TextBlock Grid.Row="2" Grid.Column="1" x:Name="afvVersionHomeText" Style="{ThemeResource defaultTextStyle}" FontSize="15" FontWeight="Normal" HorizontalAlignment="Right" Text="1.10.1.0" Foreground="Green" />
+							<TextBlock Grid.Row="3" Grid.Column="0" Style="{ThemeResource defaultTextStyle}" FontSize="15" FontWeight="Normal" Text="vATIS:" HorizontalAlignment="Left"/>
+							<TextBlock Grid.Row="3" Grid.Column="1" x:Name="vatisVersionHomeText" Style="{ThemeResource defaultTextStyle}" FontSize="15" FontWeight="Normal" HorizontalAlignment="Right" Text="4.0.0.0-3" Foreground="Green"/>
+						</Grid>
+						<Button x:Name="goOnlineButton" Grid.Row="2" Padding="20" IsDoubleTapEnabled="False" IsHoldingEnabled="False" CanDrag="False" Background="#195caa" MinWidth="300" HorizontalAlignment="Center">
+							<StackPanel Orientation="Horizontal">
+								<Image Source="ms-appx:///Assets/Icons/airport.png" Height="50"/>
+								<TextBlock Style="{ThemeResource defaultTextStyle}" FontSize="20" FontWeight="SemiBold" Text="Start Controlling" Padding="10,0,0,0" VerticalAlignment="Center"/>
+							</StackPanel>
+						</Button>
+					</Grid>
 				</Grid>
 			</Grid>
 		</Grid>

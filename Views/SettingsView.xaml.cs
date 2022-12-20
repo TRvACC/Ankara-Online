@@ -7,7 +7,13 @@ using System.Threading.Tasks;
 using System.Collections.Generic;
 using Microsoft.UI.Xaml.Media;
 using Microsoft.UI;
+using Windows.Storage.Pickers;
+using Windows.Storage;
 using System.Reflection;
+using System.Drawing;
+using System.IO;
+using Windows.ApplicationModel.Search;
+using Windows.Storage.AccessCache;
 
 namespace Ankara_Online
 {
@@ -21,13 +27,93 @@ namespace Ankara_Online
             this.InitializeComponent();
 
             UpdateColors();
-            settingsCreditsTextBlock.Text = "Credits\nAlp Deniz Senyurt\nVersion: " + Assembly.GetExecutingAssembly().GetName().Version.ToString();
+            settingsCreditsTextBlock.Text = "Credits\nAlp Deniz Senyurt - ACCTR5\nVersion: " + localSettings.Values["AppVersion"];
 
             // register events
             settingsIDEditBox.TextChanging += SettingsIDEditBox_TextChanging;
             settingsIDEditBox.Paste += SettingsIDEditBox_Paste;
             getHoppieLOGONCodeButton.Click += GetHoppieLOGONCodeButton_Click;
             settingsPageSaveButton.Click += SettingsPageSaveButton_Click;
+            settingsESPathSelectButton.Click += SettingsESPathSelectButton_Click;
+            settingsAFVPathSelectButton.Click += SettingsAFVPathSelectButton_Click;
+            settingsVATISPathSelectButton.Click += SettingsVATISPathSelectButton_Click;
+        }
+
+        private async void SettingsVATISPathSelectButton_Click(object sender, RoutedEventArgs e)
+        {
+            var folderPicker = new FolderPicker
+            {
+                SuggestedStartLocation = PickerLocationId.DocumentsLibrary
+            };
+
+            folderPicker.FileTypeFilter.Add("*");
+
+            StorageFolder folder = await folderPicker.PickSingleFolderAsync();
+            if (folder != null)
+            {
+                // Application now has read/write access to all contents in the picked folder
+                // (including other sub-folder contents)
+                StorageApplicationPermissions.FutureAccessList.AddOrReplace("PickedFolderToken", folder);
+                settingsVATISPathTextBox.Text = folder.Name;
+                localSettings.Values["vATISRequiredVersion"] = folder.Name.ToString();
+            }
+            else
+            {
+                settingsVATISPathTextBox.Text = "vATIS not found. Please select the installation directory from the right button.";
+            }
+        }
+
+        private async void SettingsAFVPathSelectButton_Click(object sender, RoutedEventArgs e)
+        {
+            var folderPicker = new FolderPicker
+            {
+                SuggestedStartLocation = PickerLocationId.ComputerFolder
+            };
+
+            folderPicker.FileTypeFilter.Add("*");
+
+            StorageFolder folder = await folderPicker.PickSingleFolderAsync();
+            if (folder != null)
+            {
+                // Application now has read/write access to all contents in the picked folder
+                // (including other sub-folder contents)
+                Windows.Storage.AccessCache.StorageApplicationPermissions.
+                FutureAccessList.AddOrReplace("PickedFolderToken", folder);
+                settingsAFVPathTextBox.Text = folder.Name;
+                localSettings.Values["AFVRequiredVersion"] = folder.Name.ToString();
+            }
+            else
+            {
+                settingsAFVPathTextBox.Text = "Audio For VATSIM not found. Please select the installation directory from the right button.";
+            }
+        }
+
+        private async void SettingsESPathSelectButton_Click(object sender, RoutedEventArgs e)
+        {
+            var folderPicker = new FolderPicker
+            {
+                SuggestedStartLocation = PickerLocationId.DocumentsLibrary
+            };
+
+            folderPicker.FileTypeFilter.Add("*");
+
+            StorageFolder folder = await folderPicker.PickSingleFolderAsync();
+            if (folder != null)
+            {
+                // Application now has read/write access to all contents in the picked folder
+                // (including other sub-folder contents)
+                Windows.Storage.AccessCache.StorageApplicationPermissions.
+                FutureAccessList.AddOrReplace("PickedFolderToken", folder);
+                settingsESPathTextBox.Text = folder.Name;
+                localSettings.Values["EuroScopeInstalledVersion"] = folder.Name.ToString();
+
+
+                // add here check for sector files
+            }
+            else
+            {
+                settingsESPathTextBox.Text = "EuroScope not found. Please select the installation directory from the right button.";
+            }
         }
 
         // Update colors to reflect that the path is not found.
@@ -61,15 +147,15 @@ namespace Ankara_Online
             // Using good old regex to filter out the text entered
             var regex = new Regex("^[0-9]*$");
 
-            if(!regex.IsMatch(text))
+            if (!regex.IsMatch(text))
             {
                 // find the index of the char ([^0-9])
                 var foundChar = Regex.Match(settingsIDEditBox.Text, @"[^0-9]");
-                if(foundChar.Success)
+                if (foundChar.Success)
                 {
                     settingsIDEditBox.Text = settingsIDEditBox.Text.Remove(foundChar.Index, 1);
                 }
-                
+
                 settingsIDEditBox.Select(currentPosition, 0);
             }
         }
@@ -104,15 +190,17 @@ namespace Ankara_Online
                 // the Click event will use the main thread.
                 getHoppieLOGONCodeButton.IsEnabled = false;
 
-                List<Task> tasks = new();
-                // The main thread will be released here until
-                // LaunchUriAsync returns.
-                tasks.Add(WindowsRuntimeSystemExtensions.AsTask(Launcher.LaunchUriAsync(new Uri("https://www.hoppie.nl/acars/system/register.html"))));
-                tasks.Add(Task.Delay(3000));
+                List<Task> tasks = new()
+                {
+                    // The main thread will be released here until
+                    // LaunchUriAsync returns.
+                    WindowsRuntimeSystemExtensions.AsTask(Launcher.LaunchUriAsync(new Uri("https://www.hoppie.nl/acars/system/register.html"))),
+                    Task.Delay(3000)
+                };
                 await Task.WhenAll(tasks);
                 // The main thread will be back here.
             }
-            catch (Exception ex) 
+            catch (Exception ex)
             {
                 ContentDialog dialog = new ContentDialog
                 {
@@ -120,9 +208,10 @@ namespace Ankara_Online
                     Style = Application.Current.Resources["DefaultContentDialogStyle"] as Style,
                     Title = "Error!",
                     Content = "Error when trying to open Hoppie ACARS system register page.",
-                    CloseButtonText= "OK",
+                    CloseButtonText = "OK",
                 };
-                ContentDialogResult result = await dialog.ShowAsync();
+
+                _ = await dialog.ShowAsync();
 
                 App.log.Error("Error when trying to open Hoppie register page.", ex);
             }
@@ -138,5 +227,7 @@ namespace Ankara_Online
         {
             ((TextBox)sender).Undo();
         }
+
+        internal ApplicationDataContainer localSettings = ApplicationData.Current.LocalSettings;
     }
 }
