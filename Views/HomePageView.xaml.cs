@@ -29,11 +29,8 @@ namespace Ankara_Online
             HomePageViewICAO3.Text = "LTAI";
 
             string ICAO1_METAR = await App.GetMetarJSONAsync(HomePageViewICAO1.Text);
-            //.Run(() => App.GetMetarJSONAsync(HomePageViewICAO1.Text)).Result;
             string ICAO2_METAR = await App.GetMetarJSONAsync(HomePageViewICAO2.Text);
-            //Task.Run(() => App.GetMetarJSONAsync(HomePageViewICAO2.Text)).Result;
             string ICAO3_METAR = await App.GetMetarJSONAsync(HomePageViewICAO3.Text);
-            //Task.Run(() => App.GetMetarJSONAsync(HomePageViewICAO3.Text)).Result;
 
             dynamic icao1MetarObj = null;
             dynamic icao2MetarObj = null;
