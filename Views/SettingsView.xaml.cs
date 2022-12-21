@@ -117,6 +117,33 @@ namespace Ankara_Online
             }
             */
 
+            var folderPicker = new Windows.Storage.Pickers.FolderPicker();
+
+            var hWnd = WinRT.Interop.WindowNative.GetWindowHandle(this);
+
+            WinRT.Interop.InitializeWithWindow.Initialize(folderPicker, hWnd);
+
+            folderPicker.FileTypeFilter.Add("*");
+            var folder = await folderPicker.PickSingleFolderAsync();
+            var folderControl = folder;
+
+            if (folderControl == null)
+            {
+                settingsESPathTextBox.Text = "Please select a path";
+            }
+            else
+            {
+                if (folder.Path.Contains("Euroscope"))
+                {
+                    settingsESPathTextBox.Text = $"{folder?.Path + "\\EuroScope.exe"}";
+                    settingsESPathTextBox.Foreground = new SolidColorBrush(Microsoft.UI.Colors.White);
+                }
+                else
+                {
+                    settingsESPathTextBox.Text = "Please select the correct path";
+                }
+            }
+
         }
 
         // Update colors to reflect that the path is not found.
