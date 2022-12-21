@@ -90,6 +90,7 @@ namespace Ankara_Online
 
         private async void SettingsESPathSelectButton_Click(object sender, RoutedEventArgs e)
         {
+            /*
             var folderPicker = new FolderPicker
             {
                 SuggestedStartLocation = PickerLocationId.DocumentsLibrary
@@ -114,6 +115,8 @@ namespace Ankara_Online
             {
                 settingsESPathTextBox.Text = "EuroScope not found. Please select the installation directory from the right button.";
             }
+            */
+
         }
 
         // Update colors to reflect that the path is not found.

@@ -22,7 +22,7 @@ namespace Ankara_Online
             UpdateMetarTextData();
         }
 
-        private async void UpdateMetarTextData()
+        internal async void UpdateMetarTextData()
         {
             HomePageViewICAO1.Text = "LTFM";
             HomePageViewICAO2.Text = "LTFJ";
