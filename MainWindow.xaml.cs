@@ -17,8 +17,8 @@ namespace Ankara_Online
         public MainWindow()
         {
             this.InitializeComponent();
-           
-            IntPtr hWnd = WinRT.Interop.WindowNative.GetWindowHandle(this);
+
+            _hWnd = WinRT.Interop.WindowNative.GetWindowHandle(this);
             var windowId = Win32Interop.GetWindowIdFromWindow(hWnd);
             var appWindow = AppWindow.GetFromWindowId(windowId);
             appWindow.Resize(new Windows.Graphics.SizeInt32 { Width = 1200, Height = 825 });
@@ -70,5 +70,6 @@ namespace Ankara_Online
         {
             this.contentFrame.Navigate(typeof(HomePageView));
         }
+        internal static IntPtr _hWnd;
     }
 }

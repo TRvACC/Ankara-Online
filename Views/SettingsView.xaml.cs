@@ -117,17 +117,14 @@ namespace Ankara_Online
             }
             */
 
-            var folderPicker = new Windows.Storage.Pickers.FolderPicker();
+            var folderPicker = new FolderPicker();
 
-            var hWnd = WinRT.Interop.WindowNative.GetWindowHandle(this);
-
-            WinRT.Interop.InitializeWithWindow.Initialize(folderPicker, hWnd);
+            WinRT.Interop.InitializeWithWindow.Initialize(folderPicker, MainWindow._hWnd);
 
             folderPicker.FileTypeFilter.Add("*");
             var folder = await folderPicker.PickSingleFolderAsync();
-            var folderControl = folder;
 
-            if (folderControl == null)
+            if (folder == null)
             {
                 settingsESPathTextBox.Text = "Please select a path";
             }
@@ -136,7 +133,7 @@ namespace Ankara_Online
                 if (folder.Path.Contains("Euroscope"))
                 {
                     settingsESPathTextBox.Text = $"{folder?.Path + "\\EuroScope.exe"}";
-                    settingsESPathTextBox.Foreground = new SolidColorBrush(Microsoft.UI.Colors.White);
+                    settingsESPathTextBox.Foreground = new SolidColorBrush(Colors.White);
                 }
                 else
                 {
