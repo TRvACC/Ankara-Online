@@ -5,9 +5,9 @@
     xmlns:local="using:Ankara_Online">
 	<Application.Resources>
 		<ResourceDictionary>
-			<ResourceDictionary.ThemeDictionaries>
-				<ResourceDictionary x:Key="Light">
-					<Style x:Key="TRvACC_LOGO" TargetType="Image">
+            <ResourceDictionary.ThemeDictionaries>
+                <ResourceDictionary x:Key="Light">
+                    <Style x:Key="TRvACC_LOGO" TargetType="Image">
 						<Setter Property="Source" Value="ms-appx:///Assets/TRvACC/trvacc_logo_transparent.png"/>
 					</Style>
 					<Style x:Key="HeaderLogo" TargetType="Image">
@@ -15,7 +15,7 @@
 					</Style>
 					<Style x:Key="defaultTextStyle" TargetType="TextBlock">
 						<Setter Property="Foreground" Value="#000000" />
-						<Setter Property="FontFamily" Value="Poppins" />
+                        <Setter Property="FontFamily" Value="{StaticResource PoppinsRegularFont}" />
 						<Setter Property="FontWeight" Value="Normal" />
 					</Style>
 					<Style x:Key="defaultGridBackground" TargetType="Grid">
@@ -32,13 +32,13 @@
 					</Style>
 					<Style x:Key="headerTextStyle" TargetType="NavigationViewItem">
 						<Setter Property="Foreground" Value="White" />
-						<Setter Property="FontFamily" Value="Poppins" />
+                        <Setter Property="FontFamily" Value="{StaticResource PoppinsMediumFont}" />
 						<Setter Property="FontWeight" Value="Medium" />
 						<Setter Property="FontSize" Value="17" />
 					</Style>
 				</ResourceDictionary>
-				<ResourceDictionary x:Key="Dark">
-					<Style x:Key="TRvACC_LOGO" TargetType="Image">
+                <ResourceDictionary x:Key="Dark">
+                    <Style x:Key="TRvACC_LOGO" TargetType="Image">
 						<Setter Property="Source" Value="ms-appx:///Assets/TRvACC/trvacc_logo_transparent_2.png "/>
 					</Style>
 					<Style x:Key="HeaderLogo" TargetType="Image">
@@ -46,7 +46,7 @@
 					</Style>
 					<Style x:Key="defaultTextStyle" TargetType="TextBlock">
 						<Setter Property="Foreground" Value="#FFFFFF" />
-						<Setter Property="FontFamily" Value="Poppins" />
+                        <Setter Property="FontFamily" Value="{StaticResource PoppinsRegularFont}" />
 						<Setter Property="FontWeight" Value="Normal" />
 					</Style>
 					<Style x:Key="defaultGridBackground" TargetType="Grid">
@@ -63,16 +63,26 @@
 					</Style>
 					<Style x:Key="headerTextStyle" TargetType="NavigationViewItem">
 						<Setter Property="Foreground" Value="White" />
-						<Setter Property="FontFamily" Value="Poppins" />
-						<Setter Property="FontWeight" Value="Medium" />
-						<Setter Property="FontSize" Value="17" />
+                        <Setter Property="FontFamily" Value="{StaticResource PoppinsMediumFont}"/>
+                        <Setter Property="FontWeight" Value="Medium"/>
+                        <Setter Property="FontSize" Value="17" />
 					</Style>
 				</ResourceDictionary>
 			</ResourceDictionary.ThemeDictionaries>
-			<ResourceDictionary.MergedDictionaries>
-				<XamlControlsResources xmlns="using:Microsoft.UI.Xaml.Controls" />
+            <ResourceDictionary.MergedDictionaries>
+                <XamlControlsResources xmlns="using:Microsoft.UI.Xaml.Controls" />
 			</ResourceDictionary.MergedDictionaries>
-			<!-- Other app resources here -->
+            
+            <FontFamily x:Key="PoppinsMediumFont">ms-appx:///Assets/Fonts/Poppins-Medium.ttf#Poppins</FontFamily>
+            <FontFamily x:Key="PoppinsThinFont">ms-appx:///Assets/Fonts/Poppins-Thin.ttf#Poppins</FontFamily>
+            <FontFamily x:Key="PoppinsSemiboldFont">ms-appx:///Assets/Fonts/Poppins-SemiBold.ttf#Poppins</FontFamily>
+            <FontFamily x:Key="PoppinsLightFont">ms-appx:///Assets/Fonts/Poppins-Light.ttf#Poppins</FontFamily>
+            <FontFamily x:Key="PoppinsItalicFont">ms-appx:///Assets/Fonts/Poppins-Italic.ttf#Poppins</FontFamily>
+            <FontFamily x:Key="PoppinsBoldFont">ms-appx:///Assets/Fonts/Poppins-Bold.ttf#Poppins</FontFamily>
+            <FontFamily x:Key="PoppinsBlackFont">ms-appx:///Assets/Fonts/Poppins-Black.ttf#Poppins</FontFamily>
+            <FontFamily x:Key="PoppinsRegularFont">ms-appx:///Assets/Fonts/Poppins-Regular.ttf#Poppins</FontFamily>
+
+            <!-- Other app resources here -->
 			<!--directories etc. shared resoruces-->
 		</ResourceDictionary>
 	</Application.Resources>
