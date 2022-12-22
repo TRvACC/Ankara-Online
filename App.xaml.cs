@@ -1,8 +1,5 @@
 ﻿using Microsoft.UI.Xaml;
 using log4net;
-using log4net.Config;
-using Windows.Storage;
-using System.Reflection;
 using System.Net.NetworkInformation;
 using System.Net.Http;
 using System.Threading.Tasks;
