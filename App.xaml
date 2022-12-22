@@ -81,9 +81,6 @@
             <FontFamily x:Key="PoppinsBoldFont">ms-appx:///Assets/Fonts/Poppins-Bold.ttf#Poppins</FontFamily>
             <FontFamily x:Key="PoppinsBlackFont">ms-appx:///Assets/Fonts/Poppins-Black.ttf#Poppins</FontFamily>
             <FontFamily x:Key="PoppinsRegularFont">ms-appx:///Assets/Fonts/Poppins-Regular.ttf#Poppins</FontFamily>
-
-            <!-- Other app resources here -->
-			<!--directories etc. shared resoruces-->
 		</ResourceDictionary>
 	</Application.Resources>
 </Application>

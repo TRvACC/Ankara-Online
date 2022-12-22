@@ -2,12 +2,9 @@
 using System.Diagnostics;
 using System.IO;
 using System.Xml;
-using Windows.Storage;
 using Newtonsoft.Json;
-using log4net;
 using System.Net.Http;
 using System.Threading.Tasks;
-using Microsoft.UI.Xaml.Shapes;
 using Microsoft.Win32;
 
 namespace Ankara_Online

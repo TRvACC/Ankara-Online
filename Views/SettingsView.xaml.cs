@@ -27,7 +27,7 @@ namespace Ankara_Online
             this.InitializeComponent();
 
             UpdateColors();
-            settingsCreditsTextBlock.Text = "Credits\nAlp Deniz Senyurt - ACCTR5\nCan Bartu Topcuoglu - Developer\nVersion: " + localSettings.Values["AppVersion"];
+            settingsCreditsTextBlock.Text = "Credits\nAlp Deniz Senyurt - ACCTR5\nCan Bartu Topcuoglu\nVersion: " + localSettings.Values["AppVersion"];
 
             // register events
             settingsIDEditBox.TextChanging += SettingsIDEditBox_TextChanging;

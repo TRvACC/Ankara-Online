@@ -52,7 +52,7 @@ namespace Ankara_Online
                     break;
 
                 case "NOTAMSViews":
-                    contentFrame.Navigate(typeof(NotamsView));
+                    contentFrame.Navigate(typeof(TrainingView));
                     break;
 
                 case "SettingsView":
