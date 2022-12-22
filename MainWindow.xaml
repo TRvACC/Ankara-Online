@@ -1,4 +1,4 @@
-﻿<Window
+﻿<winex:WindowEx xmlns:winex="using:WinUIEx" Width="1200" Height="830" IsResizable="False" Title="Ankara Online" IsMaximizable="False" 
     x:Class="Ankara_Online.MainWindow"
     xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
     xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
@@ -44,7 +44,7 @@
 				<NavigationViewItemSeparator/>
 				<NavigationViewItem Style="{ThemeResource headerTextStyle}" Content="Training" Tag="TrainingViews" x:Name="TrainingViewItem">
 					<NavigationViewItem.Icon>
-						<ImageIcon Source="ms-appx:///Assets/Icons/warning.png"/>
+						<ImageIcon Source="ms-appx:///Assets/Icons/reading.png"/>
 					</NavigationViewItem.Icon>
 				</NavigationViewItem>
 				<NavigationViewItemSeparator/>
@@ -77,4 +77,4 @@
 			</Grid>
 		</NavigationView>
 	</StackPanel>
-</Window>
+</winex:WindowEx>

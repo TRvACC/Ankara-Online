@@ -1,33 +1,36 @@
-﻿using Ankara_Online.Views;
-using Microsoft.UI;
-using Microsoft.UI.Windowing;
-using Microsoft.UI.Xaml;
+﻿using Microsoft.UI.Xaml;
 using Microsoft.UI.Xaml.Controls;
 using Microsoft.UI.Xaml.Navigation;
 using System;
 using System.Linq;
+using WinUIEx;
 
 namespace Ankara_Online
 {
     /// <summary>
     /// An empty window that can be used on its own or navigated to within a Frame.
     /// </summary>
-    public sealed partial class MainWindow : Window
+    public sealed partial class MainWindow : WindowEx
     {
         public MainWindow()
         {
             this.InitializeComponent();
+            this.CenterOnScreen();
 
+            this.SetIcon("Assets/trvacc_icon_transparent.ico");
+
+            /*
             _hWnd = WinRT.Interop.WindowNative.GetWindowHandle(this);
             var windowId = Win32Interop.GetWindowIdFromWindow(_hWnd);
             var appWindow = AppWindow.GetFromWindowId(windowId);
             appWindow.Resize(new Windows.Graphics.SizeInt32 { Width = 1200, Height = 825 });
+            
 
             OverlappedPresenter _presenter = appWindow.Presenter as OverlappedPresenter;
             _presenter.IsResizable = false;
-
+            
             Title = "Ankara Online";
-            appWindow.SetIcon("Assets\\trvacc_icon_transparent.ico");
+            */
 
         }
         private void NavigationView_ItemInvoked(NavigationView sender, NavigationViewItemInvokedEventArgs args)

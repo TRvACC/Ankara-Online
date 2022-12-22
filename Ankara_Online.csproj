@@ -17,7 +17,7 @@
     <PackageIcon>Square44x44Logo.targetsize-256.png</PackageIcon>
     <RepositoryUrl>https://github.com/cptalpdeniz/Ankara_Online</RepositoryUrl>
     <ApplicationIcon>Assets\trvacc_icon_transparent.ico</ApplicationIcon>
-    <Version>0.4.4.28</Version>
+    <Version>0.5.1.29</Version>
   </PropertyGroup>
   <ItemGroup>
     <Content Remove="Assets\Fonts\EuroScope.ttf" />
