@@ -36,19 +36,25 @@ namespace Ankara_Online
                 case -2:
                     euroscopeInstalledVersionSectorFilesText.Text = "error";
                     euroscopeInstalledVersionSectorFilesText.Foreground = new SolidColorBrush(Colors.Red);
+                    downloadEuroscopeButton.IsEnabled = true;
+
                     break;
                 case -1:
                     euroscopeInstalledVersionSectorFilesText.Text = " - ";
                     euroscopeInstalledVersionSectorFilesText.Foreground = new SolidColorBrush(Colors.Red);
+                    downloadEuroscopeButton.IsEnabled = true;
                     break;
                 case 0:
                     euroscopeInstalledVersionSectorFilesText.Foreground = new SolidColorBrush(Colors.Red);
+                    downloadEuroscopeButton.IsEnabled = true;
                     break;
                 case 1:
                     euroscopeInstalledVersionSectorFilesText.Foreground = new SolidColorBrush(Colors.Green);
+                    downloadEuroscopeButton.IsEnabled = false;
                     break;
                 case 2:
                     euroscopeInstalledVersionSectorFilesText.Foreground = new SolidColorBrush(Colors.Red);
+                    downloadEuroscopeButton.IsEnabled = true;
                     break;
             }
 
@@ -57,12 +63,15 @@ namespace Ankara_Online
                 case -1:
                     afvInstalledVersionSectorFilesText.Text = " - ";
                     afvInstalledVersionSectorFilesText.Foreground = new SolidColorBrush(Colors.Red);
+                    downloadAFVButton.IsEnabled = true;
                     break;
                 case 0:
                     afvInstalledVersionSectorFilesText.Foreground = new SolidColorBrush(Colors.Red);
+                    downloadAFVButton.IsEnabled = true;
                     break;
                 case 1:
                     afvInstalledVersionSectorFilesText.Foreground = new SolidColorBrush(Colors.Green);
+                    downloadAFVButton.IsEnabled = false;
                     break;
             }
 
@@ -71,12 +80,15 @@ namespace Ankara_Online
                 case -1:
                     vatisInstalledVersionSectorFilesText.Text= " - ";
                     vatisInstalledVersionSectorFilesText.Foreground = new SolidColorBrush(Colors.Red);
+                    downloadVATISButton.IsEnabled = true;
                     break;
                 case 0:
                     vatisInstalledVersionSectorFilesText.Foreground= new SolidColorBrush(Colors.Red);
+                    downloadVATISButton.IsEnabled = true;
                     break;
                 case 1:
                     vatisInstalledVersionSectorFilesText.Foreground = new SolidColorBrush(Colors.Green);
+                    downloadVATISButton.IsEnabled = false;
                     break;
             }
         }
