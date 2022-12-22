@@ -17,9 +17,65 @@ namespace Ankara_Online
         {
             this.InitializeComponent();
 
+            
+            UpdateMetarTextData();
+
+            this.Loaded += HomePageView_Loaded;
             reloadButton.Click += ReloadButton_Click;
             goOnlineButton.Click += GoOnlineButton_Click;
-            UpdateMetarTextData();
+            
+        }
+
+        private async void HomePageView_Loaded(object sender, RoutedEventArgs e)
+        {
+            switch (Controller.EuroScopeVersionChecker())
+            {
+                case -2:
+                    euroscopeVersionHomeText.Text = "error";
+                    euroscopeVersionHomeText.Foreground = new SolidColorBrush(Colors.Red);
+                    break;
+                case -1:
+                    euroscopeVersionHomeText.Text = " - ";
+                    euroscopeVersionHomeText.Foreground = new SolidColorBrush(Colors.Red);
+                    break;
+                case 0:
+                    euroscopeVersionHomeText.Foreground = new SolidColorBrush(Colors.Red);
+                    break;
+                case 1:
+                    euroscopeVersionHomeText.Foreground = new SolidColorBrush(Colors.Green);
+                    break;
+                case 2:
+                    euroscopeVersionHomeText.Foreground = new SolidColorBrush(Colors.Red);
+                    break;
+            }
+
+            switch (Controller.AFVVersionChecker())
+            {
+                case -1:
+                    afvVersionHomeText.Text = " - ";
+                    afvVersionHomeText.Foreground = new SolidColorBrush(Colors.Red);
+                    break;
+                case 0:
+                    afvVersionHomeText.Foreground = new SolidColorBrush(Colors.Red);
+                    break;
+                case 1:
+                    afvVersionHomeText.Foreground = new SolidColorBrush(Colors.Green);
+                    break;
+            }
+
+            switch (await Controller.VATISVersionCheckerAsync())
+            {
+                case -1:
+                    vatisVersionHomeText.Text = " - ";
+                    vatisVersionHomeText.Foreground = new SolidColorBrush(Colors.Red);
+                    break;
+                case 0:
+                    vatisVersionHomeText.Foreground = new SolidColorBrush(Colors.Red);
+                    break;
+                case 1:
+                    vatisVersionHomeText.Foreground = new SolidColorBrush(Colors.Green);
+                    break;
+            }
         }
 
         internal async void UpdateMetarTextData()
@@ -27,6 +83,8 @@ namespace Ankara_Online
             HomePageViewICAO1.Text = "LTFM";
             HomePageViewICAO2.Text = "LTFJ";
             HomePageViewICAO3.Text = "LTAI";
+
+            string[] badWeatherCategory = { "GR", "GS", "IC", "PL", "PO", "RA", "SN", "SA", "SG", "SS", "TS", "UP", "VA" };
 
             string ICAO1_METAR = await App.GetMetarJSONAsync(HomePageViewICAO1.Text);
             string ICAO2_METAR = await App.GetMetarJSONAsync(HomePageViewICAO2.Text);
@@ -145,7 +203,7 @@ namespace Ankara_Online
                         if (icao1MetarObj.ContainsKey("weather"))
                         {
                             // check if weather is terrible by matching category
-                            foreach (string i in App.badWeatherCategory)
+                            foreach (string i in badWeatherCategory)
                             {
                                 if (icao1MetarObj["weather"].ToString().Substring(icao1MetarObj["weather"].ToString().Length - 2) == i)
                                 {
@@ -225,7 +283,7 @@ namespace Ankara_Online
             }
             else if (ICAO1_METAR == null)
             {
-                HomePageViewICAO1_METAR.Text = "Error fetching " + HomePageViewICAO1.Text + " METAR";
+                HomePageViewICAO1_METAR.Text = "ERROR fetching " + HomePageViewICAO1.Text + " METAR";
                 HomePageViewICAO1_METAR.Foreground = new SolidColorBrush(Colors.Red);
             }
 
@@ -247,7 +305,7 @@ namespace Ankara_Online
                         if (icao2MetarObj.ContainsKey("weather"))
                         {
                             // check if weather is terrible by matching category
-                            foreach (string i in App.badWeatherCategory)
+                            foreach (string i in badWeatherCategory)
                             {
                                 if (icao2MetarObj["weather"].ToString().Substring(icao2MetarObj["weather"].ToString().Length - 2) == i)
                                 {
@@ -329,7 +387,7 @@ namespace Ankara_Online
             }
             else if (ICAO2_METAR == null)
             {
-                HomePageViewICAO2_METAR.Text = "Error fetching " + HomePageViewICAO2.Text + "METAR";
+                HomePageViewICAO2_METAR.Text = "ERROR fetching " + HomePageViewICAO2.Text + " METAR";
                 HomePageViewICAO2_METAR.Foreground = new SolidColorBrush(Colors.Red);
             }
 
@@ -352,7 +410,7 @@ namespace Ankara_Online
                         if (icao3MetarObj.ContainsKey("weather"))
                         {
                             // check if weather is terrible by matching category
-                            foreach (string i in App.badWeatherCategory)
+                            foreach (string i in badWeatherCategory)
                             {
                                 if (icao3MetarObj["weather"].ToString().Substring(icao3MetarObj["weather"].ToString().Length - 2) == i)
                                 {
@@ -436,7 +494,7 @@ namespace Ankara_Online
             }
             else if (ICAO3_METAR == null)
             {
-                HomePageViewICAO3_METAR.Text = "Error fetching " + HomePageViewICAO3.Text + "METAR";
+                HomePageViewICAO3_METAR.Text = "ERROR fetching " + HomePageViewICAO3.Text + " METAR";
                 HomePageViewICAO3_METAR.Foreground = new SolidColorBrush(Colors.Red);
             }
         }

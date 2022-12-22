@@ -37,12 +37,12 @@ namespace Ankara_Online
         {
             log.Info("Starting application"); //log4net
 
-            CheckIfSettingsExists(localSettings);
-
             //Splash screen icin burasi
             //m_window = new SplashScreenView();
             m_window = new MainWindow();
             m_window.Activate();
+
+            LocalSettings.CheckIfSettingsExists();
 
             NetworkChange.NetworkAvailabilityChanged += new NetworkAvailabilityChangedEventHandler(NetworkChange_NetworkAvailabilityChanged);
         }
@@ -56,33 +56,6 @@ namespace Ankara_Online
                 log.Error("Connection Lost! This program requires internet connection to run.");
             }
         }
-
-        // Need to update this part
-        private static void CheckIfSettingsExists(ApplicationDataContainer localSettings)
-        {
-            if (localSettings == null)
-            {
-                log.Info("Local Settings does not exists. Creating settings for VATSIM ID, Hoppie LOGON Code, App Version, Required and Installed paths.");
-                localSettings.Values["VATSIM_ID"] = null;
-                localSettings.Values["HoppieLOGONCode"] = null;
-                localSettings.Values["AppVersion"] = Assembly.GetExecutingAssembly().GetName().Version.ToString();
-
-                localSettings.Values["EuroScopeRequireVersion"] = null;
-                localSettings.Values["SectorFilesRequiredVersion"] = null;
-                localSettings.Values["AFVRequiredVersion"] = null;
-                localSettings.Values["vATISRequiredVersion"] = null;
-
-                localSettings.Values["EuroScopeInstalledVersion"] = null;
-                localSettings.Values["SectorFilesInstalledVersion"] = null;
-                localSettings.Values["AFVRequiredVersion"] = null;
-                localSettings.Values["vATISRequiredVersion"] = null;
-
-                localSettings.Values["AFV_VERSION_CHECK_URL"] = "https://github.com/vatsimnetwork/afv-clients/blob/main/clientversion.xml";
-                localSettings.Values["vATIS_VERSION_CHECK_JSON"] = "https://vatis.clowd.io/api/v4/VersionCheck";
-                localSettings.Values["TRvACC_SMART_API"] = "https://smart.trvacc.net/api";
-            }
-        }
-
 
         // this function will probably move to Splash Scren when implemented
         private async Task<bool> CheckIfNetworkConnectionAsync()
@@ -172,7 +145,7 @@ namespace Ankara_Online
                 log.Error("Error when trying to fetching METAR of " + ICAO + " . \n" + e.ToString());
             }
             //"\n<div 
-            if (metarJSON.StartsWith("\"\\n<div "))
+            if (metarJSON != null && metarJSON.StartsWith("\"\\n<div "))
             {
                 return null;
             }
@@ -181,8 +154,7 @@ namespace Ankara_Online
 
         private Window m_window;
         internal static readonly ILog log = LogManager.GetLogger(typeof(App));
-        internal ApplicationDataContainer localSettings = ApplicationData.Current.LocalSettings;
         private bool _isNetworkOnline;
-        internal static readonly string[] badWeatherCategory = { "GR", "GS", "IC", "PL", "PO", "RA", "SN", "SA", "SG", "SS", "TS", "UP", "VA" };
+        
     }
 }

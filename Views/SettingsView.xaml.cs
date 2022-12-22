@@ -88,35 +88,9 @@ namespace Ankara_Online
             }
         }
 
+        // needs improvement
         private async void SettingsESPathSelectButton_Click(object sender, RoutedEventArgs e)
         {
-            /*
-            var folderPicker = new FolderPicker
-            {
-                SuggestedStartLocation = PickerLocationId.DocumentsLibrary
-            };
-
-            folderPicker.FileTypeFilter.Add("*");
-
-            StorageFolder folder = await folderPicker.PickSingleFolderAsync();
-            if (folder != null)
-            {
-                // Application now has read/write access to all contents in the picked folder
-                // (including other sub-folder contents)
-                Windows.Storage.AccessCache.StorageApplicationPermissions.
-                FutureAccessList.AddOrReplace("PickedFolderToken", folder);
-                settingsESPathTextBox.Text = folder.Name;
-                localSettings.Values["EuroScopeInstalledVersion"] = folder.Name.ToString();
-
-
-                // add here check for sector files
-            }
-            else
-            {
-                settingsESPathTextBox.Text = "EuroScope not found. Please select the installation directory from the right button.";
-            }
-            */
-
             var folderPicker = new FolderPicker();
 
             WinRT.Interop.InitializeWithWindow.Initialize(folderPicker, MainWindow._hWnd);

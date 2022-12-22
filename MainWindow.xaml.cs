@@ -19,7 +19,7 @@ namespace Ankara_Online
             this.InitializeComponent();
 
             _hWnd = WinRT.Interop.WindowNative.GetWindowHandle(this);
-            var windowId = Win32Interop.GetWindowIdFromWindow(hWnd);
+            var windowId = Win32Interop.GetWindowIdFromWindow(_hWnd);
             var appWindow = AppWindow.GetFromWindowId(windowId);
             appWindow.Resize(new Windows.Graphics.SizeInt32 { Width = 1200, Height = 825 });
 
