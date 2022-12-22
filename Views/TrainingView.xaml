@@ -8,7 +8,7 @@
     mc:Ignorable="d"
 	NavigationCacheMode="Required">
 
-    <Grid>
-
-    </Grid>
+    <Grid RowDefinitions="750">
+		<TextBlock Style="{ThemeResource defaultTextStyle}" Text="Not Implemented" VerticalAlignment="Center" HorizontalAlignment="Center" FontSize="30" FontWeight="Bold"/>
+	</Grid>
 </Page>

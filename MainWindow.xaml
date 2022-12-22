@@ -42,7 +42,7 @@
 					</NavigationViewItem.Icon>
 				</NavigationViewItem>
 				<NavigationViewItemSeparator/>
-				<NavigationViewItem Style="{ThemeResource headerTextStyle}" Content="NOTAMs" Tag="NOTAMSViews" x:Name="NOTAMSViewItem">
+				<NavigationViewItem Style="{ThemeResource headerTextStyle}" Content="Training" Tag="TrainingViews" x:Name="TrainingViewItem">
 					<NavigationViewItem.Icon>
 						<ImageIcon Source="ms-appx:///Assets/Icons/warning.png"/>
 					</NavigationViewItem.Icon>
