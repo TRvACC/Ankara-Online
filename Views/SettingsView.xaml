@@ -15,11 +15,11 @@
 			<Grid Grid.Row="2" ColumnDefinitions="0.5*,0.5*" Padding="0,10,0,0">
 				<Grid Grid.Column="0" ColumnDefinitions="0.3*,*">
 					<TextBlock Grid.Column="0" Style="{ThemeResource defaultTextStyle}" FontWeight="Normal" FontSize="16" Text="VATSIM ID" HorizontalAlignment="Left" Padding="0,7,0,0"/>
-					<TextBox x:Name="settingsIDEditBox" Grid.Column="1" Height="38" Width="150" HorizontalAlignment="Left" VerticalAlignment="Top" FontFamily="Poppins" MaxLength="7" PlaceholderText="0000000" AcceptsReturn="False" TextAlignment="Left"  AllowDrop="False" InputScope="Digits" TextWrapping="Wrap"/>
+					<TextBox x:Name="settingsIDEditBox" Grid.Column="1" Height="38" Width="150" HorizontalAlignment="Left" VerticalAlignment="Top" FontFamily="R" MaxLength="7" PlaceholderText="0000000" AcceptsReturn="False" TextAlignment="Left"  AllowDrop="False" InputScope="Digits" TextWrapping="Wrap"/>
 				</Grid>
 				<Grid Grid.Column="1" ColumnDefinitions="0.45*,*">
 					<TextBlock Grid.Column="0" Style="{ThemeResource defaultTextStyle}" FontWeight="Normal" FontSize="16" Text="Hoppie LOGON Code" HorizontalAlignment="Left" Padding="0,7,0,0"/>
-					<TextBox x:Name="settingsHoppieRichEditBox" Grid.Column="1" Margin="15,0,0,0" Height="38" Width="150" HorizontalAlignment="Left" VerticalAlignment="Top" FontFamily="Poppins" AcceptsReturn="False" TextAlignment="Left" TextWrapping="Wrap"/>
+					<TextBox x:Name="settingsHoppieRichEditBox" Grid.Column="1" Margin="15,0,0,0" Height="38" Width="150" HorizontalAlignment="Left" VerticalAlignment="Top" FontFamily="{StaticResource PoppinsRegularFont}" AcceptsReturn="False" TextAlignment="Left" TextWrapping="Wrap"/>
 					<Button x:Name="getHoppieLOGONCodeButton" Grid.Column="1" IsDoubleTapEnabled="False" IsHoldingEnabled="False" CanDrag="False" Background="#195caa" Width="180" Height="40" HorizontalAlignment="Right" VerticalAlignment="Top" ClickMode="Press" Margin="0,0,10,0">
 						<StackPanel Orientation="Horizontal">
 							<Image Source="ms-appx:///Assets/Icons/downloadWorld.png" Height="25"/>
@@ -36,7 +36,7 @@
 					<TextBlock Style="{ThemeResource defaultTextStyle}" FontSize="16" FontWeight=" Normal" Text="EuroScope" />
 					<StackPanel Orientation="Horizontal">
 						<Border Style="{ThemeResource defaultBorderBackground}" BorderThickness="2" Height="40" Width="1000" CornerRadius="5">
-							<TextBlock x:Name="settingsESPathTextBox" FontFamily="Poppins" Text="EuroScope not found. Please select the installation directory from the right button." VerticalAlignment="Center" Padding="10,0,10,0"/>
+                            <TextBlock x:Name="settingsESPathTextBox" FontFamily="{StaticResource PoppinsRegularFont}" Text="EuroScope not found. Please select the installation directory from the right button." VerticalAlignment="Center" Padding="10,0,10,0"/>
 						</Border>
 						<Button x:Name="settingsESPathSelectButton" Height="38" Width="40" IsDoubleTapEnabled="False" IsHoldingEnabled="False" CanDrag="False" ClickMode="Press">
 							<TextBlock Style="{ThemeResource defaultTextStyle}" FontWeight="Normal" Text="..." HorizontalAlignment="Center" />
@@ -47,7 +47,7 @@
 					<TextBlock Style="{ThemeResource defaultTextStyle}" FontSize="16" FontWeight="Normal" Text="Audio For VATSIM" />
 					<StackPanel Orientation="Horizontal">
 						<Border Style="{ThemeResource defaultBorderBackground}" BorderThickness="2" Height="40" Width="1000" CornerRadius="5">
-							<TextBlock x:Name="settingsAFVPathTextBox" FontFamily="Poppins" Text="Audio For VATSIM not found. Please select the installation directory from the right button." VerticalAlignment="Center" Padding="10,0,10,0"/>
+                            <TextBlock x:Name="settingsAFVPathTextBox" FontFamily="{StaticResource PoppinsRegularFont}" Text="Audio For VATSIM not found. Please select the installation directory from the right button." VerticalAlignment="Center" Padding="10,0,10,0"/>
 						</Border>
 						<Button x:Name="settingsAFVPathSelectButton" Height="38" Width="40" IsDoubleTapEnabled="False" IsHoldingEnabled="False" CanDrag="False" ClickMode="Press">
 							<TextBlock Style="{ThemeResource defaultTextStyle}" FontWeight="Normal" Text="..." HorizontalAlignment="Center" />
@@ -58,7 +58,7 @@
 					<TextBlock Style="{ThemeResource defaultTextStyle}" FontSize="16" FontWeight=" Normal" Text="vATIS" />
 					<StackPanel Orientation="Horizontal">
 						<Border Style="{ThemeResource defaultBorderBackground}" BorderThickness="2" Height="40" Width="1000" CornerRadius="5">
-							<TextBlock x:Name="settingsVATISPathTextBox" FontFamily="Poppins" Text="vATIS not found. Please select the installation directory from the right button." VerticalAlignment="Center" Padding="10,0,10,0"/>
+                            <TextBlock x:Name="settingsVATISPathTextBox" FontFamily="{StaticResource PoppinsRegularFont}" Text="vATIS not found. Please select the installation directory from the right button." VerticalAlignment="Center" Padding="10,0,10,0"/>
 						</Border>
 						<Button x:Name="settingsVATISPathSelectButton" Height="38" Width="40" IsDoubleTapEnabled="False" IsHoldingEnabled="False" CanDrag="False" ClickMode="Press">
 							<TextBlock Style="{ThemeResource defaultTextStyle}" FontWeight="Normal" Text="..." HorizontalAlignment="Center" />
