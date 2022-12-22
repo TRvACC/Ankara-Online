@@ -26,9 +26,9 @@ namespace Ankara_Online.Views
     /// <summary>
     /// An empty window that can be used on its own or navigated to within a Frame.
     /// </summary>
-    public sealed partial class SplashScreenView : WinUIEx.WindowEx
+    public sealed partial class SplashScreenView : WinUIEx.SplashScreen
     {
-        public SplashScreenView()
+        public SplashScreenView(Type window) : base(window)
         {
             this.InitializeComponent();
             this.CenterOnScreen();

@@ -6,6 +6,7 @@ using System.Threading.Tasks;
 using System;
 using Newtonsoft.Json;
 using Microsoft.UI.Xaml.Controls;
+using WinUIEx;
 
 [assembly: log4net.Config.XmlConfigurator(ConfigFile = "log4net.config")]
 namespace Ankara_Online
@@ -36,8 +37,10 @@ namespace Ankara_Online
 
             //Splash screen icin burasi
             //m_window = new SplashScreenView();
-            m_window = new MainWindow();
-            m_window.Activate();
+            var splash = new SplashScreen(typeof(MainWindow));
+            splash.Completed += (s, e) => m_window = e;
+            // m_window = new MainWindow();
+            // m_window.Activate();
 
             LocalSettings.CheckIfSettingsExists();
 
