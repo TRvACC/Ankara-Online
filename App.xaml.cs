@@ -34,15 +34,9 @@ namespace Ankara_Online
         protected override void OnLaunched(LaunchActivatedEventArgs args)
         {
             log.Info("Starting application"); //log4net
-
-            //Splash screen icin burasi
-            //m_window = new SplashScreenView();
+            
             var splash = new SplashScreen(typeof(MainWindow));
-            splash.Completed += (s, e) => m_window = e;
-            // m_window = new MainWindow();
-            // m_window.Activate();
-
-            LocalSettings.CheckIfSettingsExists();
+            splash.Completed += (s, e) => m_window = (WindowEx)e;
 
             NetworkChange.NetworkAvailabilityChanged += new NetworkAvailabilityChangedEventHandler(NetworkChange_NetworkAvailabilityChanged);
         }

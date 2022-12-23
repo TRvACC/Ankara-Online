@@ -17,8 +17,7 @@ namespace Ankara_Online
         {
             this.InitializeComponent();
 
-            
-            UpdateMetarTextData();
+            this.UpdateMetarTextData();
 
             this.Loaded += HomePageView_Loaded;
             reloadButton.Click += ReloadButton_Click;

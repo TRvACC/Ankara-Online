@@ -1,0 +1,25 @@
+<winuiex:SplashScreen xmlns:winuiex="using:WinUIEx" Width="700" Height="400"
+    x:Class="Ankara_Online.SplashScreen"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:local="using:Ankara_Online"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    mc:Ignorable="d">
+
+    <Grid RowDefinitions="250,75,75" ColumnDefinitions="700" Background="White">
+        <Grid Grid.Row="0" Grid.Column="0">
+            <StackPanel Name="trVaccLogoPanel" Orientation="Horizontal" HorizontalAlignment="Center" Margin="0,0,17,0" Padding="0,30,0,0">
+                <Image x:Name="splashScreenImage1" Source="ms-appx:///Assets/trvacc_icon_transparent_500px.png" Width="150" Height="150" HorizontalAlignment="Center"/>
+				<Image x:Name="splashScreenImage2" Source="ms-appx:///Assets/trvacc_noicon_animated.gif" HorizontalAlignment="Center" Width="450" Height="450"/>
+            </StackPanel>
+        </Grid>
+        <Grid Grid.Row="1" Grid.Column="0">
+			<TextBlock Name="ankaraOnlineText" Text="Ankara Online" Style="{ThemeResource TitleTextStyle}" HorizontalAlignment="Center" VerticalAlignment="Center" Padding="0,30,0,0"/>
+        </Grid>
+        <Grid Grid.Row="2" Grid.Column="0">
+			<TextBlock x:DefaultBindMode="TwoWay" x:Name="loadingTextBlock" FontFamily="{StaticResource PoppinsLightFont}" FontSize="23" HorizontalAlignment="Center" VerticalAlignment="Center" Foreground="Black" />
+			<TextBlock Name="versionText" FontFamily="{StaticResource PoppinsRegularFont}" FontSize="15" HorizontalAlignment="Left" VerticalAlignment="Bottom" Foreground="Black" Padding="5"/>
+        </Grid>
+    </Grid>
+</winuiex:SplashScreen>

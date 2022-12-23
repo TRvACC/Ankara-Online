@@ -63,17 +63,22 @@
 					</Style>
 					<Style x:Key="headerTextStyle" TargetType="NavigationViewItem">
 						<Setter Property="Foreground" Value="White" />
-                        <Setter Property="FontFamily" Value="{StaticResource PoppinsMediumFont}"/>
-                        <Setter Property="FontWeight" Value="Medium"/>
-                        <Setter Property="FontSize" Value="17" />
+						<Setter Property="FontFamily" Value="{StaticResource PoppinsMediumFont}"/>
+						<Setter Property="FontWeight" Value="Medium"/>
+						<Setter Property="FontSize" Value="17" />
 					</Style>
 				</ResourceDictionary>
 			</ResourceDictionary.ThemeDictionaries>
-            <ResourceDictionary.MergedDictionaries>
-                <XamlControlsResources xmlns="using:Microsoft.UI.Xaml.Controls" />
+			<ResourceDictionary.MergedDictionaries>
+				<XamlControlsResources xmlns="using:Microsoft.UI.Xaml.Controls" />
 			</ResourceDictionary.MergedDictionaries>
-            
-            <FontFamily x:Key="PoppinsMediumFont">ms-appx:///Assets/Fonts/Poppins-Medium.ttf#Poppins</FontFamily>
+			<Style x:Key="TitleTextStyle" TargetType="TextBlock">
+				<Setter Property="Foreground" Value="#000000" />
+				<Setter Property="FontFamily" Value="{StaticResource PoppinsSemiboldFont}"/>
+				<Setter Property="FontWeight" Value="Bold"/>
+				<Setter Property="FontSize" Value="55" />
+			</Style>
+			<FontFamily x:Key="PoppinsMediumFont">ms-appx:///Assets/Fonts/Poppins-Medium.ttf#Poppins</FontFamily>
             <FontFamily x:Key="PoppinsThinFont">ms-appx:///Assets/Fonts/Poppins-Thin.ttf#Poppins</FontFamily>
             <FontFamily x:Key="PoppinsSemiboldFont">ms-appx:///Assets/Fonts/Poppins-SemiBold.ttf#Poppins</FontFamily>
             <FontFamily x:Key="PoppinsLightFont">ms-appx:///Assets/Fonts/Poppins-Light.ttf#Poppins</FontFamily>
