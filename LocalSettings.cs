@@ -20,6 +20,10 @@ namespace Ankara_Online
             LTFJ_PRS_PARSE_ERROR = true;
             LTAI_METAR_PARSE_ERROR = true;
             LTAI_PRS_PARSE_ERROR = true;
+            correctEuroScopeVersion = false;
+            correctAFVVersion = false;
+            correctVATISVersion = false;
+            correctSectorFilesVersion = false;
         }
 
         internal static async void CheckIfSettingsExists()
@@ -61,9 +65,15 @@ namespace Ankara_Online
         internal static bool LTAI_METAR_PARSE_ERROR;
         internal static bool LTAI_PRS_PARSE_ERROR;
 
+        internal static bool correctEuroScopeVersion;
+        internal static bool correctAFVVersion;
+        internal static bool correctVATISVersion;
+        internal static bool correctSectorFilesVersion;
+
 
         internal static ApplicationDataContainer settingsContainer;
         internal static readonly string DEFAULT_ES_PATH = Environment.GetFolderPath(Environment.SpecialFolder.MyDocuments) + @"\Euroscope";
         internal static readonly string DEFAULT_VATIS_PATH = Environment.GetEnvironmentVariable("LocalAppData") + @"\vATIS-4.0";
+
     }
 }

@@ -4,6 +4,9 @@ using System;
 using Newtonsoft.Json;
 using Microsoft.UI.Xaml.Media;
 using Microsoft.UI;
+using log4net;
+using Microsoft.UI.Xaml.Controls.Primitives;
+using System.Threading.Tasks;
 
 namespace Ankara_Online
 {
@@ -230,15 +233,69 @@ namespace Ankara_Online
             }
         }
 
-        private void GoOnlineButton_Click(object sender, RoutedEventArgs e)
+        public async void GoOnlineButton_Click(object sender, RoutedEventArgs e)
         {
+
             /*
              * CHECK VERSION AGAIN, IF ITS WRONG, DO NOT LET ATC TO USE WRONG PROFILE
              * POPUP ASKING FOR POSITION CALLSIGN LIKE LTFM_TWR
              * AFTER GETTING THE POSITION EDIT PRF FILE
              * OPEN EUROSCOPE WITH THE CORRECT PRF FILE
              */
-            return;
+
+            var inputTextBox = new TextBox
+            {
+                AcceptsReturn = true,
+                Height = 32,
+                Width = 150,
+                Text = string.Empty,
+                TextWrapping = TextWrapping.Wrap,
+            };
+
+            // LocalSettings.CorrectSectorFilesVersion should be added when the Sector Files checker is implemented
+            if (LocalSettings.correctEuroScopeVersion && LocalSettings.correctAFVVersion && LocalSettings.correctVATISVersion) 
+            {                                                                                                                  
+                ContentDialog dialog = new ContentDialog
+                {
+                    XamlRoot = this.XamlRoot,
+                    Style = Application.Current.Resources["DefaultContentDialogStyle"] as Style,
+                    Title = "Please select a callsign!",
+                    Content = inputTextBox,
+                    CloseButtonText = "Cancel",
+                    SecondaryButtonText = "Select",
+                    
+                };
+                dialog.SecondaryButtonClick += Dialog_SecondaryButtonClick;
+
+#pragma warning restore IDE0090
+
+                _ = await dialog.ShowAsync();
+            }
+        
+            if (inputTextBox.Text == string.Empty)
+            {
+                ContentDialog dialog = new ContentDialog
+                {
+                    XamlRoot = this.XamlRoot,
+                    Style = Application.Current.Resources["DefaultContentDialogStyle"] as Style,
+                    Title = "Please select a valid callsign",
+                    Content = "You should select a valid callsign",
+                    CloseButtonText = "OK",
+                    
+
+                };
+            }
+        }
+
+        private void Dialog_SecondaryButtonClick(ContentDialog sender, ContentDialogButtonClickEventArgs args)
+        {
+            /*
+            CHECK IF THE CALLSIGN IS AVAILABLE
+            EDIT THE PRF FILE
+            AND OPEN EUROSCOPE WITH CORRECT PRF FILE
+            */
+
+            throw new NotImplementedException();
         }
 
         private void ReloadButton_Click(object sender, RoutedEventArgs e)
@@ -246,5 +303,6 @@ namespace Ankara_Online
             //reload data, call the reload function
             return;
         }
+
     }
 }

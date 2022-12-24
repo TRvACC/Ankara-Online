@@ -236,22 +236,27 @@ namespace Ankara_Online
                 var ESRequiredVersion = new Version(GetEuroScopeRequiredVersion());
                 if (ESInstalledVersion < ESRequiredVersion)
                 {
+                    LocalSettings.correctEuroScopeVersion = false;
                     return 0;
                 }
                 else if (ESInstalledVersion == ESRequiredVersion)
                 {
+                    LocalSettings.correctEuroScopeVersion = true;
                     return 1;
                 }
 
                 else if (ESInstalledVersion > ESRequiredVersion)
                 {
+                    LocalSettings.correctEuroScopeVersion = false;
                     return 2;
                 }
             }
             else
             {
+                LocalSettings.correctEuroScopeVersion = false;
                 return -1;
             }
+            LocalSettings.correctEuroScopeVersion = false;
             return -2;
         }
 
@@ -266,6 +271,7 @@ namespace Ankara_Online
         {
             if (LocalSettings.settingsContainer.Values["vATISInstalledVersion"] as string == null)
             {
+                LocalSettings.correctVATISVersion = false;
                 return -1;
             }
 
@@ -274,10 +280,12 @@ namespace Ankara_Online
 
             if (VATISInstalledVersion == VATISRequiredVersion)
             {
+                LocalSettings.correctVATISVersion = true;
                 return 1;
             }
             else
             {
+                LocalSettings.correctVATISVersion = false;
                 return 0;
             }
         }
@@ -293,6 +301,7 @@ namespace Ankara_Online
         {
             if (LocalSettings.settingsContainer.Values["AFVInstalledVersion"] as string == null)
             {
+                LocalSettings.correctAFVVersion = false;
                 return -1;
             }
 
@@ -301,10 +310,12 @@ namespace Ankara_Online
 
             if (installedVersion == requiredVersion)
             {
+                LocalSettings.correctAFVVersion = true;
                 return 1;
             }
             else
             {
+                LocalSettings.correctAFVVersion = false;
                 return 0;
             }
         }

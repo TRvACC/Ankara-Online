@@ -16,6 +16,7 @@ namespace Ankara_Online
             this.InitializeComponent();
 
             this.Loaded += SectorFilesView_Loaded;
+
         }
 
         private async void SectorFilesView_Loaded(object sender, RoutedEventArgs e)
@@ -78,12 +79,12 @@ namespace Ankara_Online
             switch (await Controller.VATISVersionCheckerAsync())
             {
                 case -1:
-                    vatisInstalledVersionSectorFilesText.Text= " - ";
+                    vatisInstalledVersionSectorFilesText.Text = " - ";
                     vatisInstalledVersionSectorFilesText.Foreground = new SolidColorBrush(Colors.Red);
                     downloadVATISButton.IsEnabled = true;
                     break;
                 case 0:
-                    vatisInstalledVersionSectorFilesText.Foreground= new SolidColorBrush(Colors.Red);
+                    vatisInstalledVersionSectorFilesText.Foreground = new SolidColorBrush(Colors.Red);
                     downloadVATISButton.IsEnabled = true;
                     break;
                 case 1:

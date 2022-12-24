@@ -434,6 +434,7 @@ namespace Ankara_Online
                 LocalSettings.uiElementsDictionary["HomePageViewICAO3_METAR"] = "ERROR fetching LTAI METAR";
             }
             loadingTextBlock.Text = $"Loading 100%...";
+
         }
 
         internal static async Task<string> GetMetarJSONAsync(string ICAO)
