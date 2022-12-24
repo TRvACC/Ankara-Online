@@ -1,5 +1,7 @@
 ﻿using log4net;
 using System;
+using System.Collections;
+using System.Collections.Generic;
 using System.Configuration;
 using System.Reflection;
 using Windows.Storage;
@@ -11,6 +13,13 @@ namespace Ankara_Online
         static LocalSettings()
         {
             settingsContainer = ApplicationData.Current.LocalSettings;
+            uiElementsDictionary = new Dictionary<string, string>();
+            LTFM_METAR_PARSE_ERROR = true;
+            LTFM_PRS_PARSE_ERROR = true;
+            LTFJ_METAR_PARSE_ERROR = true;
+            LTFJ_PRS_PARSE_ERROR = true;
+            LTAI_METAR_PARSE_ERROR = true;
+            LTAI_PRS_PARSE_ERROR = true;
         }
 
         internal static async void CheckIfSettingsExists()
@@ -27,7 +36,7 @@ namespace Ankara_Online
                 settingsContainer.Values["SectorFilesPath"] = null;
                 settingsContainer.Values["vATISPath"] = Controller.GetVATISPath();
                 settingsContainer.Values["AFVPath"] = Controller.GetAFVPath();
-
+                
                 settingsContainer.Values["EuroScopeRequiredVersion"] = Controller.GetEuroScopeRequiredVersion();
                 settingsContainer.Values["SectorFilesRequiredVersion"] = null;
                 settingsContainer.Values["AFVRequiredVersion"] = Controller.GetAFVRequiredVersion();
@@ -38,12 +47,20 @@ namespace Ankara_Online
                 settingsContainer.Values["AFVInstalledVersion"] = Controller.GetAFVInstalledVersion();
                 settingsContainer.Values["vATISInstalledVersion"] = Controller.GetVATISInstalledVersion();
 
-
                 settingsContainer.Values["AFV_VERSION_CHECK_URL"] = "https://github.com/vatsimnetwork/afv-clients/blob/main/clientversion.xml";
                 settingsContainer.Values["vATIS_VERSION_CHECK_JSON"] = "https://vatis.clowd.io/api/v4/VersionCheck";
                 settingsContainer.Values["TRvACC_SMART_API"] = "https://smart.trvacc.net/api";
             }
         }
+
+        internal static IDictionary<string, string> uiElementsDictionary;
+        internal static bool LTFM_METAR_PARSE_ERROR;
+        internal static bool LTFM_PRS_PARSE_ERROR;
+        internal static bool LTFJ_METAR_PARSE_ERROR;
+        internal static bool LTFJ_PRS_PARSE_ERROR;
+        internal static bool LTAI_METAR_PARSE_ERROR;
+        internal static bool LTAI_PRS_PARSE_ERROR;
+
 
         internal static ApplicationDataContainer settingsContainer;
         internal static readonly string DEFAULT_ES_PATH = Environment.GetFolderPath(Environment.SpecialFolder.MyDocuments) + @"\Euroscope";

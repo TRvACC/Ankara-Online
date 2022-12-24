@@ -123,28 +123,7 @@ namespace Ankara_Online
             return networkConnection;
         }
 
-        internal static async Task<string> GetMetarJSONAsync(string ICAO)
-        {
-            string metarJSON = null;
-
-            using HttpClient client = new HttpClient();
-
-            // get metar of // 
-            try
-            {
-                metarJSON = await client.GetStringAsync("https://smart.trvacc.net/api/metar/" + ICAO);
-            }
-            catch (Exception e)
-            {
-                log.Error("Error when trying to fetching METAR of " + ICAO + " . \n" + e.ToString());
-            }
-            //"\n<div 
-            if (metarJSON != null && metarJSON.StartsWith("\"\\n<div "))
-            {
-                return null;
-            }
-            return metarJSON;
-        }
+        
 
         private Window m_window;
         internal static readonly ILog log = LogManager.GetLogger(typeof(App));

@@ -104,13 +104,13 @@
 						<Grid Grid.Row="0" ColumnDefinitions="0.5*,0.5*" RowDefinitions="20,20,20,20" Padding="20,0,20,0">
 							<!--SET COLOR FROM BACKEND AFTER VERSION CHECKING-->
 							<TextBlock Grid.Row="0" Grid.Column="0" Style="{ThemeResource defaultTextStyle}" FontSize="15" FontWeight="Normal" Text="EuroScope:" HorizontalAlignment="Left"/>
-							<TextBlock Grid.Row="0" Grid.Column="1" x:Name="euroscopeVersionHomeText" Style="{ThemeResource defaultTextStyle}" FontSize="15" FontWeight="Normal" HorizontalAlignment="Right" Text="3.2.1.29" Foreground="Red"/>
+							<TextBlock Grid.Row="0" Grid.Column="1" x:Name="euroscopeVersionHomeText" Style="{ThemeResource defaultTextStyle}" FontSize="15" FontWeight="Normal" HorizontalAlignment="Right" />
 							<TextBlock Grid.Row="1" Grid.Column="0" Style="{ThemeResource defaultTextStyle}" FontSize="15" FontWeight="Normal" Text="Sector Files:" HorizontalAlignment="Left"/>
-							<TextBlock Grid.Row="1" Grid.Column="1" x:Name="sectorLTXXVersionHomeText" Style="{ThemeResource defaultTextStyle}" FontSize="15" FontWeight="Normal" HorizontalAlignment="Right" Text="2212-01" Foreground="Green" />
+							<TextBlock Grid.Row="1" Grid.Column="1" x:Name="sectorLTXXVersionHomeText" Style="{ThemeResource defaultTextStyle}" FontSize="15" FontWeight="Normal" HorizontalAlignment="Right" />
 							<TextBlock Grid.Row="2" Grid.Column="0" Style="{ThemeResource defaultTextStyle}" FontSize="15" FontWeight="Normal" Text="AFV:" HorizontalAlignment="Left"/>
-							<TextBlock Grid.Row="2" Grid.Column="1" x:Name="afvVersionHomeText" Style="{ThemeResource defaultTextStyle}" FontSize="15" FontWeight="Normal" HorizontalAlignment="Right" Text="1.10.1.0" Foreground="Green" />
+							<TextBlock Grid.Row="2" Grid.Column="1" x:Name="afvVersionHomeText" Style="{ThemeResource defaultTextStyle}" FontSize="15" FontWeight="Normal" HorizontalAlignment="Right"  />
 							<TextBlock Grid.Row="3" Grid.Column="0" Style="{ThemeResource defaultTextStyle}" FontSize="15" FontWeight="Normal" Text="vATIS:" HorizontalAlignment="Left"/>
-							<TextBlock Grid.Row="3" Grid.Column="1" x:Name="vatisVersionHomeText" Style="{ThemeResource defaultTextStyle}" FontSize="15" FontWeight="Normal" HorizontalAlignment="Right" Text="4.0.0.0-3" Foreground="Green"/>
+							<TextBlock Grid.Row="3" Grid.Column="1" x:Name="vatisVersionHomeText" Style="{ThemeResource defaultTextStyle}" FontSize="15" FontWeight="Normal" HorizontalAlignment="Right" />
 						</Grid>
 						<Button x:Name="goOnlineButton" Grid.Row="2" Padding="20" IsDoubleTapEnabled="False" IsHoldingEnabled="False" CanDrag="False" Background="#195caa" MinWidth="300" HorizontalAlignment="Center">
 							<StackPanel Orientation="Horizontal">
