@@ -14,6 +14,7 @@ using System.Drawing;
 using System.IO;
 using Windows.ApplicationModel.Search;
 using Windows.Storage.AccessCache;
+using System.ComponentModel.DataAnnotations;
 
 namespace Ankara_Online
 {
@@ -26,9 +27,15 @@ namespace Ankara_Online
         {
             this.InitializeComponent();
 
-            UpdateColors();
             settingsCreditsTextBlock.Text = "Credits\nAlp Deniz Senyurt - ACCTR5\nCan Bartu Topcuoglu\nVersion: " + localSettings.Values["AppVersion"] as string;
 
+            settingsIDEditBox.Text = LocalSettings.settingsContainer.Values["VATSIM_ID"] as string;
+            settingsHoppieRichEditBox.Text = LocalSettings.settingsContainer.Values["HoppieLOGONCode"] as string;
+            settingsESPathTextBox.Text = LocalSettings.settingsContainer.Values["EuroScopePath"] as string;
+            settingsAFVPathTextBox.Text = LocalSettings.settingsContainer.Values["AFVPath"] as string;
+            settingsVATISPathTextBox.Text = LocalSettings.settingsContainer.Values["vATISPath"] as string;
+
+            this.UpdateColors();
             // register events
             settingsIDEditBox.TextChanging += SettingsIDEditBox_TextChanging;
             settingsIDEditBox.Paste += SettingsIDEditBox_Paste;
@@ -125,13 +132,27 @@ namespace Ankara_Online
             {
                 settingsESPathTextBox.Foreground = new SolidColorBrush(Colors.Red);
             }
+            else
+            {
+                settingsESPathTextBox.Foreground = new SolidColorBrush(Colors.Green);
+            }
+
             if (settingsAFVPathTextBox.Text.Contains("not found"))
             {
                 settingsAFVPathTextBox.Foreground = new SolidColorBrush(Colors.Red);
             }
+            else
+            {
+                settingsAFVPathTextBox.Foreground = new SolidColorBrush(Colors.Green);
+            }
+            
             if (settingsVATISPathTextBox.Text.Contains("not found"))
             {
                 settingsVATISPathTextBox.Foreground = new SolidColorBrush(Colors.Red);
+            }
+            else
+            {
+                settingsVATISPathTextBox.Foreground = new SolidColorBrush(Colors.Green);
             }
         }
 
@@ -164,21 +185,21 @@ namespace Ankara_Online
         // save button click event handler
         private async void SettingsPageSaveButton_Click(object sender, RoutedEventArgs e)
         {
-            try
-            {
-                getHoppieLOGONCodeButton.IsEnabled = false;
 
-                List<Task> tasks = new();
+            settingsPageSaveButton.IsEnabled = false;
 
-                tasks.Add(Task.Delay(2000));
-                await Task.WhenAll(tasks);
-                // The main thread will be back here.
-            }
-            finally
-            {
-                // Enable the button even if an exception is thrown.
-                getHoppieLOGONCodeButton.IsEnabled = true;
-            }
+            LocalSettings.settingsContainer.Values["VATSIM_ID"] = settingsIDEditBox.Text;
+            LocalSettings.settingsContainer.Values["HoppieLOGONCode"] = settingsHoppieRichEditBox.Text;
+            await Task.Delay(500);
+
+            LocalSettings.settingsContainer.Values["EuroScopePath"] = settingsESPathTextBox.Text;
+            LocalSettings.settingsContainer.Values["vATISPath"] = settingsVATISPathTextBox.Text;
+            await Task.Delay(50);
+
+            LocalSettings.settingsContainer.Values["AFVPath"] = settingsAFVPathTextBox.Text;
+
+            await Task.Delay(50);
+            settingsPageSaveButton.IsEnabled = true;
         }
 
         // Disable button for 3 seconds to avoid over pressing

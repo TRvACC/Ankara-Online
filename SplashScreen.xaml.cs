@@ -262,7 +262,7 @@ namespace Ankara_Online
                 try
                 {
                     App.log.Info("Starting to calculate PRS for LTFJ");
-                    if (Int32.Parse(icao2MetarObj["visibility"].ToString()) <= 550 || (icao2MetarObj.cloud[0].ContainsKey("cloud_base_ft_agl") && Int32.Parse(icao2MetarObj["cloud"][0]["cloud_base_ft_agl"].ToString()) <= 200))
+                    if (Int32.Parse(icao2MetarObj["visibility"].ToString()) <= 400 || (icao2MetarObj.cloud[0].ContainsKey("cloud_base_ft_agl") && Int32.Parse(icao2MetarObj["cloud"][0]["cloud_base_ft_agl"].ToString()) <= 200))
                     {
                         LocalSettings.uiElementsDictionary["HomePageViewICAO2"] += " - ";
                         LocalSettings.uiElementsDictionary["HomePageViewICAO2_PROC"] = " LVP";

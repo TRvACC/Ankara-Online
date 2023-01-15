@@ -29,6 +29,15 @@ namespace Ankara_Online
             reloadButton.Click += ReloadButton_Click;
             goOnlineButton.Click += GoOnlineButton_Click;
 
+            inputTextBox = new TextBox
+            {
+                AcceptsReturn = true,
+                Height = 32,
+                Width = 150,
+                Text = string.Empty,
+                TextWrapping = TextWrapping.Wrap,
+            };
+
         }
 
         private void HomePageView_Loading(FrameworkElement sender, object args)
@@ -243,18 +252,10 @@ namespace Ankara_Online
              * OPEN EUROSCOPE WITH THE CORRECT PRF FILE
              */
 
-            var inputTextBox = new TextBox
-            {
-                AcceptsReturn = true,
-                Height = 32,
-                Width = 150,
-                Text = string.Empty,
-                TextWrapping = TextWrapping.Wrap,
-            };
-
             // LocalSettings.CorrectSectorFilesVersion should be added when the Sector Files checker is implemented
-            if (LocalSettings.correctEuroScopeVersion && LocalSettings.correctAFVVersion && LocalSettings.correctVATISVersion) 
-            {                                                                                                                  
+            if (LocalSettings.correctEuroScopeVersion && LocalSettings.correctAFVVersion && LocalSettings.correctVATISVersion)
+            {
+#pragma warning disable IDE0090
                 ContentDialog dialog = new ContentDialog
                 {
                     XamlRoot = this.XamlRoot,
@@ -262,32 +263,33 @@ namespace Ankara_Online
                     Title = "Please select a callsign!",
                     Content = inputTextBox,
                     CloseButtonText = "Cancel",
-                    SecondaryButtonText = "Select",
-                    
+                    PrimaryButtonText = "Select",
+
                 };
                 dialog.SecondaryButtonClick += Dialog_SecondaryButtonClick;
 
-#pragma warning restore IDE0090
-
                 _ = await dialog.ShowAsync();
             }
-        
-            if (inputTextBox.Text == string.Empty)
+            else
             {
                 ContentDialog dialog = new ContentDialog
                 {
                     XamlRoot = this.XamlRoot,
                     Style = Application.Current.Resources["DefaultContentDialogStyle"] as Style,
-                    Title = "Please select a valid callsign",
-                    Content = "You should select a valid callsign",
-                    CloseButtonText = "OK",
-                    
+                    Title = "Error!",
+                    Content = "Required applications are either not installed or the installed versions are not correct. Please go to \"Applications and Sector Files\" page and install or update your software.",
+                    PrimaryButtonText = "OK",
 
                 };
+#pragma warning restore IDE0090
+                dialog.SecondaryButtonClick += Dialog_SecondaryButtonClick;
+
+                _ = await dialog.ShowAsync();
+
             }
         }
 
-        private void Dialog_SecondaryButtonClick(ContentDialog sender, ContentDialogButtonClickEventArgs args)
+        private async void Dialog_SecondaryButtonClick(ContentDialog sender, ContentDialogButtonClickEventArgs args)
         {
             /*
             CHECK IF THE CALLSIGN IS AVAILABLE
@@ -295,7 +297,18 @@ namespace Ankara_Online
             AND OPEN EUROSCOPE WITH CORRECT PRF FILE
             */
 
-            throw new NotImplementedException();
+            if (inputTextBox.Text == string.Empty)
+            {
+                ContentDialog dialog = new ContentDialog
+                {
+                    XamlRoot = this.XamlRoot,
+                    Style = Application.Current.Resources["DefaultContentDialogStyle"] as Style,
+                    Title = "Error!",
+                    Content = "You need to inpute correct callsign of the sector position, e.g. LTFM_TWR",
+                    CloseButtonText = "OK",
+                };
+                _ = await dialog.ShowAsync();
+            }
         }
 
         private void ReloadButton_Click(object sender, RoutedEventArgs e)
@@ -304,5 +317,6 @@ namespace Ankara_Online
             return;
         }
 
+        private TextBox inputTextBox;
     }
 }

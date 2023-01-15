@@ -18,7 +18,7 @@ namespace Ankara_Online
             this.CenterOnScreen();
 
             this.SetIcon("Assets/trvacc_icon_transparent.ico");
-
+            _hWnd = WinRT.Interop.WindowNative.GetWindowHandle(this);
         }
         private void NavigationView_ItemInvoked(NavigationView sender, NavigationViewItemInvokedEventArgs args)
         {
