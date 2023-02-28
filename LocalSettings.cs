@@ -72,7 +72,8 @@ namespace Ankara_Online
 
 
         internal static ApplicationDataContainer settingsContainer;
-        internal static readonly string DEFAULT_ES_PATH = Environment.GetFolderPath(Environment.SpecialFolder.MyDocuments) + @"\Euroscope";
+        internal static readonly string DEFAULT_ES_PATH = Environment.GetFolderPath(Environment.SpecialFolder.ProgramFilesX86) + @"\Euroscope";
+        // internal static readonly string DEFAULT_ES_PATH = Environment.GetFolderPath(Environment.SpecialFolder.MyDocuments) + @"\Euroscope";
         internal static readonly string DEFAULT_VATIS_PATH = Environment.GetEnvironmentVariable("LocalAppData") + @"\vATIS-4.0";
 
     }

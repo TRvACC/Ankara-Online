@@ -114,7 +114,7 @@ namespace Ankara_Online
 
         internal static string GetEuroScopeRequiredVersion()
         {
-            return "3.2.1.26";
+            return "3.2.2.1";
         }
 
         internal static string GetVATISPath()
@@ -224,9 +224,9 @@ namespace Ankara_Online
          * Return values are: 
          * -2 for error
          * -1 not installed
-         * 0 installed but ES needs to be updated to 3.2.1.26 (meaning installed version is lower)
+         * 0 installed but ES needs to be updated to 3.2.2 (meaning installed version is lower)
          * 1 installed and correct version
-         * 2 installed but ES needs to be restored to 3.2.1.26 (meaning installed version is higher)
+         * 2 installed but ES needs to be restored to 3.2.2 (meaning installed version is higher)
          */
         internal static int EuroScopeVersionChecker()
         {
