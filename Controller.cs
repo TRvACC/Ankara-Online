@@ -61,6 +61,27 @@ namespace Ankara_Online
             // until method is implemented
             return false;
         }
+        
+        private static string GetApplicationPath(string applicationName,string containerKey)
+        {
+            using (var hklm = RegistryKey.OpenBaseKey(RegistryHive.LocalMachine, RegistryView.Registry64))
+            using (var key = hklm.OpenSubKey(@"SOFTWARE\Microsoft\Windows\CurrentVersion\Installer\UserData\S-1-5-18\Components"))
+            {
+                foreach (string keyname in key.GetSubKeyNames())
+                {
+                    RegistryKey tempKey = key.OpenSubKey(keyname);
+                    var value = tempKey.GetValue(tempKey.GetValueNames()[0]).ToString();
+                    var program = value.Substring(value.LastIndexOf('\\') + 1);
+                    if (program == applicationName)
+                    {
+                        value = value.Remove(value.LastIndexOf("\\"));
+                        LocalSettings.settingsContainer.Values[containerKey] = value;
+                        return value;
+                    }
+                }
+            }
+            return string.Empty;
+        }
 
         internal static string GetEuroScopePath()
         {
@@ -69,6 +90,10 @@ namespace Ankara_Online
                 if (Directory.Exists(LocalSettings.DEFAULT_ES_PATH) && File.Exists(LocalSettings.DEFAULT_ES_PATH + @"\EuroScope.exe"))
                 {
                     return LocalSettings.DEFAULT_ES_PATH;
+                }
+                else
+                {
+                    return GetApplicationPath(@"EuroScope.exe", "EuroScopePath");
                 }
             }
             catch (FileNotFoundException e)
@@ -114,7 +139,7 @@ namespace Ankara_Online
 
         internal static string GetEuroScopeRequiredVersion()
         {
-            return "3.2.2.1";
+            return "3.2.3.0";
         }
 
         internal static string GetVATISPath()
@@ -122,9 +147,13 @@ namespace Ankara_Online
             string path = null;
             try
             {
-                if (Directory.Exists(LocalSettings.DEFAULT_VATIS_PATH) && File.Exists(LocalSettings.DEFAULT_VATIS_PATH + @"\vATIS.exe"))
+                if (Directory.Exists(LocalSettings.DEFAULT_VATIS_PATH) && File.Exists(LocalSettings.DEFAULT_VATIS_PATH + @"\Application\vATIS.exe"))
                 {
                     path = LocalSettings.DEFAULT_VATIS_PATH;
+                }
+                else
+                {
+                    return GetApplicationPath(@"vATIS.exe", "vATISPath");
                 }
             }
             catch (FileNotFoundException e)
@@ -145,7 +174,7 @@ namespace Ankara_Online
         {
             try
             {
-                return FileVersionInfo.GetVersionInfo(LocalSettings.settingsContainer.Values["vATISPath"] + @"\vATIS.exe").FileVersion;
+                return FileVersionInfo.GetVersionInfo(LocalSettings.settingsContainer.Values["vATISPath"] + @"\Application\vATIS.exe").FileVersion;
             }
             catch (Exception e)
             {

@@ -32,8 +32,8 @@ namespace Ankara_Online
             {
                 loadingTextBlock.Text = $"Loading 0%...";
                 App.log.Info("Local Settings does not exists. Creating settings for VATSIM ID, Hoppie LOGON Code, App Version, Required and Installed paths.");
-                LocalSettings.settingsContainer.Values["VATSIM_ID"] = null;
-                LocalSettings.settingsContainer.Values["HoppieLOGONCode"] = null;
+                LocalSettings.settingsContainer.Values["VATSIM_ID"] = string.Empty;
+                LocalSettings.settingsContainer.Values["HoppieLOGONCode"] = string.Empty;
                 loadingTextBlock.Text = $"Loading 5%...";
                 await Task.Delay(50);
                 LocalSettings.settingsContainer.Values["AppVersion"] = Assembly.GetExecutingAssembly().GetName().Version.ToString();
@@ -43,7 +43,7 @@ namespace Ankara_Online
                 LocalSettings.settingsContainer.Values["EuroScopePath"] = Controller.GetEuroScopePath();
                 loadingTextBlock.Text = $"Loading 7%...";
                 await Task.Delay(50);
-                LocalSettings.settingsContainer.Values["SectorFilesPath"] = null;
+                LocalSettings.settingsContainer.Values["SectorFilesPath"] = string.Empty;
                 loadingTextBlock.Text = $"Loading 8%...";
                 await Task.Delay(50);
                 LocalSettings.settingsContainer.Values["vATISPath"] = Controller.GetVATISPath();
@@ -75,7 +75,7 @@ namespace Ankara_Online
 
                 LocalSettings.settingsContainer.Values["AFV_VERSION_CHECK_URL"] = "https://github.com/vatsimnetwork/afv-clients/blob/main/clientversion.xml";
                 LocalSettings.settingsContainer.Values["vATIS_VERSION_CHECK_JSON"] = "https://vatis.clowd.io/api/v4/VersionCheck";
-                LocalSettings.settingsContainer.Values["TRvACC_SMART_API"] = "https://smart.trvacc.net/api";
+                LocalSettings.settingsContainer.Values["TRvACC_METAR_API"] = "https://rasat.trvacc.net/metar/";
             }
 
             LocalSettings.uiElementsDictionary["euroscopeVersionHomeText"] = Controller.EuroScopeVersionChecker().ToString();
@@ -120,7 +120,7 @@ namespace Ankara_Online
 
                 icao1MetarObj = null;
                 ltfmMetarFetchSuccess = false;
-                LocalSettings.uiElementsDictionary["HomePageViewICAO2_METAR"] = "ERROR Fetching METAR";
+                LocalSettings.uiElementsDictionary["HomePageViewICAO1_METAR"] = "ERROR Fetching METAR";
             }
             loadingTextBlock.Text = $"Loading 32%...";
             await Task.Delay(50);
@@ -165,7 +165,7 @@ namespace Ankara_Online
                 icao3MetarObj = null;
                 ltaiMetarFetchSuccess = false;
 
-                LocalSettings.uiElementsDictionary["HomePageViewICAO2_METAR"] = "ERROR Fetching METAR";
+                LocalSettings.uiElementsDictionary["HomePageViewICAO3_METAR"] = "ERROR Fetching METAR";
             }
 
             loadingTextBlock.Text = $"Loading 36%...";
@@ -443,10 +443,10 @@ namespace Ankara_Online
 
             using HttpClient client = new HttpClient();
 
-            // get metar of // 
+            // get metar of the passed ICAO// 
             try
             {
-                metarJSON = await client.GetStringAsync("https://smart.trvacc.net/api/metar/" + ICAO);
+                metarJSON = await client.GetStringAsync(LocalSettings.settingsContainer.Values["TRvACC_METAR_API"] as string + ICAO + "/json");
             }
             catch (Exception e)
             {

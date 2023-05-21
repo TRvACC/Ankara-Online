@@ -53,7 +53,7 @@ namespace Ankara_Online
 
                 settingsContainer.Values["AFV_VERSION_CHECK_URL"] = "https://github.com/vatsimnetwork/afv-clients/blob/main/clientversion.xml";
                 settingsContainer.Values["vATIS_VERSION_CHECK_JSON"] = "https://vatis.clowd.io/api/v4/VersionCheck";
-                settingsContainer.Values["TRvACC_SMART_API"] = "https://smart.trvacc.net/api";
+                //settingsContainer.Values["TRvACC_SMART_API"] = "https://rasat.trvacc.net/metar/";
             }
         }
 
