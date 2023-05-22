@@ -15,6 +15,12 @@ namespace Ankara_Online
     /// </summary>
     public sealed partial class HomePageView : Page
     {
+        private bool ICAO1metarHasRun = false;
+        private bool ICAO2metarHasRun = false;
+        private bool ICAO3metarHasRun = false;
+        private bool ICAO1PRSHasRun = false;
+        private bool ICAO2PRSHasRun = false;
+        private bool ICAO3PRSHasRun = false;
         public HomePageView()
         {
             this.InitializeComponent();
@@ -95,13 +101,13 @@ namespace Ankara_Online
             HomePageViewICAO2.Text = LocalSettings.uiElementsDictionary["HomePageViewICAO2"];
             HomePageViewICAO3.Text = LocalSettings.uiElementsDictionary["HomePageViewICAO3"];
 
-            HomePageViewICAO1_METAR.Text = LocalSettings.uiElementsDictionary["HomePageViewICAO1_METAR"];
-            HomePageViewICAO2_METAR.Text = LocalSettings.uiElementsDictionary["HomePageViewICAO2_METAR"];
-            HomePageViewICAO3_METAR.Text = LocalSettings.uiElementsDictionary["HomePageViewICAO3_METAR"];
+            // HomePageViewICAO1_METAR.Text = LocalSettings.uiElementsDictionary["HomePageViewICAO1_METAR"];
+            // HomePageViewICAO2_METAR.Text = LocalSettings.uiElementsDictionary["HomePageViewICAO2_METAR"];
+            // HomePageViewICAO3_METAR.Text = LocalSettings.uiElementsDictionary["HomePageViewICAO3_METAR"];
 
-            HomePageViewICAO1_PROC.Text = LocalSettings.uiElementsDictionary["HomePageViewICAO1_PROC"];
-            HomePageViewICAO2_PROC.Text = LocalSettings.uiElementsDictionary["HomePageViewICAO2_PROC"];
-            HomePageViewICAO3_PROC.Text = LocalSettings.uiElementsDictionary["HomePageViewICAO3_PROC"];
+            // HomePageViewICAO1_PROC.Text = LocalSettings.uiElementsDictionary["HomePageViewICAO1_PROC"];
+            // HomePageViewICAO2_PROC.Text = LocalSettings.uiElementsDictionary["HomePageViewICAO2_PROC"];
+            // HomePageViewICAO3_PROC.Text = LocalSettings.uiElementsDictionary["HomePageViewICAO3_PROC"];
 
             if (HomePageViewICAO1_METAR.Text == "ERROR Fetching METAR" || HomePageViewICAO1_METAR.Text == "ERROR fetching LTFM METAR")
             {
@@ -148,8 +154,10 @@ namespace Ankara_Online
 
         private async void HomePageView_Loaded(object sender, RoutedEventArgs e)
         {
-            if (LocalSettings.LTFM_METAR_PARSE_ERROR)
+
+            if (LocalSettings.LTFM_METAR_PARSE_ERROR && !ICAO1metarHasRun)
             {
+                ICAO1metarHasRun = true;
 #pragma warning disable IDE0090
                 ContentDialog dialog = new ContentDialog
                 {
@@ -163,8 +171,9 @@ namespace Ankara_Online
 
                 _ = await dialog.ShowAsync();
             }
-            else if (LocalSettings.LTFM_PRS_PARSE_ERROR)
+            else if (LocalSettings.LTFM_PRS_PARSE_ERROR && !ICAO1PRSHasRun)
             {
+                ICAO1PRSHasRun = true;
 #pragma warning disable IDE0090
                 ContentDialog dialog = new ContentDialog
                 {
@@ -179,8 +188,9 @@ namespace Ankara_Online
                 _ = await dialog.ShowAsync();
             }
 
-            if (LocalSettings.LTFJ_METAR_PARSE_ERROR)
+            if (LocalSettings.LTFJ_METAR_PARSE_ERROR && !ICAO2metarHasRun)
             {
+                ICAO1metarHasRun = true;
 #pragma warning disable IDE0090
                 ContentDialog dialog = new ContentDialog
                 {
@@ -194,8 +204,9 @@ namespace Ankara_Online
 
                 _ = await dialog.ShowAsync();
             }
-            else if (LocalSettings.LTFJ_PRS_PARSE_ERROR)
+            else if (LocalSettings.LTFJ_PRS_PARSE_ERROR && !ICAO2PRSHasRun)
             {
+                ICAO2PRSHasRun = true;
 #pragma warning disable IDE0090
                 ContentDialog dialog = new ContentDialog
                 {
@@ -210,8 +221,9 @@ namespace Ankara_Online
                 _ = await dialog.ShowAsync();
             }
 
-            if (LocalSettings.LTAI_METAR_PARSE_ERROR)
+            if (LocalSettings.LTAI_METAR_PARSE_ERROR && !ICAO3metarHasRun)
             {
+                ICAO3metarHasRun = true;
 #pragma warning disable IDE0090
                 ContentDialog dialog = new ContentDialog
                 {
@@ -225,8 +237,9 @@ namespace Ankara_Online
 
                 _ = await dialog.ShowAsync();
             }
-            else if (LocalSettings.LTAI_PRS_PARSE_ERROR)
+            else if (LocalSettings.LTAI_PRS_PARSE_ERROR && !ICAO3PRSHasRun)
             {
+                ICAO3PRSHasRun = true;
 #pragma warning disable IDE0090
                 ContentDialog dialog = new ContentDialog
                 {

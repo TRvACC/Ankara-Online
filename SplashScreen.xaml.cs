@@ -171,6 +171,7 @@ namespace Ankara_Online
             loadingTextBlock.Text = $"Loading 36%...";
             await Task.Delay(50);
 
+            /*
             // Parse LTFM PRS
             if (ICAO1_METAR != null && icao1MetarObj != null && ltfmMetarFetchSuccess)
             {
@@ -433,6 +434,7 @@ namespace Ankara_Online
             {
                 LocalSettings.uiElementsDictionary["HomePageViewICAO3_METAR"] = "ERROR fetching LTAI METAR";
             }
+            */
             loadingTextBlock.Text = $"Loading 100%...";
 
         }

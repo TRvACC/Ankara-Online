@@ -40,6 +40,7 @@ namespace Ankara_Online
                 settingsContainer.Values["SectorFilesPath"] = null;
                 settingsContainer.Values["vATISPath"] = Controller.GetVATISPath();
                 settingsContainer.Values["AFVPath"] = Controller.GetAFVPath();
+                settingsContainer.Values["GitBashPath"] = Controller.GetApplicationPath("gitbash.exe", "GitBashPath");
                 
                 settingsContainer.Values["EuroScopeRequiredVersion"] = Controller.GetEuroScopeRequiredVersion();
                 settingsContainer.Values["SectorFilesRequiredVersion"] = null;

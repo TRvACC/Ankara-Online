@@ -62,7 +62,7 @@ namespace Ankara_Online
             return false;
         }
         
-        private static string GetApplicationPath(string applicationName,string containerKey)
+        internal static string GetApplicationPath(string applicationName,string containerKey)
         {
             using (var hklm = RegistryKey.OpenBaseKey(RegistryHive.LocalMachine, RegistryView.Registry64))
             using (var key = hklm.OpenSubKey(@"SOFTWARE\Microsoft\Windows\CurrentVersion\Installer\UserData\S-1-5-18\Components"))
@@ -359,6 +359,29 @@ namespace Ankara_Online
         internal static void SectorFilesVersionCheckerComplete()
         {
 
+        }
+
+        public static void ControllIfGitInstalled(string fileName, string command, string workingDir)
+        {
+
+            ProcessStartInfo processStartInfo = new ProcessStartInfo(fileName, "-c \" " + command + " \"")
+            {
+                WorkingDirectory = workingDir,
+                RedirectStandardOutput = true,
+                RedirectStandardError = true,
+                RedirectStandardInput = true,
+                UseShellExecute = false,
+                CreateNoWindow = true
+            };
+
+            var process = Process.Start(processStartInfo);
+            process.WaitForExit();
+
+            string output = process.StandardOutput.ReadToEnd();
+            string error = process.StandardError.ReadToEnd();
+            var exitCode = process.ExitCode;
+
+            process.Close();
         }
     }
 }
