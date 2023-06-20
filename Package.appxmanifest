@@ -49,5 +49,6 @@
     <rescap:Capability Name="runFullTrust" />
     <Capability Name="internetClient"/>
     <iot:Capability Name="systemManagement"/>
+    <uap:Capability Name="removableStorage"/>
   </Capabilities>
 </Package>

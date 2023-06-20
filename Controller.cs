@@ -6,6 +6,7 @@ using Newtonsoft.Json;
 using System.Net.Http;
 using System.Threading.Tasks;
 using Microsoft.Win32;
+using System.ComponentModel.Design;
 
 namespace Ankara_Online
 {
@@ -361,27 +362,23 @@ namespace Ankara_Online
 
         }
 
-        public static void ControllIfGitInstalled(string fileName, string command, string workingDir)
+        internal static string userName = Environment.UserName;
+        internal static string gitSfPath = "C:\\Users\\" + userName + "\\AppData\\Roaming\\sector-files";
+        internal static int ControlIfSFInstalled()
         {
+            string userName = System.Security.Principal.WindowsIdentity.GetCurrent().Name;
+            string sfDefaultLocation = gitSfPath;
 
-            ProcessStartInfo processStartInfo = new ProcessStartInfo(fileName, "-c \" " + command + " \"")
+            if (Directory.Exists(sfDefaultLocation))
             {
-                WorkingDirectory = workingDir,
-                RedirectStandardOutput = true,
-                RedirectStandardError = true,
-                RedirectStandardInput = true,
-                UseShellExecute = false,
-                CreateNoWindow = true
-            };
-
-            var process = Process.Start(processStartInfo);
-            process.WaitForExit();
-
-            string output = process.StandardOutput.ReadToEnd();
-            string error = process.StandardError.ReadToEnd();
-            var exitCode = process.ExitCode;
-
-            process.Close();
+                return 1;
+            }
+            else
+            {
+                return 0;
+            }
         }
+
+        
     }
 }

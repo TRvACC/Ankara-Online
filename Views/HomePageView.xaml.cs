@@ -157,7 +157,7 @@ namespace Ankara_Online
 
             if (LocalSettings.LTFM_METAR_PARSE_ERROR && !ICAO1metarHasRun)
             {
-                ICAO1metarHasRun = true;
+                ICAO1metarHasRun = false;
 #pragma warning disable IDE0090
                 ContentDialog dialog = new ContentDialog
                 {
@@ -279,7 +279,7 @@ namespace Ankara_Online
                     PrimaryButtonText = "Select",
 
                 };
-                dialog.SecondaryButtonClick += Dialog_SecondaryButtonClick;
+                dialog.PrimaryButtonClick += Dialog_PrimaryButtonClick;
 
                 _ = await dialog.ShowAsync();
             }
@@ -292,17 +292,16 @@ namespace Ankara_Online
                     Title = "Error!",
                     Content = "Required applications are either not installed or the installed versions are not correct. Please go to \"Applications and Sector Files\" page and install or update your software.",
                     PrimaryButtonText = "OK",
-
                 };
 #pragma warning restore IDE0090
-                dialog.SecondaryButtonClick += Dialog_SecondaryButtonClick;
+                dialog.PrimaryButtonClick += Dialog_PrimaryButtonClick;
 
                 _ = await dialog.ShowAsync();
 
             }
         }
 
-        private async void Dialog_SecondaryButtonClick(ContentDialog sender, ContentDialogButtonClickEventArgs args)
+        private async void Dialog_PrimaryButtonClick(ContentDialog sender, ContentDialogButtonClickEventArgs args)
         {
             /*
             CHECK IF THE CALLSIGN IS AVAILABLE

@@ -9,6 +9,7 @@ using System.Threading.Tasks;
 using WinUIEx;
 using log4net;
 using System.Net.Http;
+using System.Diagnostics;
 
 namespace Ankara_Online
 {
@@ -148,6 +149,13 @@ namespace Ankara_Online
             loadingTextBlock.Text = $"Loading 34%...";
             await Task.Delay(50);
 
+            if (Controller.ControlIfSFInstalled() == 1)
+            {
+                Process batch;
+                batch = Process.Start(@"C:\Users\raven\source\repos\Ankara-Online\controlGitSF.bat");
+                await Task.Delay(50);
+            }
+            
             // JSON deserialization for LTAI
             try
             {
