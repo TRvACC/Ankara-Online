@@ -151,9 +151,7 @@ namespace Ankara_Online
 
             if (Controller.ControlIfSFInstalled() == 1)
             {
-                Process batch;
-                batch = Process.Start(@"C:\Users\raven\source\repos\Ankara-Online\controlGitSF.bat");
-                await Task.Delay(50);
+                Controller.UpdateSF();
             }
             
             // JSON deserialization for LTAI

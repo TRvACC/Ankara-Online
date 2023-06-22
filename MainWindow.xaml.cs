@@ -2,6 +2,7 @@
 using Microsoft.UI.Xaml.Controls;
 using Microsoft.UI.Xaml.Navigation;
 using System;
+using System.IO;
 using System.Linq;
 using WinUIEx;
 
@@ -19,7 +20,16 @@ namespace Ankara_Online
 
             this.SetIcon("Assets/trvacc_icon_transparent.ico");
             _hWnd = WinRT.Interop.WindowNative.GetWindowHandle(this);
+            checkforUpdatesButton.Click += CheckforUpdatesButton_Click;
         }
+
+        private void CheckforUpdatesButton_Click(object sender, RoutedEventArgs e)
+        {
+            throw new NotImplementedException();
+        }
+
+
+
         private void NavigationView_ItemInvoked(NavigationView sender, NavigationViewItemInvokedEventArgs args)
         {
             var item = sender.MenuItems.OfType<NavigationViewItem>().First(x => (string)x.Content == (string)args.InvokedItem);

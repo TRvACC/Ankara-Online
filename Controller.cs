@@ -7,6 +7,8 @@ using System.Net.Http;
 using System.Threading.Tasks;
 using Microsoft.Win32;
 using System.ComponentModel.Design;
+using Microsoft.UI.Xaml.Controls;
+using Microsoft.UI.Xaml;
 
 namespace Ankara_Online
 {
@@ -366,7 +368,6 @@ namespace Ankara_Online
         internal static string gitSfPath = "C:\\Users\\" + userName + "\\AppData\\Roaming\\sector-files";
         internal static int ControlIfSFInstalled()
         {
-            string userName = System.Security.Principal.WindowsIdentity.GetCurrent().Name;
             string sfDefaultLocation = gitSfPath;
 
             if (Directory.Exists(sfDefaultLocation))
@@ -379,6 +380,39 @@ namespace Ankara_Online
             }
         }
 
-        
+        internal static void UpdateSF()
+        {
+            Process p = new Process();
+            ProcessStartInfo info = new ProcessStartInfo();
+            info.FileName = "cmd.exe";
+            info.RedirectStandardInput = true;
+            info.CreateNoWindow = true;
+            info.UseShellExecute = false;
+            info.WindowStyle = ProcessWindowStyle.Hidden;
+
+            p.StartInfo = info;
+            p.Start();
+            p.StandardInput.WriteLine("cd %APPDATA%\\sector-files");
+            p.StandardInput.WriteLine("git checkout .");
+        }
+
+        internal static void InstallSF()
+        {
+            string path = System.IO.Path.Combine(Controller.gitSfPath.Remove(40), "sector-files");
+            System.IO.Directory.CreateDirectory(path);
+
+            Process p = new Process();
+            ProcessStartInfo info = new ProcessStartInfo();
+            info.FileName = "cmd.exe";
+            info.RedirectStandardInput = true;
+            info.CreateNoWindow = true;
+            info.UseShellExecute = false;
+            info.WindowStyle = ProcessWindowStyle.Hidden;
+
+            p.StartInfo = info;
+            p.Start();
+            p.StandardInput.WriteLine("git clone https://github.com/TRvACC/sector-files.git %APPDATA%/sector-files 2>NUL");
+
+        }
     }
 }

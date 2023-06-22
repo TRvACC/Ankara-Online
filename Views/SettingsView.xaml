@@ -8,26 +8,36 @@
     mc:Ignorable="d"
 	NavigationCacheMode="Required">
 
-    <Grid RowDefinitions="150,450,90" HorizontalAlignment="Stretch" VerticalAlignment="Stretch" Margin="20,20,20,20">
-		<Grid Grid.Row="0" RowDefinitions="50,40,60">
+    <Grid RowDefinitions="210,390,90" HorizontalAlignment="Stretch" VerticalAlignment="Stretch" Margin="20,20,20,20">
+		<Grid Grid.Row="0" RowDefinitions="50,40,60,60">
 			<TextBlock Grid.Row="0" Style="{ThemeResource defaultTextStyle}" FontSize="30" FontWeight="SemiBold" Text="ATCO Details" Foreground="#bc9b6a" VerticalAlignment="Center" HorizontalAlignment="Left" />
 			<TextBlock Grid.Row="1" Style="{ThemeResource defaultTextStyle}" FontSize="16" FontWeight="Medium" TextWrapping="Wrap" Text="This section contains settings about you. Make sure these are set correctly otherwise you will have issues connecting to the VATSIM." VerticalAlignment="Center" HorizontalAlignment="Left"/>
 			<Grid Grid.Row="2" ColumnDefinitions="0.5*,0.5*" Padding="0,10,0,0">
 				<Grid Grid.Column="0" ColumnDefinitions="0.3*,*">
 					<TextBlock Grid.Column="0" Style="{ThemeResource defaultTextStyle}" FontWeight="Normal" FontSize="16" Text="VATSIM ID" HorizontalAlignment="Left" Padding="0,7,0,0"/>
-					<TextBox x:Name="settingsIDEditBox" Grid.Column="1" Height="38" Width="150" HorizontalAlignment="Left" VerticalAlignment="Top" FontFamily="R" MaxLength="7" PlaceholderText="0000000" AcceptsReturn="False" TextAlignment="Left"  AllowDrop="False" InputScope="Digits" TextWrapping="Wrap"/>
+					<TextBox x:Name="settingsVatsimCIDBox" Grid.Column="1" Height="38" Width="150" HorizontalAlignment="Left" VerticalAlignment="Top" FontFamily="R" MaxLength="7" AcceptsReturn="False" TextAlignment="Left"  AllowDrop="False" InputScope="Text" TextWrapping="Wrap" BorderThickness="0"/>
 				</Grid>
-				<Grid Grid.Column="1" ColumnDefinitions="0.45*,*">
-					<TextBlock Grid.Column="0" Style="{ThemeResource defaultTextStyle}" FontWeight="Normal" FontSize="16" Text="Hoppie LOGON Code" HorizontalAlignment="Left" Padding="0,7,0,0"/>
-					<TextBox x:Name="settingsHoppieRichEditBox" Grid.Column="1" Margin="15,0,0,0" Height="38" Width="150" HorizontalAlignment="Left" VerticalAlignment="Top" FontFamily="{StaticResource PoppinsRegularFont}" AcceptsReturn="False" TextAlignment="Left" TextWrapping="Wrap"/>
-					<Button x:Name="getHoppieLOGONCodeButton" Grid.Column="1" IsDoubleTapEnabled="False" IsHoldingEnabled="False" CanDrag="False" Background="#195caa" Width="180" Height="40" HorizontalAlignment="Right" VerticalAlignment="Top" ClickMode="Press" Margin="0,0,10,0">
-						<StackPanel Orientation="Horizontal">
-							<Image Source="ms-appx:///Assets/Icons/downloadWorld.png" Height="25"/>
-							<TextBlock Style="{ThemeResource defaultTextStyle}" FontSize="14" FontWeight="Normal" Text="Get LOGON Code" Padding="10,0,0,0" VerticalAlignment="Center"/>
-						</StackPanel>
-					</Button>
-				</Grid>
-			</Grid>
+                <Grid Grid.Column="1" ColumnDefinitions="0.45*,*">
+                    <TextBlock Grid.Column="0" Style="{ThemeResource defaultTextStyle}" FontWeight="Normal" FontSize="16" Text="Hoppie LOGON Code" HorizontalAlignment="Left" Padding="0,7,0,0"/>
+                    <TextBox x:Name="settingsHoppieRichEditBox" Grid.Column="1" Margin="15,0,0,0" Height="38" Width="150" HorizontalAlignment="Left" VerticalAlignment="Top" FontFamily="{StaticResource PoppinsRegularFont}" AcceptsReturn="False" TextAlignment="Left" TextWrapping="Wrap" BorderThickness="0"/>
+                    <Button x:Name="getHoppieLOGONCodeButton" Grid.Column="1" IsDoubleTapEnabled="False" IsHoldingEnabled="False" CanDrag="False" Background="#195caa" Width="180" Height="40" HorizontalAlignment="Right" VerticalAlignment="Top" ClickMode="Press" Margin="0,0,10,0" >
+                        <StackPanel Orientation="Horizontal">
+                            <Image Source="ms-appx:///Assets/Icons/downloadWorld.png" Height="25"/>
+                            <TextBlock Style="{ThemeResource defaultTextStyle}" FontSize="14" FontWeight="Normal" Text="Get LOGON Code" Padding="10,0,0,0" VerticalAlignment="Center"/>
+                        </StackPanel>
+                    </Button>
+                </Grid>
+            </Grid>
+            <Grid Grid.Row="3" ColumnDefinitions="0.5*,0.5*" Padding="0,10,0,0">
+                <Grid Grid.Column="0" ColumnDefinitions="0.3*,*">
+                    <TextBlock Grid.Column="0" Style="{ThemeResource defaultTextStyle}" FontWeight="Normal" FontSize="16" Text="Name" HorizontalAlignment="Left" Padding="0,7,0,0"/>
+                    <TextBox x:Name="settingsNameBox" Grid.Column="1" Height="38" Width="150" HorizontalAlignment="Left" VerticalAlignment="Top" FontFamily="R" PlaceholderText="" AcceptsReturn="False" TextAlignment="Left"  AllowDrop="False" InputScope="Text" TextWrapping="Wrap" BorderThickness="0"/>
+                </Grid>
+                <Grid Grid.Column="1" ColumnDefinitions="0.3*,*">
+                    <TextBlock Grid.Column="0" Style="{ThemeResource defaultTextStyle}" FontWeight="Normal" FontSize="16" Text="Password" HorizontalAlignment="Left" Padding="0,7,0,0"/>
+                    <PasswordBox x:Name="settingsPasswordBox" Grid.Column="1" Margin="61,0,0,0" Height="38" Width="150" HorizontalAlignment="Left" VerticalAlignment="Top" FontFamily="{StaticResource PoppinsRegularFont}" BorderThickness="0"/>
+                </Grid>
+            </Grid>
 		</Grid>
 		<Grid Grid.Row="1" RowDefinitions="60,*" HorizontalAlignment="Stretch" VerticalAlignment="Stretch">
 			<TextBlock Grid.Row="0" Style="{ThemeResource defaultTextStyle}" FontSize="30" FontWeight="SemiBold" Text="Application Paths" Foreground="#bc9b6a" VerticalAlignment="Center" HorizontalAlignment="Left" />

@@ -29,7 +29,7 @@ namespace Ankara_Online
 
             settingsCreditsTextBlock.Text = "Credits\nAlp Deniz Senyurt - ACCTR5\nCan Bartu Topcuoglu\nVersion: " + localSettings.Values["AppVersion"] as string;
 
-            settingsIDEditBox.Text = LocalSettings.settingsContainer.Values["VATSIM_ID"] as string;
+            settingsVatsimCIDBox.Text = LocalSettings.settingsContainer.Values["VATSIM_ID"] as string;
             settingsHoppieRichEditBox.Text = LocalSettings.settingsContainer.Values["HoppieLOGONCode"] as string;
             settingsESPathTextBox.Text = LocalSettings.settingsContainer.Values["EuroScopePath"] as string;
             settingsAFVPathTextBox.Text = LocalSettings.settingsContainer.Values["AFVPath"] as string;
@@ -37,14 +37,33 @@ namespace Ankara_Online
 
             this.UpdateColors();
             // register events
-            settingsIDEditBox.TextChanging += SettingsIDEditBox_TextChanging;
-            settingsIDEditBox.Paste += SettingsIDEditBox_Paste;
+            settingsVatsimCIDBox.TextChanging += SettingsIDEditBox_TextChanging;
+            settingsVatsimCIDBox.Paste += SettingsIDEditBox_Paste;
             getHoppieLOGONCodeButton.Click += GetHoppieLOGONCodeButton_Click;
             settingsPageSaveButton.Click += SettingsPageSaveButton_Click;
             settingsESPathSelectButton.Click += SettingsESPathSelectButton_Click;
             settingsAFVPathSelectButton.Click += SettingsAFVPathSelectButton_Click;
             settingsVATISPathSelectButton.Click += SettingsVATISPathSelectButton_Click;
+
+            settingsPageSaveButton.Click += SettingsPageSaveButton_Click1;
+            this.Loaded += SettingsView_Loaded;
         }
+        private void SettingsPageSaveButton_Click1(object sender, RoutedEventArgs e)
+        {
+            LocalSettings.settingsContainer.Values["VATSIM_IDactual"] = settingsVatsimCIDBox.Text;
+            LocalSettings.settingsContainer.Values["UserRealName"] = settingsNameBox.Text;
+            LocalSettings.settingsContainer.Values["VATSIM_Password"] = settingsPasswordBox.Password;
+            LocalSettings.settingsContainer.Values["HoppieLOGONCodeActual"] = settingsHoppieRichEditBox.Text;
+        }
+
+        private void SettingsView_Loaded(object sender, RoutedEventArgs e)
+        {
+            settingsVatsimCIDBox.Text = LocalSettings.settingsContainer.Values["VATSIM_IDactual"] as string;
+            settingsNameBox.Text = LocalSettings.settingsContainer.Values["UserRealName"] as string;
+            settingsPasswordBox.Password = LocalSettings.settingsContainer.Values["VATSIM_Password"] as string;
+            settingsHoppieRichEditBox.Text = LocalSettings.settingsContainer.Values["HoppieLOGONCodeActual"] as string;
+        }
+
 
         private async void SettingsVATISPathSelectButton_Click(object sender, RoutedEventArgs e)
         {
@@ -163,7 +182,7 @@ namespace Ankara_Online
         // event to handle inputs and not allow any digits
         private void SettingsIDEditBox_TextChanging(TextBox sender, TextBoxTextChangingEventArgs args)
         {
-            var currentPosition = settingsIDEditBox.SelectionStart - 1;
+            var currentPosition = settingsVatsimCIDBox.SelectionStart - 1;
             var text = ((TextBox)sender).Text;
 
             // Using good old regex to filter out the text entered
@@ -172,13 +191,13 @@ namespace Ankara_Online
             if (!regex.IsMatch(text))
             {
                 // find the index of the char ([^0-9])
-                var foundChar = Regex.Match(settingsIDEditBox.Text, @"[^0-9]");
+                var foundChar = Regex.Match(settingsVatsimCIDBox.Text, @"[^0-9]");
                 if (foundChar.Success)
                 {
-                    settingsIDEditBox.Text = settingsIDEditBox.Text.Remove(foundChar.Index, 1);
+                    settingsVatsimCIDBox.Text = settingsVatsimCIDBox.Text.Remove(foundChar.Index, 1);
                 }
 
-                settingsIDEditBox.Select(currentPosition, 0);
+                settingsVatsimCIDBox.Select(currentPosition, 0);
             }
         }
 
@@ -188,7 +207,7 @@ namespace Ankara_Online
 
             settingsPageSaveButton.IsEnabled = false;
 
-            LocalSettings.settingsContainer.Values["VATSIM_ID"] = settingsIDEditBox.Text;
+            LocalSettings.settingsContainer.Values["VATSIM_ID"] = settingsVatsimCIDBox.Text;
             LocalSettings.settingsContainer.Values["HoppieLOGONCode"] = settingsHoppieRichEditBox.Text;
             await Task.Delay(500);
 

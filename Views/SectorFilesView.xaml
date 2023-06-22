@@ -23,7 +23,7 @@
 		<MenuFlyoutSeparator Grid.Row="1" VerticalAlignment="Center" Padding="20,0,20,0" MinHeight="10"/>
 		<Grid Grid.Row="2" RowDefinitions="0.3*,0.4*,*">
 			<TextBlock Grid.Row="0" Style="{ThemeResource defaultTextStyle}" FontSize="40" FontWeight="SemiBold" Text="Manual Installation and Update" Foreground="#bc9b6a"/>
-			<TextBlock Grid.Row="1" Style="{ThemeResource defaultTextStyle}" FontSize="15" FontWeight="Normal" TextWrapping="Wrap" Padding="0,10,0,0" Text="In this section if a program is installed, you can check if it is up to date or check if your sector files are the most recent ones. Use the &quot;Update&quot; button right of each item to dowload to update/install the version required. IMPORTANT: Some required version might not be the latest version. TRvACC use specific software and files which are decided by Navigation department. If you have any question regarding these files and applications, please get in touch with them." />
+			<TextBlock Grid.Row="1" Style="{ThemeResource defaultTextStyle}" FontSize="15" FontWeight="Normal" TextWrapping="Wrap" Padding="0,10,0,0" Text="In this section if a program is installed, you can e if it is up to date or check if your sector files are the most recent ones. Use the &quot;Update&quot; button right of each item to dowload to update/install the version required. IMPORTANT: Some required version might not be the latest version. TRvACC use specific software and files which are decided by Navigation department. If you have any question regarding these files and applications, please get in touch with them." />
 
 			<Grid Grid.Row="2" ColumnDefinitions="0.25*,0.25*,0.25*,0.25*" RowDefinitions="60,50,50,50,50">
 				<!--SET COLOR FROM BACKEND AFTER VERSION CHECKING-->

@@ -33,14 +33,17 @@ namespace Ankara_Online
 
                 App.log.Info("Local Settings does not exists. Creating settings for VATSIM ID, Hoppie LOGON Code, App Version, Required and Installed paths.");
                 settingsContainer.Values["VATSIM_ID"] = null;
+                settingsContainer.Values["VATSIM_IDactual"] = null;
+                settingsContainer.Values["UserRealName"] = null;
+                settingsContainer.Values["VATSIM_Password"] = null;
                 settingsContainer.Values["HoppieLOGONCode"] = null;
+                settingsContainer.Values["HoppieLOGONCodeActual"] = null;
                 settingsContainer.Values["AppVersion"] = Assembly.GetExecutingAssembly().GetName().Version.ToString();
 
                 settingsContainer.Values["EuroScopePath"] = Controller.GetEuroScopePath();
                 settingsContainer.Values["SectorFilesPath"] = null;
                 settingsContainer.Values["vATISPath"] = Controller.GetVATISPath();
                 settingsContainer.Values["AFVPath"] = Controller.GetAFVPath();
-                settingsContainer.Values["GitBashPath"] = Controller.GetApplicationPath("gitbash.exe", "GitBashPath");
                 
                 settingsContainer.Values["EuroScopeRequiredVersion"] = Controller.GetEuroScopeRequiredVersion();
                 settingsContainer.Values["SectorFilesRequiredVersion"] = null;
@@ -54,7 +57,7 @@ namespace Ankara_Online
 
                 settingsContainer.Values["AFV_VERSION_CHECK_URL"] = "https://github.com/vatsimnetwork/afv-clients/blob/main/clientversion.xml";
                 settingsContainer.Values["vATIS_VERSION_CHECK_JSON"] = "https://vatis.clowd.io/api/v4/VersionCheck";
-                //settingsContainer.Values["TRvACC_SMART_API"] = "https://rasat.trvacc.net/metar/";
+                // settingsContainer.Values["TRvACC_SMART_API"] = "https://rasat.trvacc.net/metar/";
             }
         }
 
@@ -74,7 +77,6 @@ namespace Ankara_Online
 
         internal static ApplicationDataContainer settingsContainer;
         internal static readonly string DEFAULT_ES_PATH = Environment.GetFolderPath(Environment.SpecialFolder.ProgramFilesX86) + @"\Euroscope";
-        // internal static readonly string DEFAULT_ES_PATH = Environment.GetFolderPath(Environment.SpecialFolder.MyDocuments) + @"\Euroscope";
         internal static readonly string DEFAULT_VATIS_PATH = Environment.GetEnvironmentVariable("LocalAppData") + @"\vATIS-4.0";
 
     }

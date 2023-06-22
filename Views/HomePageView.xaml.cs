@@ -7,6 +7,7 @@ using Microsoft.UI;
 using log4net;
 using Microsoft.UI.Xaml.Controls.Primitives;
 using System.Threading.Tasks;
+using System.IO;
 
 namespace Ankara_Online
 {
@@ -154,10 +155,20 @@ namespace Ankara_Online
 
         private async void HomePageView_Loaded(object sender, RoutedEventArgs e)
         {
+            if (!Directory.Exists(Controller.gitSfPath + "\\LTXX"))
+            {
+                sectorLTXXVersionHomeText.Text = "OUTDATED/NOT INSTALLED";
+                sectorLTXXVersionHomeText.Foreground = new SolidColorBrush(Colors.Red);
+            }
+            else
+            {
+                sectorLTXXVersionHomeText.Text = "VALID";
+                sectorLTXXVersionHomeText.Foreground = new SolidColorBrush(Colors.Green);
+            }
 
             if (LocalSettings.LTFM_METAR_PARSE_ERROR && !ICAO1metarHasRun)
             {
-                ICAO1metarHasRun = false;
+                ICAO1metarHasRun = true;
 #pragma warning disable IDE0090
                 ContentDialog dialog = new ContentDialog
                 {
@@ -257,7 +268,7 @@ namespace Ankara_Online
 
         public async void GoOnlineButton_Click(object sender, RoutedEventArgs e)
         {
-
+            Controller.UpdateSF();
             /*
              * CHECK VERSION AGAIN, IF ITS WRONG, DO NOT LET ATC TO USE WRONG PROFILE
              * POPUP ASKING FOR POSITION CALLSIGN LIKE LTFM_TWR

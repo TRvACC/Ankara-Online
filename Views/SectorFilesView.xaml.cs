@@ -19,7 +19,6 @@ namespace Ankara_Online
     /// </summary>
     public sealed partial class SectorFilesView : Page
     {
-        bool gitWarning = false;
         public SectorFilesView()
         {
             this.InitializeComponent();
@@ -27,26 +26,39 @@ namespace Ankara_Online
             this.Loaded += SectorFilesView_Loaded;
 
             downloadSectorFilesButton.Click += DownloadSectorFilesButton_Click;
+
+            if (Controller.ControlIfSFInstalled() == 1)
+            {
+                downloadSectorFilesButton.IsEnabled = false;
+            }
         }
 
         private async void DownloadSectorFilesButton_Click(object sender, RoutedEventArgs e)
         {
             if (Controller.ControlIfSFInstalled() == 0) 
             {
-                string path = System.IO.Path.Combine(Controller.gitSfPath.Remove(40), "sector-files");
-                System.IO.Directory.CreateDirectory(path);
+                Controller.InstallSF();
 
+                ContentDialog dialog = new ContentDialog
+                {
+                    XamlRoot = this.XamlRoot,
+                    Style = Application.Current.Resources["DefaultContentDialogStyle"] as Style,
+                    Title = "Downloading",
+                    Content = "Downloading Sector Files please wait until you see the 'Download Completed' popup",
+                    CloseButtonText = "Close",
+                };
+                _ = await dialog.ShowAsync();
 
-                Process batch;
-                batch = Process.Start(@"C:\Users\raven\source\repos\Ankara-Online\downloadSF.bat");
                 int i = 0;
                 while(i == 0)
                 {
-                    if (batch.HasExited)
+                    if (Directory.Exists(Controller.gitSfPath + "\\version.txt"));
                     {
                         i = 1;
                         downloadSectorFilesButton.IsEnabled = false;
-                        ContentDialog dialog = new ContentDialog
+                        sectorInstalledVersionSectorFilesText.Text = "VALID";
+                        sectorInstalledVersionSectorFilesText.Foreground = new SolidColorBrush(Colors.Green);
+                        ContentDialog dialog1 = new ContentDialog
                         {
                             XamlRoot = this.XamlRoot,
                             Style = Application.Current.Resources["DefaultContentDialogStyle"] as Style,
@@ -54,7 +66,7 @@ namespace Ankara_Online
                             Content = "Download Completed",
                             CloseButtonText = "Close",
                         };
-                        _ = await dialog.ShowAsync();
+                        _ = await dialog1.ShowAsync();
                     }
                 }
                 
@@ -64,17 +76,27 @@ namespace Ankara_Online
                 downloadSectorFilesButton.IsEnabled = false;
             }
         }
-
         private async void SectorFilesView_Loaded(object sender, RoutedEventArgs e)
         {
             // these are only added for testing purposes, functions etc. will be added later
             euroscopeRequiredVersionSectorFilesText.Text = LocalSettings.settingsContainer.Values["EuroScopeRequiredVersion"] as string;
-            sectorRequiredVersionSectorFilesText.Text = "2305-01"; // placeholder for now
+            sectorRequiredVersionSectorFilesText.Text = "LATEST"; // placeholder for now
             afvRequiredVersionSectorFilesText.Text = LocalSettings.settingsContainer.Values["AFVRequiredVersion"] as string;
             vatisRequiredVersionSectorFilesText.Text = LocalSettings.settingsContainer.Values["vATISRequiredVersion"] as string;
 
             euroscopeInstalledVersionSectorFilesText.Text = LocalSettings.settingsContainer.Values["EuroScopeInstalledVersion"] as string;
-            sectorInstalledVersionSectorFilesText.Text = "2305-01"; // placeholder for now
+            if (!Directory.Exists(Controller.gitSfPath + "\\LTXX"))
+            {
+                sectorInstalledVersionSectorFilesText.Text = "OUTDATED/NOT INSTALLED";
+                sectorInstalledVersionSectorFilesText.Foreground = new SolidColorBrush(Colors.Red);
+                downloadSectorFilesButton.IsEnabled = true;
+            }
+            else
+            {
+                sectorInstalledVersionSectorFilesText.Text = "VALID";
+                sectorInstalledVersionSectorFilesText.Foreground = new SolidColorBrush(Colors.Green);
+            }
+            
             afvInstalledVersionSectorFilesText.Text = LocalSettings.settingsContainer.Values["AFVInstalledVersion"] as string;
             vatisInstalledVersionSectorFilesText.Text = LocalSettings.settingsContainer.Values["vATISInstalledVersion"] as string;
 
@@ -140,5 +162,6 @@ namespace Ankara_Online
                     break;
             }
         }
+
     }
 }
