@@ -268,7 +268,7 @@ namespace Ankara_Online
 
         public async void GoOnlineButton_Click(object sender, RoutedEventArgs e)
         {
-            Controller.UpdateSF();
+            Controller.UpdateSectorFilesCMD();
             /*
              * CHECK VERSION AGAIN, IF ITS WRONG, DO NOT LET ATC TO USE WRONG PROFILE
              * POPUP ASKING FOR POSITION CALLSIGN LIKE LTFM_TWR

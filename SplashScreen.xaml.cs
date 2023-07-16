@@ -10,6 +10,10 @@ using WinUIEx;
 using log4net;
 using System.Net.Http;
 using System.Diagnostics;
+using System.Globalization;
+using System.Net;
+using System.Security.Policy;
+using System.Threading;
 
 namespace Ankara_Online
 {
@@ -29,6 +33,7 @@ namespace Ankara_Online
 
         protected override async Task OnLoading()
         {
+            if (CheckInternetConnection())
             if (!LocalSettings.settingsContainer.Containers.ContainsKey("VATSIM_ID"))
             {
                 loadingTextBlock.Text = $"Loading 0%...";
@@ -151,7 +156,7 @@ namespace Ankara_Online
 
             if (Controller.ControlIfSFInstalled() == 1)
             {
-                Controller.UpdateSF();
+                Controller.UpdateSectorFilesCMD();
             }
             
             // JSON deserialization for LTAI
@@ -442,7 +447,32 @@ namespace Ankara_Online
             }
             */
             loadingTextBlock.Text = $"Loading 100%...";
+        }
 
+        private bool CheckInternetConnection()
+        {
+            try
+            {
+                url ??= CultureInfo.InstalledUICulture switch
+                {
+                    { Name: var n } when n.StartsWith("fa") => // Iran
+                        "http://www.aparat.com",
+                    { Name: var n } when n.StartsWith("zh") => // China
+                        "http://www.baidu.com",
+                    _ =>
+                        "http://www.gstatic.com/generate_204",
+                };
+
+                var request = (HttpWebRequest)WebRequest.Create(url);
+                request.KeepAlive = false;
+                request.Timeout = timeoutMs;
+                using (var response = (HttpWebResponse)request.GetResponse())
+                    return true;
+            }
+            catch
+            {
+                return false;
+            }
         }
 
         internal static async Task<string> GetMetarJSONAsync(string ICAO)
