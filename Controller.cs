@@ -380,7 +380,8 @@ namespace Ankara_Online
             }
         }
 
-        internal static void UpdateSF()
+        
+        internal static void UpdateSectorFilesCMD()
         {
             Process p = new Process();
             ProcessStartInfo info = new ProcessStartInfo();
