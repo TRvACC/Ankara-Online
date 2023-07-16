@@ -14,6 +14,7 @@ using System.Globalization;
 using System.Net;
 using System.Security.Policy;
 using System.Threading;
+using System.Net.NetworkInformation;
 
 namespace Ankara_Online
 {
@@ -34,54 +35,63 @@ namespace Ankara_Online
         protected override async Task OnLoading()
         {
             if (CheckInternetConnection())
-            if (!LocalSettings.settingsContainer.Containers.ContainsKey("VATSIM_ID"))
             {
-                loadingTextBlock.Text = $"Loading 0%...";
-                App.log.Info("Local Settings does not exists. Creating settings for VATSIM ID, Hoppie LOGON Code, App Version, Required and Installed paths.");
-                LocalSettings.settingsContainer.Values["VATSIM_ID"] = string.Empty;
-                LocalSettings.settingsContainer.Values["HoppieLOGONCode"] = string.Empty;
-                loadingTextBlock.Text = $"Loading 5%...";
-                await Task.Delay(50);
-                LocalSettings.settingsContainer.Values["AppVersion"] = Assembly.GetExecutingAssembly().GetName().Version.ToString();
-                await Task.Delay(50);
+                if (!LocalSettings.settingsContainer.Containers.ContainsKey("VATSIM_ID"))
+                {
+                    loadingTextBlock.Text = $"Loading 0%...";
+                    App.log.Info("Local Settings does not exists. Creating settings for VATSIM ID, Hoppie LOGON Code, App Version, Required and Installed paths.");
+                    LocalSettings.settingsContainer.Values["VATSIM_ID"] = string.Empty;
+                    LocalSettings.settingsContainer.Values["HoppieLOGONCode"] = string.Empty;
+                    loadingTextBlock.Text = $"Loading 5%...";
+                    await Task.Delay(50);
+                    LocalSettings.settingsContainer.Values["AppVersion"] = Assembly.GetExecutingAssembly().GetName().Version.ToString();
+                    await Task.Delay(50);
 
-                loadingTextBlock.Text = $"Loading 6%...";
-                LocalSettings.settingsContainer.Values["EuroScopePath"] = Controller.GetEuroScopePath();
-                loadingTextBlock.Text = $"Loading 7%...";
-                await Task.Delay(50);
-                LocalSettings.settingsContainer.Values["SectorFilesPath"] = string.Empty;
-                loadingTextBlock.Text = $"Loading 8%...";
-                await Task.Delay(50);
-                LocalSettings.settingsContainer.Values["vATISPath"] = Controller.GetVATISPath();
-                loadingTextBlock.Text = $"Loading 10%...";
-                await Task.Delay(50);
-                LocalSettings.settingsContainer.Values["AFVPath"] = Controller.GetAFVPath();
-                loadingTextBlock.Text = $"Loading 14%...";
-                await Task.Delay(50);
-                LocalSettings.settingsContainer.Values["EuroScopeRequiredVersion"] = Controller.GetEuroScopeRequiredVersion();
-                loadingTextBlock.Text = $"Loading 15%...";
-                await Task.Delay(50);
-                LocalSettings.settingsContainer.Values["SectorFilesRequiredVersion"] = null;
-                loadingTextBlock.Text = $"Loading 18%...";
-                await Task.Delay(50);
-                LocalSettings.settingsContainer.Values["AFVRequiredVersion"] = Controller.GetAFVRequiredVersion();
-                loadingTextBlock.Text = $"Loading 22%...";
-                await Task.Delay(50);
-                LocalSettings.settingsContainer.Values["vATISRequiredVersion"] = await Controller.GetVATISRequiredVersionAsync();
-                await Task.Delay(50);
-                LocalSettings.settingsContainer.Values["EuroScopeInstalledVersion"] = Controller.GetEuroScopeInstalledVersion();
-                loadingTextBlock.Text = $"Loading 23%...";
-                await Task.Delay(50);
-                LocalSettings.settingsContainer.Values["SectorFilesInstalledVersion"] = null;
-                loadingTextBlock.Text = $"Loading 28%...";
-                await Task.Delay(50);
-                LocalSettings.settingsContainer.Values["AFVInstalledVersion"] = Controller.GetAFVInstalledVersion();
+                    loadingTextBlock.Text = $"Loading 6%...";
+                    LocalSettings.settingsContainer.Values["EuroScopePath"] = Controller.GetEuroScopePath();
+                    loadingTextBlock.Text = $"Loading 7%...";
+                    await Task.Delay(50);
+                    LocalSettings.settingsContainer.Values["SectorFilesPath"] = string.Empty;
+                    loadingTextBlock.Text = $"Loading 8%...";
+                    await Task.Delay(50);
+                    LocalSettings.settingsContainer.Values["vATISPath"] = Controller.GetVATISPath();
+                    loadingTextBlock.Text = $"Loading 10%...";
+                    await Task.Delay(50);
+                    LocalSettings.settingsContainer.Values["AFVPath"] = Controller.GetAFVPath();
+                    loadingTextBlock.Text = $"Loading 14%...";
+                    await Task.Delay(50);
+                    LocalSettings.settingsContainer.Values["EuroScopeRequiredVersion"] = Controller.GetEuroScopeRequiredVersion();
+                    loadingTextBlock.Text = $"Loading 15%...";
+                    await Task.Delay(50);
+                    LocalSettings.settingsContainer.Values["SectorFilesRequiredVersion"] = null;
+                    loadingTextBlock.Text = $"Loading 18%...";
+                    await Task.Delay(50);
+                    LocalSettings.settingsContainer.Values["AFVRequiredVersion"] = Controller.GetAFVRequiredVersion();
+                    loadingTextBlock.Text = $"Loading 22%...";
+                    await Task.Delay(50);
+                    LocalSettings.settingsContainer.Values["vATISRequiredVersion"] = await Controller.GetVATISRequiredVersionAsync();
+                    await Task.Delay(50);
+                    LocalSettings.settingsContainer.Values["EuroScopeInstalledVersion"] = Controller.GetEuroScopeInstalledVersion();
+                    loadingTextBlock.Text = $"Loading 23%...";
+                    await Task.Delay(50);
+                    LocalSettings.settingsContainer.Values["SectorFilesInstalledVersion"] = null;
+                    loadingTextBlock.Text = $"Loading 28%...";
+                    await Task.Delay(50);
+                    LocalSettings.settingsContainer.Values["AFVInstalledVersion"] = Controller.GetAFVInstalledVersion();
 
-                LocalSettings.settingsContainer.Values["vATISInstalledVersion"] = Controller.GetVATISInstalledVersion();
+                    LocalSettings.settingsContainer.Values["vATISInstalledVersion"] = Controller.GetVATISInstalledVersion();
 
-                LocalSettings.settingsContainer.Values["AFV_VERSION_CHECK_URL"] = "https://github.com/vatsimnetwork/afv-clients/blob/main/clientversion.xml";
-                LocalSettings.settingsContainer.Values["vATIS_VERSION_CHECK_JSON"] = "https://vatis.clowd.io/api/v4/VersionCheck";
-                LocalSettings.settingsContainer.Values["TRvACC_METAR_API"] = "https://rasat.trvacc.net/metar/";
+                    LocalSettings.settingsContainer.Values["AFV_VERSION_CHECK_URL"] = "https://github.com/vatsimnetwork/afv-clients/blob/main/clientversion.xml";
+                    LocalSettings.settingsContainer.Values["vATIS_VERSION_CHECK_JSON"] = "https://vatis.clowd.io/api/v4/VersionCheck";
+                    LocalSettings.settingsContainer.Values["TRvACC_METAR_API"] = "https://rasat.trvacc.net/metar/";
+                }
+            }
+            else
+            {
+                await Task.Delay(900);
+                loadingTextBlock.Text = $"ERROR! This program requires active internet connection. Without internet connection it cannot function.";
+                await Task.Delay(5000);
+                Process.GetCurrentProcess().Kill();
             }
 
             LocalSettings.uiElementsDictionary["euroscopeVersionHomeText"] = Controller.EuroScopeVersionChecker().ToString();
@@ -453,24 +463,17 @@ namespace Ankara_Online
         {
             try
             {
-                url ??= CultureInfo.InstalledUICulture switch
-                {
-                    { Name: var n } when n.StartsWith("fa") => // Iran
-                        "http://www.aparat.com",
-                    { Name: var n } when n.StartsWith("zh") => // China
-                        "http://www.baidu.com",
-                    _ =>
-                        "http://www.gstatic.com/generate_204",
-                };
-
-                var request = (HttpWebRequest)WebRequest.Create(url);
-                request.KeepAlive = false;
-                request.Timeout = timeoutMs;
-                using (var response = (HttpWebResponse)request.GetResponse())
-                    return true;
+                Ping myPing = new Ping();
+                String host = "rasat.trvacc.net";
+                byte[] buffer = new byte[32];
+                int timeout = 1000;
+                PingOptions pingOptions = new PingOptions();
+                PingReply reply = myPing.Send(host, timeout, buffer, pingOptions);
+                return (reply.Status == IPStatus.Success);
             }
-            catch
+            catch (Exception e)
             {
+                App.log.Error("Ping to rasat.trvacc.net failed. Without internet connection this program cannot work. The issue is either due to RASAT server error or user's computer not connected to the internet (or connection being blocked)" + e.ToString());
                 return false;
             }
         }
