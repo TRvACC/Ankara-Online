@@ -155,7 +155,7 @@ namespace Ankara_Online
 
         private async void HomePageView_Loaded(object sender, RoutedEventArgs e)
         {
-            if (!Directory.Exists(Controller.gitSfPath + "\\LTXX"))
+            if (!Directory.Exists(Controller.gitSectorFilesPath + "\\LTXX"))
             {
                 sectorLTXXVersionHomeText.Text = "OUTDATED/NOT INSTALLED";
                 sectorLTXXVersionHomeText.Foreground = new SolidColorBrush(Colors.Red);

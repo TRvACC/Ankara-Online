@@ -37,7 +37,7 @@ namespace Ankara_Online
         {
             if (Controller.ControlIfSectorFilesInstalled() == 0) 
             {
-                Controller.InstallSF();
+                Controller.InstallSectorFiles();
 
                 ContentDialog dialog = new ContentDialog
                 {
@@ -52,7 +52,7 @@ namespace Ankara_Online
                 int i = 0;
                 while(i == 0)
                 {
-                    if (Directory.Exists(Controller.gitSfPath + "\\version.txt"));
+                    if (Directory.Exists(Controller.gitSectorFilesPath + "\\version.txt"));
                     {
                         i = 1;
                         downloadSectorFilesButton.IsEnabled = false;
@@ -85,7 +85,7 @@ namespace Ankara_Online
             vatisRequiredVersionSectorFilesText.Text = LocalSettings.settingsContainer.Values["vATISRequiredVersion"] as string;
 
             euroscopeInstalledVersionSectorFilesText.Text = LocalSettings.settingsContainer.Values["EuroScopeInstalledVersion"] as string;
-            if (!Directory.Exists(Controller.gitSfPath + "\\LTXX"))
+            if (!Directory.Exists(Controller.gitSectorFilesPath + "\\LTXX"))
             {
                 sectorInstalledVersionSectorFilesText.Text = "OUTDATED/NOT INSTALLED";
                 sectorInstalledVersionSectorFilesText.Foreground = new SolidColorBrush(Colors.Red);

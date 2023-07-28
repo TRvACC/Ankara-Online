@@ -395,7 +395,7 @@ namespace Ankara_Online
             p.StandardInput.WriteLine("git checkout .");
         }
 
-        internal static void InstallSF()
+        internal static void InstallSectorFiles()
         {
             string path = Path.Combine(Controller.gitSectorFilesPath.Remove(40), "sector-files");
             Directory.CreateDirectory(path);
