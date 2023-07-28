@@ -365,12 +365,12 @@ namespace Ankara_Online
         }
 
         internal static string userName = Environment.UserName;
-        internal static string gitSfPath = "C:\\Users\\" + userName + "\\AppData\\Roaming\\sector-files";
+        internal static string gitSectorFilesPath = "C:\\Users\\" + userName + "\\AppData\\Roaming\\sector-files";
         internal static int ControlIfSectorFilesInstalled()
         {
-            string sfDefaultLocation = gitSfPath;
+            string sectorFilesDefaultLocation = gitSectorFilesPath;
 
-            if (Directory.Exists(sfDefaultLocation))
+            if (Directory.Exists(sectorFilesDefaultLocation))
             {
                 return 1;
             }
