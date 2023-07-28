@@ -364,7 +364,6 @@ namespace Ankara_Online
 
         }
 
-        internal static string gitSectorFilesPath = "C:\\Users\\" + Environment.UserName.ToString() + "\\AppData\\Roaming\\sector-files";
         internal static int ControlIfSectorFilesInstalled()
         {
             string sectorFilesDefaultLocation = gitSectorFilesPath;
@@ -398,8 +397,8 @@ namespace Ankara_Online
 
         internal static void InstallSF()
         {
-            string path = System.IO.Path.Combine(Controller.gitSfPath.Remove(40), "sector-files");
-            System.IO.Directory.CreateDirectory(path);
+            string path = Path.Combine(Controller.gitSectorFilesPath.Remove(40), "sector-files");
+            Directory.CreateDirectory(path);
 
             Process p = new Process();
             ProcessStartInfo info = new ProcessStartInfo();
@@ -414,5 +413,12 @@ namespace Ankara_Online
             p.StandardInput.WriteLine("git clone https://github.com/TRvACC/sector-files.git %APPDATA%/sector-files 2>NUL");
 
         }
+
+        /*
+         *          - MEMBER VARIABLES -
+         * Please put the member variables to under this section here
+         */
+        internal static string gitSectorFilesPath = "C:\\Users\\" + Environment.UserName.ToString() + "\\AppData\\Roaming\\sector-files";
+
     }
 }
