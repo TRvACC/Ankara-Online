@@ -364,8 +364,7 @@ namespace Ankara_Online
 
         }
 
-        internal static string userName = Environment.UserName;
-        internal static string gitSectorFilesPath = "C:\\Users\\" + userName + "\\AppData\\Roaming\\sector-files";
+        internal static string gitSectorFilesPath = "C:\\Users\\" + Environment.UserName.ToString() + "\\AppData\\Roaming\\sector-files";
         internal static int ControlIfSectorFilesInstalled()
         {
             string sectorFilesDefaultLocation = gitSectorFilesPath;
