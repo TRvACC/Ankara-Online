@@ -352,18 +352,6 @@ namespace Ankara_Online
             }
         }
 
-        // simple version checking from version file
-        internal static void SectorFilesVersionCheckerSimple()
-        {
-
-        }
-
-        // implement WebDAV here
-        internal static void SectorFilesVersionCheckerComplete()
-        {
-
-        }
-
         internal static int ControlIfSectorFilesInstalled()
         {
             string sectorFilesDefaultLocation = gitSectorFilesPath;
