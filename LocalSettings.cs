@@ -79,5 +79,30 @@ namespace Ankara_Online
         internal static readonly string DEFAULT_ES_PATH = Environment.GetFolderPath(Environment.SpecialFolder.ProgramFilesX86) + @"\Euroscope";
         internal static readonly string DEFAULT_VATIS_PATH = Environment.GetEnvironmentVariable("LocalAppData") + @"\vATIS-4.0";
 
+
+
+    }
+
+    struct Profile
+    {
+        int id;
+        string name;
+        string range;
+        Facility facility;
+        string ATIS2;
+        string ATIS3;
+        string ATIS4;
+    }
+
+    // an enum to designate type of facility of the sector
+    enum Facility
+    {
+        Observer, // 0 = Observer
+        Flight_Service_Station, // 1 = Flight Service Station
+        Clearance_Delivery, // 2 = Clearance/Delivery
+        Ground, // 3 = Ground
+        Tower, // 4 = Tower
+        Approach_Departure, // 5 = Approach/Departure
+        Center // 6 = Center
     }
 }
