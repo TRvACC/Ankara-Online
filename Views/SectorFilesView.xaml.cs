@@ -27,7 +27,7 @@ namespace Ankara_Online
 
             downloadSectorFilesButton.Click += DownloadSectorFilesButton_Click;
 
-            if (Controller.ControlIfSFInstalled() == 1)
+            if (Controller.ControlIfSectorFilesInstalled() == 1)
             {
                 downloadSectorFilesButton.IsEnabled = false;
             }
@@ -35,7 +35,7 @@ namespace Ankara_Online
 
         private async void DownloadSectorFilesButton_Click(object sender, RoutedEventArgs e)
         {
-            if (Controller.ControlIfSFInstalled() == 0) 
+            if (Controller.ControlIfSectorFilesInstalled() == 0) 
             {
                 Controller.InstallSF();
 

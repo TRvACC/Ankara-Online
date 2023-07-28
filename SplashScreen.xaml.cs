@@ -164,7 +164,7 @@ namespace Ankara_Online
             loadingTextBlock.Text = $"Loading 34%...";
             await Task.Delay(50);
 
-            if (Controller.ControlIfSFInstalled() == 1)
+            if (Controller.ControlIfSectorFilesInstalled() == 1)
             {
                 Controller.UpdateSectorFilesCMD();
             }

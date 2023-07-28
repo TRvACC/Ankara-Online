@@ -366,7 +366,7 @@ namespace Ankara_Online
 
         internal static string userName = Environment.UserName;
         internal static string gitSfPath = "C:\\Users\\" + userName + "\\AppData\\Roaming\\sector-files";
-        internal static int ControlIfSFInstalled()
+        internal static int ControlIfSectorFilesInstalled()
         {
             string sfDefaultLocation = gitSfPath;
 
