@@ -5,6 +5,7 @@ using System.Collections.Generic;
 using System.Configuration;
 using System.Reflection;
 using Windows.Storage;
+using Windows.System.Profile;
 
 namespace Ankara_Online
 {
@@ -24,6 +25,7 @@ namespace Ankara_Online
             correctAFVVersion = false;
             correctVATISVersion = false;
             correctSectorFilesVersion = false;
+            profileList = new List<Profile>();
         }
 
         internal static async void CheckIfSettingsExists()
@@ -74,24 +76,26 @@ namespace Ankara_Online
         internal static bool correctVATISVersion;
         internal static bool correctSectorFilesVersion;
 
+        /*
+         * profileList is a List which contains Profile struct typed elements for each position
+         */
+        internal static List<Profile> profileList;
 
         internal static ApplicationDataContainer settingsContainer;
         internal static readonly string DEFAULT_ES_PATH = Environment.GetFolderPath(Environment.SpecialFolder.ProgramFilesX86) + @"\Euroscope";
         internal static readonly string DEFAULT_VATIS_PATH = Environment.GetEnvironmentVariable("LocalAppData") + @"\vATIS-4.0";
 
-
-
     }
 
-    struct Profile
+    public struct Profile
     {
-        int id;
-        string name;
-        string range;
-        Facility facility;
-        string ATIS2;
-        string ATIS3;
-        string ATIS4;
+        internal int id;
+        internal string positionName;
+        internal UInt16 range;
+        internal Facility facility;
+        internal string ATIS2;
+        internal string ATIS3;
+        internal string ATIS4;
     }
 
     // an enum to designate type of facility of the sector

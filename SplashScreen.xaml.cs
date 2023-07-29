@@ -84,6 +84,7 @@ namespace Ankara_Online
                     LocalSettings.settingsContainer.Values["AFV_VERSION_CHECK_URL"] = "https://github.com/vatsimnetwork/afv-clients/blob/main/clientversion.xml";
                     LocalSettings.settingsContainer.Values["vATIS_VERSION_CHECK_JSON"] = "https://vatis.clowd.io/api/v4/VersionCheck";
                     LocalSettings.settingsContainer.Values["TRvACC_METAR_API"] = "https://rasat.trvacc.net/metar/";
+
                 }
             }
             else
@@ -456,6 +457,9 @@ namespace Ankara_Online
                 LocalSettings.uiElementsDictionary["HomePageViewICAO3_METAR"] = "ERROR fetching LTAI METAR";
             }
             */
+
+            Controller.ReadProfiles();
+
             loadingTextBlock.Text = $"Loading 100%...";
         }
 
