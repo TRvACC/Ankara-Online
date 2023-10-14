@@ -358,7 +358,7 @@ namespace Ankara_Online
         {
             string sectorFilesDefaultLocation = gitSectorFilesPath;
 
-            if (Directory.Exists(sectorFilesDefaultLocation))
+            if (Directory.Exists(sectorFilesDefaultLocation + "\\LTXX"))
             {
                 return 1;
             }
@@ -382,7 +382,7 @@ namespace Ankara_Online
             p.StartInfo = info;
             p.Start();
             p.StandardInput.WriteLine("cd %APPDATA%\\sector-files");
-            p.StandardInput.WriteLine("git checkout .");
+            p.StandardInput.WriteLine("git pull");
         }
 
         internal static void InstallSectorFiles()
@@ -401,7 +401,6 @@ namespace Ankara_Online
             p.StartInfo = info;
             p.Start();
             p.StandardInput.WriteLine("git clone https://github.com/TRvACC/sector-files.git %APPDATA%/sector-files 2>NUL");
-
         }
 
         /*
@@ -410,7 +409,7 @@ namespace Ankara_Online
          */
         internal static void ReadProfiles()
         {
-            string profileFileName = "Profiles TopSky.txt";
+            string profileFileName = "Profiles.txt";
 
             // need more verification here since this file can be edited easily, reading wrong data will screw the parsing completely
             string profileFilePath = "not generated";

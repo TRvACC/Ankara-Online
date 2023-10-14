@@ -169,7 +169,11 @@ namespace Ankara_Online
             {
                 Controller.UpdateSectorFilesCMD();
             }
-            
+            else
+            {
+                Controller.InstallSectorFiles();
+            }
+             
             // JSON deserialization for LTAI
             try
             {
