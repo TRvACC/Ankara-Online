@@ -358,7 +358,7 @@ namespace Ankara_Online
         {
             string sectorFilesDefaultLocation = gitSectorFilesPath;
 
-            if (Directory.Exists(sectorFilesDefaultLocation + ".git") && Directory.GetFiles(sectorFilesDefaultLocation, "*.ese").Length == 1 && Directory.GetFiles(sectorFilesDefaultLocation, "*.sct").Length == 1 && Directory.GetFiles(sectorFilesDefaultLocation, "*.rwy").Length == 1 && File.Exists(sectorFilesDefaultLocation + "\\LTXX\\Settings\\Profiles.txt"))
+            if (Directory.Exists(sectorFilesDefaultLocation + "\\.git") && Directory.GetFiles(sectorFilesDefaultLocation, "*.ese").Length == 1 && Directory.GetFiles(sectorFilesDefaultLocation, "*.sct").Length == 1 && Directory.GetFiles(sectorFilesDefaultLocation, "*.rwy").Length == 1 && File.Exists(sectorFilesDefaultLocation + "\\LTXX\\Settings\\Profiles.txt"))
             {
                 return true;
             }
