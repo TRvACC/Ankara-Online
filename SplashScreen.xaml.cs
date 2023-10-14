@@ -165,13 +165,9 @@ namespace Ankara_Online
             loadingTextBlock.Text = $"Loading 34%...";
             await Task.Delay(50);
 
-            if (Controller.ControlIfSectorFilesInstalled() == 1)
+            if (Controller.ControlIfSectorFilesInstalled())
             {
                 Controller.UpdateSectorFilesCMD();
-            }
-            else
-            {
-                Controller.InstallSectorFiles();
             }
              
             // JSON deserialization for LTAI
@@ -462,7 +458,10 @@ namespace Ankara_Online
             }
             */
 
-            Controller.ReadProfiles();
+            if (Controller.ControlIfSectorFilesInstalled())
+            {
+                Controller.ReadProfiles();
+            }
 
             loadingTextBlock.Text = $"Loading 100%...";
         }

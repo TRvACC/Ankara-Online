@@ -11,6 +11,7 @@ using static System.Net.WebRequestMethods;
 using System.IO;
 using Microsoft.UI.Xaml.Shapes;
 using Windows.System;
+using Windows.ApplicationModel.Core;
 
 namespace Ankara_Online
 {
@@ -27,7 +28,7 @@ namespace Ankara_Online
 
             downloadSectorFilesButton.Click += DownloadSectorFilesButton_Click;
 
-            if (Controller.ControlIfSectorFilesInstalled() == 1)
+            if (Controller.ControlIfSectorFilesInstalled())
             {
                 downloadSectorFilesButton.IsEnabled = false;
             }
@@ -35,26 +36,26 @@ namespace Ankara_Online
 
         private async void DownloadSectorFilesButton_Click(object sender, RoutedEventArgs e)
         {
-            if (Controller.ControlIfSectorFilesInstalled() == 0) 
+            if (!Controller.ControlIfSectorFilesInstalled()) 
             {
-                Controller.InstallSectorFiles();
+                Controller.InstallSectorFilesAsync();
 
                 ContentDialog dialog = new ContentDialog
                 {
                     XamlRoot = this.XamlRoot,
                     Style = Application.Current.Resources["DefaultContentDialogStyle"] as Style,
                     Title = "Downloading",
-                    Content = "Downloading Sector Files please wait until you see the 'Download Completed' popup",
+                    Content = "Downloading sector files, please wait until you see the confirmation dialog",
                     CloseButtonText = "Close",
                 };
                 _ = await dialog.ShowAsync();
 
-                int i = 0;
-                while(i == 0)
+                bool fileExists = false;
+                while(!fileExists)
                 {
-                    if (Directory.Exists(Controller.gitSectorFilesPath + "\\version.txt"));
+                    if (System.IO.File.Exists(Controller.gitSectorFilesPath + "\\version.txt"))
                     {
-                        i = 1;
+                        fileExists = true;
                         downloadSectorFilesButton.IsEnabled = false;
                         sectorInstalledVersionSectorFilesText.Text = "VALID";
                         sectorInstalledVersionSectorFilesText.Foreground = new SolidColorBrush(Colors.Green);
@@ -63,13 +64,17 @@ namespace Ankara_Online
                             XamlRoot = this.XamlRoot,
                             Style = Application.Current.Resources["DefaultContentDialogStyle"] as Style,
                             Title = "Done",
-                            Content = "Download Completed",
+                            Content = "Download completed",
                             CloseButtonText = "Close",
                         };
                         _ = await dialog1.ShowAsync();
                     }
                 }
-                
+
+                /* Did not restart for some reason need to fix this */
+                _ = CoreApplication.RequestRestartAsync("");
+
+                Process.GetCurrentProcess().Kill();
             }
             else
             {

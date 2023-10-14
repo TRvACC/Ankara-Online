@@ -354,17 +354,17 @@ namespace Ankara_Online
             }
         }
 
-        internal static int ControlIfSectorFilesInstalled()
+        internal static bool ControlIfSectorFilesInstalled()
         {
             string sectorFilesDefaultLocation = gitSectorFilesPath;
 
-            if (Directory.Exists(sectorFilesDefaultLocation + "\\LTXX"))
+            if (Directory.Exists(sectorFilesDefaultLocation + ".git") && Directory.GetFiles(sectorFilesDefaultLocation, "*.ese").Length == 1 && Directory.GetFiles(sectorFilesDefaultLocation, "*.sct").Length == 1 && Directory.GetFiles(sectorFilesDefaultLocation, "*.rwy").Length == 1 && File.Exists(sectorFilesDefaultLocation + "\\LTXX\\Settings\\Profiles.txt"))
             {
-                return 1;
+                return true;
             }
             else
             {
-                return 0;
+                return false;
             }
         }
 
@@ -385,7 +385,7 @@ namespace Ankara_Online
             p.StandardInput.WriteLine("git pull");
         }
 
-        internal static void InstallSectorFiles()
+        internal static async void InstallSectorFilesAsync()
         {
             string path = System.IO.Path.Combine(gitSectorFilesPath.Remove(40), "sector-files");
             Directory.CreateDirectory(path);
@@ -400,7 +400,7 @@ namespace Ankara_Online
 
             p.StartInfo = info;
             p.Start();
-            p.StandardInput.WriteLine("git clone https://github.com/TRvACC/sector-files.git %APPDATA%/sector-files 2>NUL");
+            p.StandardInput.WriteLine("git clone https://github.com/TRvACC/sector-files.git %APPDATA%/sector-files");
         }
 
         /*
