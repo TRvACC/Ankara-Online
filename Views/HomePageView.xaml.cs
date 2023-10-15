@@ -179,7 +179,7 @@ namespace Ankara_Online
                     XamlRoot = this.XamlRoot,
                     Style = Application.Current.Resources["DefaultContentDialogStyle"] as Style,
                     Title = "Error!",
-                    Content = "Error when parsing LTFM metar data. Please close the application and open a issue at https://github.com/cptalpdeniz/Ankara_Online/issues and upload ALL the Ankara_Online.log files (located where Ankara_Online.exe is)",
+                    Content = "Error when parsing LTFM metar data. Please close the application and open a issue at https://github.com/TRvACC/Ankara-Online/issues and upload ALL the Ankara_Online.log files (located where Ankara_Online.exe is)",
                     CloseButtonText = "OK",
                 };
 #pragma warning restore IDE0090
@@ -195,7 +195,7 @@ namespace Ankara_Online
                     XamlRoot = this.XamlRoot,
                     Style = Application.Current.Resources["DefaultContentDialogStyle"] as Style,
                     Title = "Error!",
-                    Content = "Error when calculating PRS for LTFM. Please close the application and open a issue at https://github.com/cptalpdeniz/Ankara_Online/issues and upload ALL the Ankara_Online.log files (located where Ankara_Online.exe is). Write in detail what you were doing with steps and when did the error happened.",
+                    Content = "Error when calculating PRS for LTFM. Please close the application and open a issue at https://github.com/TRvACC/Ankara-Online/issues and upload ALL the Ankara_Online.log files (located where Ankara_Online.exe is). Write in detail what you were doing with steps and when did the error happened.",
                     CloseButtonText = "OK",
                 };
 #pragma warning restore IDE0090
