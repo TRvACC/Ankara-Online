@@ -72,9 +72,11 @@ namespace Ankara_Online
                 }
 
                 /* Did not restart for some reason need to fix this */
+                /*
                 _ = CoreApplication.RequestRestartAsync("");
 
                 Process.GetCurrentProcess().Kill();
+                */
             }
             else
             {

@@ -383,6 +383,7 @@ namespace Ankara_Online
             p.Start();
             p.StandardInput.WriteLine("cd %APPDATA%\\sector-files");
             p.StandardInput.WriteLine("git pull");
+            p.StandardInput.WriteLine("git checkout");
         }
 
         internal static async void InstallSectorFilesAsync()

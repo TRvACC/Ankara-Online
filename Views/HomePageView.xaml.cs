@@ -8,6 +8,10 @@ using log4net;
 using Microsoft.UI.Xaml.Controls.Primitives;
 using System.Threading.Tasks;
 using System.IO;
+using Windows.Devices.Bluetooth.Background;
+using Windows.ApplicationModel.Background;
+using System.Security.AccessControl;
+using System.Diagnostics;
 
 namespace Ankara_Online
 {
@@ -224,7 +228,7 @@ namespace Ankara_Online
                     XamlRoot = this.XamlRoot,
                     Style = Application.Current.Resources["DefaultContentDialogStyle"] as Style,
                     Title = "Error!",
-                    Content = "Error when calculating PRS for LTFJ. Please close the application and open a issue at https://github.com/cptalpdeniz/Ankara_Online/issues and upload ALL the Ankara_Online.log files (located where Ankara_Online.exe is). Write in detail what you were doing with steps and when did the error happened.",
+                    Content = "Error when calculating PRS for LTFJ. Please close the application and open a issue at https://github.com/TRvACC/Ankara-Online/issues and upload ALL the Ankara_Online.log files (located where Ankara_Online.exe is). Write in detail what you were doing with steps and when did the error happened.",
                     CloseButtonText = "OK",
                 };
 #pragma warning restore IDE0090
@@ -241,7 +245,7 @@ namespace Ankara_Online
                     XamlRoot = this.XamlRoot,
                     Style = Application.Current.Resources["DefaultContentDialogStyle"] as Style,
                     Title = "Error!",
-                    Content = "Error when parsing LTAI metar data. Please close the application and open a issue at https://github.com/cptalpdeniz/Ankara_Online/issues and upload ALL the Ankara_Online.log files (located where Ankara_Online.exe is)",
+                    Content = "Error when parsing LTAI metar data. Please close the application and open a issue at https://github.com/TRvACC/Ankara-Online/issues and upload ALL the Ankara_Online.log files (located where Ankara_Online.exe is)",
                     CloseButtonText = "OK",
                 };
 #pragma warning restore IDE0090
@@ -257,7 +261,7 @@ namespace Ankara_Online
                     XamlRoot = this.XamlRoot,
                     Style = Application.Current.Resources["DefaultContentDialogStyle"] as Style,
                     Title = "Error!",
-                    Content = "Error when calculating PRS for LTAI. Please close the application and open a issue at https://github.com/cptalpdeniz/Ankara_Online/issues and upload ALL the Ankara_Online.log files (located where Ankara_Online.exe is). Write in detail what you were doing with steps and when did the error happened.",
+                    Content = "Error when calculating PRS for LTAI. Please close the application and open a issue at https://github.com/TRvACC/Ankara-Online/issues and upload ALL the Ankara_Online.log files (located where Ankara_Online.exe is). Write in detail what you were doing with steps and when did the error happened.",
                     CloseButtonText = "OK",
                 };
 #pragma warning restore IDE0090
@@ -277,7 +281,7 @@ namespace Ankara_Online
              */
 
             // LocalSettings.CorrectSectorFilesVersion should be added when the Sector Files checker is implemented
-            if (LocalSettings.correctEuroScopeVersion && LocalSettings.correctAFVVersion && LocalSettings.correctVATISVersion)
+            if (LocalSettings.correctEuroScopeVersion && LocalSettings.correctAFVVersion && LocalSettings.correctVATISVersion && LocalSettings.settingsContainer.Values["VATSIM_IDactual"] != null && LocalSettings.settingsContainer.Values["UserRealName"] != null && LocalSettings.settingsContainer.Values["VATSIM_Password"] != null && LocalSettings.settingsContainer.Values["HoppieLOGONCodeActual"] != null)
             {
 #pragma warning disable IDE0090
                 ContentDialog dialog = new ContentDialog
@@ -314,6 +318,8 @@ namespace Ankara_Online
 
         private async void Dialog_PrimaryButtonClick(ContentDialog sender, ContentDialogButtonClickEventArgs args)
         {
+
+            string prfPath = null;
             /*
             CHECK IF THE CALLSIGN IS AVAILABLE
             EDIT THE PRF FILE
@@ -332,6 +338,87 @@ namespace Ankara_Online
                 };
                 _ = await dialog.ShowAsync();
             }
+            else
+            {
+                foreach (Profile temp in LocalSettings.profileList)
+                {
+                    if (inputTextBox.Text == temp.positionName)
+                    {
+                        string tempPostionEnding = temp.positionName.Substring(temp.positionName.Length - 3);
+
+                        switch (tempPostionEnding)
+                        {
+                            case "CTR":
+                                {
+                                    prfPath = Controller.gitSectorFilesPath + "\\ACC-APP.prf";
+                                    break;
+                                }
+                            case "APP":
+                                {
+                                    prfPath = Controller.gitSectorFilesPath + "\\ACC-APP.prf";
+                                    break;
+                                }
+                            case "TWR":
+                                {
+                                    prfPath = Controller.gitSectorFilesPath + "\\GRP MODE-S.prf";
+                                    break;
+                                }
+                            case "GND":
+                                {
+                                    prfPath = Controller.gitSectorFilesPath + "\\GRP MODE-S.prf";
+                                    break;
+                                }
+                            case "DEL":
+                                {
+                                    prfPath = Controller.gitSectorFilesPath + "\\GRP MODE-S.prf";
+                                    break;
+                                }
+                        }
+
+                        if (prfPath != null)
+                        {
+                            File.AppendAllText(prfPath,
+                                                Environment.NewLine + "LastSession\tcallsign\t" + temp.positionName + Environment.NewLine);
+
+
+                            File.AppendAllText(prfPath,
+                                                "LastSession\trealname\t" + LocalSettings.settingsContainer.Values["UserRealName"] + Environment.NewLine);
+
+                            File.AppendAllText(prfPath,
+                                                "LastSession\tcertificate\t" + LocalSettings.settingsContainer.Values["VATSIM_IDactual"] + Environment.NewLine);
+                            
+                            File.AppendAllText(prfPath,
+                                                "LastSession\tpassword\t" + LocalSettings.settingsContainer.Values["VATSIM_Password"] + Environment.NewLine);
+
+                            File.AppendAllText(prfPath,
+                                                "LastSession\tatis2\t" + temp.ATIS2 + Environment.NewLine);
+
+                            File.AppendAllText(prfPath,
+                                                "LastSession\tatis3\t" + temp.ATIS3 + Environment.NewLine);
+
+                            File.AppendAllText(prfPath,
+                                                "LastSession\tatis4\t" + temp.ATIS4 + Environment.NewLine);
+                            File.AppendAllText(prfPath,
+                                                "LastSession\tfacility\t" + (int)temp.facility + Environment.NewLine);
+
+                            File.AppendAllText(prfPath,
+                                                "LastSession\tserver\t" + "AUTOMATIC" + Environment.NewLine);
+
+                            File.AppendAllText(prfPath,
+                                                "LastSession\trange\t" + temp.range + Environment.NewLine);
+
+                            string euroscopePath = LocalSettings.settingsContainer.Values["EuroScopePath"].ToString();
+
+                            Process process = new Process();
+                            process.StartInfo.FileName = euroscopePath + "\\EuroScope.exe";
+                            process.StartInfo.Arguments = prfPath;
+                            process.StartInfo.UseShellExecute = false;
+                            process.Start();
+
+                        }
+                    }
+                }
+            }            
         }
 
         private void ReloadButton_Click(object sender, RoutedEventArgs e)
